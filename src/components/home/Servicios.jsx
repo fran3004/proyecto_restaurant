@@ -1,3 +1,5 @@
+import './Servicios.css';
+
 function Servicios() {
   return (
     <section className="services" id="servicios">

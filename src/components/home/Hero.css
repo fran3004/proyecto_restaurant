@@ -1,0 +1,101 @@
+.hero {
+  min-height:760px;
+  margin-top:0;
+  position:relative;
+  display:flex;
+  align-items:center;
+  padding:130px 7vw 100px;
+  background-image:url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2200&q=90");
+  background-size:cover;
+  background-position:center
+}
+.hero-overlay {
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,rgba(7,29,15,.82),rgba(9,38,19,.36) 55%,rgba(0,0,0,.12))
+}
+.hero-content {
+  position:relative;
+  z-index:2;
+  max-width:650px;
+  color:#fff
+}
+.hero h1 {
+  font-family:"Cormorant Garamond",serif;
+  font-size:clamp(58px,7vw,100px);
+  line-height:.82;
+  font-weight:500;
+  margin:0 0 28px
+}
+.hero h1 em { font-style:italic }
+.hero-content>p:not(.eyebrow) {
+  max-width:540px;
+  font-size:17px;
+  color:rgba(255,255,255,.86)
+}
+.hero-actions {
+  display:flex;
+  gap:12px;
+  margin-top:28px
+}
+.hero-stay {
+  position:absolute;
+  z-index:2;
+  left:7vw;
+  right:7vw;
+  bottom:34px;
+  border-top:1px solid rgba(255,255,255,.25);
+  padding-top:14px;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  gap:14px
+}
+.hero-stay span { font-size:22px }
+.hero-stay strong {
+  font-family:"Cormorant Garamond",serif;
+  font-size:22px;
+  font-weight:600
+}
+.hero-stay small { opacity:.75 }
+.intro {
+  text-align:center;
+  padding:80px 24px 55px;
+  max-width:760px;
+  margin:auto
+}
+.intro p:last-child { color:#6b746a }
+
+@media(max-width:900px) {
+  .hero { min-height:680px }
+}
+
+@media(max-width:600px) {
+  .hero {
+    padding:120px 24px 100px;
+    min-height:650px;
+    background-position:58% center
+  }
+  .hero h1 { font-size:62px }
+  .hero-content>p:not(.eyebrow) { font-size:14px }
+  .hero-stay {
+    left:24px;
+    right:24px;
+    bottom:24px;
+    display:block
+  }
+  .hero-stay strong {
+    display:block;
+    font-size:19px
+  }
+  .hero-stay small {
+    display:block;
+    margin-top:3px;
+    font-size:8px
+  }
+  .hero-actions {
+    flex-direction:column;
+    align-items:flex-start
+  }
+  .intro { padding:60px 18px }
+}

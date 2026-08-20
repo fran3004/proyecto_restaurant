@@ -1,3 +1,5 @@
+import './Header.css';
+
 function Header({ menuOpen, onMenuToggle }) {
   return (
     <header className="site-header" id="top">

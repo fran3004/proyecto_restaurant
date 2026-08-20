@@ -1,3 +1,5 @@
+import './Experiencias.css';
+
 function Experiencias() {
   return (
     <section className="section" id="experiencias">

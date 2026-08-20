@@ -1,0 +1,22 @@
+.gallery-section { padding-bottom:100px }
+.gallery {
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr;
+  grid-auto-rows:180px;
+  gap:8px
+}
+.gallery img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:5px
+}
+.gallery .g1 { grid-row:span 2 }
+
+@media(max-width:600px) {
+  .gallery {
+    grid-template-columns:1fr 1fr;
+    grid-auto-rows:145px
+  }
+  .gallery .g1 { grid-row:span 2 }
+}

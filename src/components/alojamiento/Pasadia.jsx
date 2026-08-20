@@ -1,3 +1,5 @@
+import './Pasadia.css';
+
 const tabs = ['Familia', 'Pareja', 'Celebraciones', 'Empresa'];
 
 function Pasadia({ activeTab, onTabChange }) {

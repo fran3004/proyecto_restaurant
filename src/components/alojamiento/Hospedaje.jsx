@@ -1,3 +1,5 @@
+import './Hospedaje.css';
+
 function Hospedaje() {
   return (
     <section className="section cream" id="hospedaje">
