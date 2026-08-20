@@ -3,13 +3,13 @@ import './App.css';
 
 import Header       from './components/layout/Header';
 import Footer       from './components/layout/Footer';
-import Hero         from './components/home/Hero';
-import Nosotros     from './components/home/Nosotros';
-import Hospedaje    from './components/alojamiento/Hospedaje';
-import Experiencias from './components/home/Experiencias';
-import Galeria      from './components/home/Galeria';
-import Pasadia      from './components/alojamiento/Pasadia';
-import Servicios    from './components/home/Servicios';
+import Hero         from './components/inicio/Hero';
+import MisionVision from './components/inicio/MisionVision';
+import ReservaMesa  from './components/reservas/ReservaMesa';
+import Experiencias from './components/inicio/Experiencias';
+import Gastronomia  from './components/inicio/Gastronomia';
+import Recuerdos    from './components/recuerdos/Recuerdos';
+import Servicios    from './components/inicio/Servicios';
 import Contacto     from './components/contacto/Contacto';
 
 function App() {
@@ -23,11 +23,11 @@ function App() {
       />
       <main>
         <Hero />
-        <Nosotros />
-        <Hospedaje />
+        <MisionVision />
+        <ReservaMesa />
         <Experiencias />
-        <Galeria />
-        <Pasadia />
+        <Gastronomia />
+        <Recuerdos />
         <Servicios />
         <Contacto />
       </main>

@@ -7,46 +7,44 @@ function Contacto() {
         <div className="contact-copy">
           <p className="eyebrow">RESERVAS Y UBICACIÓN</p>
           <h2>Planea tu visita hoy</h2>
-          <p>Escríbenos directamente por WhatsApp. Nuestro equipo te ayudará a elegir la mejor experiencia según la ocasión.</p>
+          <p>Escríbenos directamente por WhatsApp. Nuestro equipo te ayudará a elegir la mejor experiencia de naturaleza, río y gastronomía según la ocasión.</p>
 
           <div className="contact-list">
             <div>
               <span>☎</span>
               <div>
                 <small>TELÉFONO / WHATSAPP</small>
-                <strong>+57 314 574 1186</strong>
-              </div>
-            </div>
-            <div>
-              <span>✉</span>
-              <div>
-                <small>CORREO ELECTRÓNICO</small>
-                <strong>contacto@villaadelaida.com</strong>
+                <a href="tel:+573145238716"><strong>+57 314 523 8716</strong></a>
+                <a href="tel:+573226516884"><strong>+57 322 651 6884</strong></a>
+                <a href="tel:+573147840545"><strong>+57 314 784 0545</strong></a>
               </div>
             </div>
             <div>
               <span>⌖</span>
               <div>
                 <small>UBICACIÓN</small>
-                <strong>Turbaco · Carretera Troncal vía Arjona, Sector La Rosita</strong>
+                <strong>Manaure, Cesar · A 200 metros del río Manaure</strong>
               </div>
             </div>
           </div>
 
-          <a className="btn btn-primary" href="https://wa.me/573145741186" target="_blank" rel="noopener noreferrer">
+          <a className="btn btn-primary" href="https://wa.link/ewr2c9" target="_blank" rel="noopener noreferrer">
             Escribir por WhatsApp
           </a>
         </div>
 
         <div className="map-card">
-          <div className="fake-map">
-            <div className="map-road r1"></div>
-            <div className="map-road r2"></div>
-            <div className="map-road r3"></div>
-            <div className="map-water"></div>
-            <div className="map-pin">📍</div>
-            <span className="map-label">Villa Adelaida</span>
-          </div>
+          <iframe
+            className="fake-map"
+            title="Mapa de Villa Adelaida en Manaure, Cesar"
+            src="https://www.google.com/maps?q=Villa+Adelaida,+Manaure,+Cesar,+Colombia&output=embed"
+            width="100%"
+            height="100%"
+            border="0"
+            loading="lazy"
+            allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
+          />
         </div>
       </div>
     </section>

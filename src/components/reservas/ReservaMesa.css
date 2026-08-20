@@ -6,11 +6,11 @@
 
 /* ── CAJA PRINCIPAL ── */
 .booking-box {
-  background: #fff;
-  border-radius: 16px;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
   padding: 36px;
-  border: 1px solid rgba(18,51,29,.08);
-  box-shadow: 0 4px 20px rgba(0,0,0,.04);
+  border: 1px solid var(--color-alpha-primary-08);
+  box-shadow: 0 4px 20px var(--color-alpha-black-04);
 }
 
 /* ── CONTROLES ── */
@@ -18,9 +18,9 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 14px;
-  background: #f9f7f2;
+  background: var(--color-surface-warm);
   padding: 20px;
-  border-radius: 12px;
+  border-radius: var(--radius-sm);
   margin-bottom: 30px;
 }
 
@@ -35,25 +35,25 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .1em;
-  color: #12331d;
+  color: var(--color-primary-dark);
 }
 
 .form-group input,
 .form-group select {
   padding: 10px 12px;
-  border: 1px solid #c8c2b4;
-  border-radius: 8px;
-  background: #fff;
+  border: 1px solid var(--color-border-input);
+  border-radius: var(--radius-sm);
+  background: var(--color-white);
   outline: none;
   font-size: 13px;
-  color: #2c3531;
+  color: var(--color-text-dark);
   transition: border-color .2s;
 }
 
 .form-group input:focus,
 .form-group select:focus {
-  border-color: #e05a00;
-  box-shadow: 0 0 0 3px rgba(224,90,0,.12);
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px var(--color-alpha-secondary-12-old);
 }
 
 /* ── GRID DE MESAS ── */
@@ -66,9 +66,9 @@
 }
 
 .mesa-card {
-  border: 2px solid #e2ddd0;
-  background: #fff;
-  border-radius: 12px;
+  border: 2px solid var(--color-border-card);
+  background: var(--color-white);
+  border-radius: var(--radius-sm);
   padding: 20px 18px;
   cursor: pointer;
   transition: border-color .2s, transform .2s, box-shadow .2s;
@@ -76,15 +76,15 @@
 }
 
 .mesa-card:hover {
-  border-color: #12331d;
+  border-color: var(--color-primary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(18,51,29,.1);
+  box-shadow: 0 6px 20px var(--color-alpha-primary-10-alt);
 }
 
 .mesa-card.selected {
-  border-color: #e05a00;
-  background: #fff8f3;
-  box-shadow: 0 0 0 3px rgba(224,90,0,.15);
+  border-color: var(--color-secondary);
+  background: var(--color-surface-highlight);
+  box-shadow: 0 0 0 3px var(--color-alpha-secondary-12-old);
 }
 
 .mesa-badge {
@@ -93,31 +93,31 @@
   font-size: 9px;
   font-weight: 700;
   padding: 4px 9px;
-  border-radius: 999px;
+  border-radius: var(--radius-pill);
   text-transform: uppercase;
-  background: #e3f2fd;
-  color: #0d47a1;
+  background: var(--color-surface-blue);
+  color: var(--color-text-blue);
   letter-spacing: .05em;
 }
 
-.mesa-card h4 {
-  font-family: 'Cormorant Garamond', serif;
+.mesa-card h3 {
+  font-family: var(--font-title);
   font-size: 22px;
   margin: 6px 0 6px;
-  color: #12331d;
+  color: var(--color-primary-dark);
   line-height: 1.1;
   padding-right: 60px;
 }
 
 .mesa-card p {
   font-size: 12.5px;
-  color: #66706b;
+  color: var(--color-text-soft);
   margin: 0 0 6px;
 }
 
 .mesa-card small {
   font-size: 11.5px;
-  color: #8a9488;
+  color: var(--color-text-subtle);
   display: block;
   line-height: 1.5;
 }
@@ -130,9 +130,9 @@
   gap: 20px;
   flex-wrap: wrap;
   padding: 22px 26px;
-  background: #12331d;
-  color: #fff;
-  border-radius: 12px;
+  background: var(--color-primary-dark);
+  color: var(--color-white);
+  border-radius: var(--radius-sm);
 }
 
 .booking-summary p {
@@ -143,16 +143,16 @@
 }
 
 .booking-summary strong {
-  color: #ffb380;
+  color: var(--color-secondary-light);
   opacity: 1;
 }
 
 .btn-whatsapp-confirm {
-  background: #e05a00;
-  color: #fff;
+  background: var(--color-secondary);
+  color: var(--color-white);
   border: none;
   padding: 13px 26px;
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   font-size: 11.5px;
   font-weight: 700;
   text-transform: uppercase;
@@ -164,7 +164,7 @@
 }
 
 .btn-whatsapp-confirm:hover {
-  background: #b84800;
+  background: var(--color-secondary-dark);
   transform: translateY(-1px);
 }
 

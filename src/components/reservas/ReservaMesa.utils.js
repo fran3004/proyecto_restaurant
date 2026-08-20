@@ -1,10 +1,10 @@
 /**
- * Hospedaje.utils.js
+ * ReservaMesa.utils.js
  * Lógica de negocio para la reserva de mesas.
  * Construye el mensaje y abre WhatsApp — separado del JSX.
  */
 
-const WHATSAPP_NUMBER = '573145741186';
+const WHATSAPP_NUMBER = '573145238716';
 
 /**
  * Construye el mensaje formateado y abre WhatsApp con los datos de la reserva.

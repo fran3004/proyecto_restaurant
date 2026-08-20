@@ -15,9 +15,9 @@ const servicios = [
   },
   {
     icono: '🚌',
-    titulo: 'Transporte Coordinado',
-    desc: 'Facilitamos el traslado para grupos desde los puntos principales de la ciudad.',
-    cta: 'Consultar rutas →',
+    titulo: 'Música en Vivo y Bienestar',
+    desc: 'Disfruta música en vivo y servicios de spa para complementar tu visita.',
+    cta: 'Consultar disponibilidad →',
   },
 ];
 
