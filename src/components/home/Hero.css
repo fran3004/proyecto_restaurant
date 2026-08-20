@@ -1,101 +1,262 @@
+/* ═══════════════════════════════════
+   HERO – SLIDER FULLSCREEN
+═══════════════════════════════════ */
 .hero {
-  min-height:760px;
-  margin-top:0;
-  position:relative;
-  display:flex;
-  align-items:center;
-  padding:130px 7vw 100px;
-  background-image:url("https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2200&q=90");
-  background-size:cover;
-  background-position:center
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 7vw 160px;
+  overflow: hidden;
 }
+
+/* ── Slides de fondo ── */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity 0.9s ease, transform 6s ease;
+  z-index: 0;
+}
+
+/* Slide entrante */
+.hero-bg--active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+/* Slide saliente */
+.hero-bg--exit {
+  opacity: 0;
+  transform: scale(1.02);
+  z-index: 0;
+}
+
+/* ── Overlay ── */
 .hero-overlay {
-  position:absolute;
-  inset:0;
-  background:linear-gradient(90deg,rgba(7,29,15,.82),rgba(9,38,19,.36) 55%,rgba(0,0,0,.12))
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    rgba(10, 30, 18, 0.82) 0%,
+    rgba(15, 42, 25, 0.55) 55%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+  z-index: 2;
 }
+
+/* ── Contenido ── */
 .hero-content {
-  position:relative;
-  z-index:2;
-  max-width:650px;
-  color:#fff
+  position: relative;
+  z-index: 3;
+  max-width: 640px;
+  color: #fff;
 }
+
 .hero h1 {
-  font-family:"Cormorant Garamond",serif;
-  font-size:clamp(58px,7vw,100px);
-  line-height:.82;
-  font-weight:500;
-  margin:0 0 28px
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 7vw, 96px);
+  line-height: 0.9;
+  font-weight: 600;
+  margin: 0 0 22px;
 }
-.hero h1 em { font-style:italic }
-.hero-content>p:not(.eyebrow) {
-  max-width:540px;
-  font-size:17px;
-  color:rgba(255,255,255,.86)
+
+.hero h1 em {
+  font-style: italic;
+  color: #ffb380;
 }
+
+.hero-content > p:not(.eyebrow) {
+  max-width: 500px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0 0 8px;
+}
+
 .hero-actions {
-  display:flex;
-  gap:12px;
-  margin-top:28px
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+  flex-wrap: wrap;
 }
+
+/* ── Flechas prev/next ── */
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  transition: background 0.25s, transform 0.25s;
+}
+
+.hero-arrow:hover {
+  background: rgba(224, 90, 0, 0.85);
+  border-color: transparent;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.hero-arrow--prev { left: 20px; }
+.hero-arrow--next { right: 20px; }
+
+/* ── Dots ── */
+.hero-dots {
+  position: absolute;
+  bottom: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 10px;
+}
+
+.hero-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.3s, transform 0.3s, width 0.3s;
+}
+
+.hero-dot.active {
+  background: #e05a00;
+  width: 24px;
+  border-radius: 999px;
+  transform: none;
+}
+
+/* ── Barra de progreso ── */
+.hero-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  z-index: 10;
+}
+
+.hero-progress-bar {
+  height: 100%;
+  background: #e05a00;
+  width: 0%;
+  animation: progressFill linear forwards;
+}
+
+@keyframes progressFill {
+  from { width: 0% }
+  to   { width: 100% }
+}
+
+/* ── Barra inferior de categorías ── */
 .hero-stay {
-  position:absolute;
-  z-index:2;
-  left:7vw;
-  right:7vw;
-  bottom:34px;
-  border-top:1px solid rgba(255,255,255,.25);
-  padding-top:14px;
-  color:#fff;
-  display:flex;
-  align-items:center;
-  gap:14px
+  position: absolute;
+  z-index: 5;
+  bottom: 12px;
+  left: 0;
+  right: 0;
+  padding: 18px 7vw 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(10, 28, 18, 0.55);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-.hero-stay span { font-size:22px }
-.hero-stay strong {
-  font-family:"Cormorant Garamond",serif;
-  font-size:22px;
-  font-weight:600
+
+.hero-stay > span {
+  font-size: 18px;
 }
-.hero-stay small { opacity:.75 }
+
+.hero-stay > strong {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.hero-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hero-tag {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.85);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: default;
+  transition: background 0.2s;
+}
+
+.hero-tag.active-tag {
+  background: rgba(224, 90, 0, 0.75);
+  border-color: rgba(224, 90, 0, 0.6);
+  color: #fff;
+}
+
+.hero-tag-desc {
+  font-size: 11.5px;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0;
+  font-style: italic;
+}
+
+/* ── Intro ── */
 .intro {
-  text-align:center;
-  padding:80px 24px 55px;
-  max-width:760px;
-  margin:auto
-}
-.intro p:last-child { color:#6b746a }
-
-@media(max-width:900px) {
-  .hero { min-height:680px }
+  text-align: center;
+  padding: 80px 24px 55px;
+  max-width: 780px;
+  margin: auto;
 }
 
-@media(max-width:600px) {
-  .hero {
-    padding:120px 24px 100px;
-    min-height:650px;
-    background-position:58% center
-  }
-  .hero h1 { font-size:62px }
-  .hero-content>p:not(.eyebrow) { font-size:14px }
-  .hero-stay {
-    left:24px;
-    right:24px;
-    bottom:24px;
-    display:block
-  }
-  .hero-stay strong {
-    display:block;
-    font-size:19px
-  }
-  .hero-stay small {
-    display:block;
-    margin-top:3px;
-    font-size:8px
-  }
-  .hero-actions {
-    flex-direction:column;
-    align-items:flex-start
-  }
-  .intro { padding:60px 18px }
+.intro p:last-child {
+  color: #556358;
+  font-size: 16px;
+}
+
+/* ══════════════════
+   RESPONSIVE
+══════════════════ */
+@media (max-width: 900px) {
+  .hero { min-height: 90vh; padding: 120px 24px 180px; }
+  .hero-arrow { display: none; }
+  .hero-dots { bottom: 160px; }
+}
+
+@media (max-width: 600px) {
+  .hero { min-height: 100svh; padding: 110px 20px 200px; }
+  .hero h1 { font-size: 52px; }
+  .hero-content > p:not(.eyebrow) { font-size: 14px; }
+  .hero-actions { flex-direction: column; align-items: flex-start; }
+  .hero-stay { padding: 14px 20px 16px; }
+  .hero-tag { font-size: 10px; padding: 5px 10px; }
+  .hero-dots { bottom: 180px; }
+  .intro { padding: 60px 18px; }
 }

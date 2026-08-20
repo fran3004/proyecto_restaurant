@@ -1,22 +1,61 @@
-.gallery-section { padding-bottom:100px }
-.gallery {
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr;
-  grid-auto-rows:180px;
-  gap:8px
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
-.gallery img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:5px
+.video-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(24,59,36,.08);
+  box-shadow: 0 8px 20px rgba(0,0,0,.05);
+  transition: .3s;
 }
-.gallery .g1 { grid-row:span 2 }
+.video-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,.1); }
+.video-thumb {
+  position: relative;
+  height: 240px;
+  background: #111;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.video-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .85;
+  transition: .3s;
+}
+.video-card:hover .video-thumb img { transform: scale(1.04); opacity: 1; }
+.play-btn {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  background: rgba(224,90,0,.9);
+  color: #fff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  box-shadow: 0 4px 15px rgba(0,0,0,.3);
+  transition: .2s;
+  cursor: pointer;
+}
+.video-card:hover .play-btn { transform: scale(1.1); background: #e05a00; }
+.video-body { padding: 18px; }
+.video-body h4 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+  margin: 0 0 6px;
+  color: #183b24;
+}
+.video-body p { font-size: 12px; color: #667268; margin: 0; }
 
-@media(max-width:600px) {
-  .gallery {
-    grid-template-columns:1fr 1fr;
-    grid-auto-rows:145px
-  }
-  .gallery .g1 { grid-row:span 2 }
+@media(max-width: 900px) {
+  .video-grid { grid-template-columns: 1fr; }
+}
+@media(max-width: 600px) {
+  .video-thumb { height: 200px; }
 }

@@ -1,17 +1,46 @@
 import './Servicios.css';
 
+const servicios = [
+  {
+    icono: '🍃',
+    titulo: 'Senderismo & Aves',
+    desc: 'Rutas guiadas para aprender de la flora nativa y avistar especies endémicas.',
+    cta: 'Solicitar guía →',
+  },
+  {
+    icono: '🍲',
+    titulo: 'Eventos & Celebraciones',
+    desc: 'Espacios amplios y servicio de banquetes para cumpleaños, bodas o eventos corporativos.',
+    cta: 'Cotizar evento →',
+  },
+  {
+    icono: '🚌',
+    titulo: 'Transporte Coordinado',
+    desc: 'Facilitamos el traslado para grupos desde los puntos principales de la ciudad.',
+    cta: 'Consultar rutas →',
+  },
+];
+
 function Servicios() {
   return (
     <section className="services" id="servicios">
       <div className="section-heading light-heading">
-        <div><p className="eyebrow light">SERVICIOS DEL HOTEL</p><h2>Todo lo que necesitas</h2></div>
-        <p>Servicios complementarios para que tu estadía sea completa, sin preocupaciones.</p>
+        <div>
+          <p className="eyebrow light">SERVICIOS DE LA VILLA</p>
+          <h2>Todo para tu comodidad</h2>
+        </div>
+        <p>Servicios que complementan tu visita para que vivas una experiencia segura, tranquila y placentera.</p>
       </div>
 
       <div className="service-grid">
-        <article><div className="service-icon">✦</div><h3>Spa</h3><p>Masajes, rituales y tratamientos relajantes en medio de la naturaleza.</p><a href="#contacto">Conocer el spa →</a></article>
-        <article><div className="service-icon">♨</div><h3>Restaurante</h3><p>Asados, comida típica y menú infantil servido en bohíos amplios.</p><a href="#contacto">Ver menú →</a></article>
-        <article><div className="service-icon">⌁</div><h3>Transporte</h3><p>Servicio de transporte cotizable desde Cartagena y zona norte.</p><a href="#contacto">Cotizar transporte →</a></article>
+        {servicios.map(s => (
+          <article key={s.titulo}>
+            <div className="service-icon">{s.icono}</div>
+            <h3>{s.titulo}</h3>
+            <p>{s.desc}</p>
+            <a href="#contacto">{s.cta}</a>
+          </article>
+        ))}
       </div>
     </section>
   );
