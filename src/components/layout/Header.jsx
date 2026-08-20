@@ -18,16 +18,17 @@ function Header({ menuOpen, onMenuToggle }) {
 
   const closeAll = () => {
     setDropdownOpen(false);
+    if (menuOpen) onMenuToggle();
   };
 
   return (
     <header className="site-header" id="top">
 
       {/* LOGO */}
-      <a className="brand" href="#inicio">
+      <a className="brand" href="#inicio" onClick={closeAll}>
         <div className="brand-logo-wrap">
           <img
-            src="/logo.jpeg"
+            src="/assets/brand/logo-header-footer.png"
             alt="Villa Adelaida – Centro Turístico y Ecológico"
             className="brand-logo-img"
           />
@@ -39,48 +40,52 @@ function Header({ menuOpen, onMenuToggle }) {
       </a>
 
       {/* HAMBURGUESA */}
-      <button className="menu-toggle" aria-label="Abrir menú" onClick={onMenuToggle}>
+      <button
+        className="menu-toggle"
+        aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+        aria-expanded={menuOpen}
+        aria-controls="site-navigation"
+        onClick={onMenuToggle}
+      >
         ☰
       </button>
 
       {/* NAV CENTRAL */}
-      <nav className={`nav${menuOpen ? ' open' : ''}`}>
+      <nav id="site-navigation" className={`nav${menuOpen ? ' open' : ''}`}>
         <a href="#nosotros" onClick={closeAll}>Nosotros</a>
         <a href="#reserva-mesas" onClick={closeAll}>Reservar Mesa</a>
         <a href="#experiencias" onClick={closeAll}>Experiencias</a>
         <a href="#sazon" onClick={closeAll}>Nuestra Sazón</a>
         <a href="#recuerdos" onClick={closeAll}>Recuerdos</a>
         <a href="#contacto" onClick={closeAll}>Contacto</a>
-      </nav>
+        <div className="booking-dropdown" ref={dropdownRef}>
+          <button
+            className="btn-reserve-master"
+            onClick={() => setDropdownOpen(o => !o)}
+            aria-expanded={dropdownOpen}
+            aria-haspopup="true"
+          >
+            Reservar <span className={`dropdown-arrow${dropdownOpen ? ' open' : ''}`}>▾</span>
+          </button>
 
-      {/* BOTÓN RESERVAR DESPLEGABLE */}
-      <div className="booking-dropdown" ref={dropdownRef}>
-        <button
-          className="btn-reserve-master"
-          onClick={() => setDropdownOpen(o => !o)}
-          aria-expanded={dropdownOpen}
-          aria-haspopup="true"
-        >
-          Reservar <span className={`dropdown-arrow${dropdownOpen ? ' open' : ''}`}>▾</span>
-        </button>
-
-        <div className={`dropdown-menu${dropdownOpen ? ' open' : ''}`}>
-          <a href="#reserva-mesas" className="dropdown-item" onClick={closeAll}>
-            <span className="dropdown-icon">🍽️</span>
-            <div className="dropdown-text">
-              <strong>Mesa en Restaurante</strong>
-              <span>Elegir ubicación y horario</span>
-            </div>
-          </a>
-          <a href="#experiencias" className="dropdown-item" onClick={closeAll}>
-            <span className="dropdown-icon">🌿</span>
-            <div className="dropdown-text">
-              <strong>Plan o Experiencia</strong>
-              <span>Pasadías, rutas y hospedaje</span>
-            </div>
-          </a>
+          <div className={`dropdown-menu${dropdownOpen ? ' open' : ''}`}>
+            <a href="#reserva-mesas" className="dropdown-item" onClick={closeAll}>
+              <span className="dropdown-icon">🍽️</span>
+              <div className="dropdown-text">
+                <strong>Mesa en Restaurante</strong>
+                <span>Elegir ubicación y horario</span>
+              </div>
+            </a>
+            <a href="#experiencias" className="dropdown-item" onClick={closeAll}>
+              <span className="dropdown-icon">🌿</span>
+              <div className="dropdown-text">
+                <strong>Plan o Experiencia</strong>
+                <span>Pasadías, rutas y hospedaje</span>
+              </div>
+            </a>
+          </div>
         </div>
-      </div>
+      </nav>
 
     </header>
   );

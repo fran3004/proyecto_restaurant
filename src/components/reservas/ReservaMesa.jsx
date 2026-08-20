@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import './Hospedaje.css';
-import { confirmarReservaMesa, getFechaHoy } from './Hospedaje.utils';
+import './ReservaMesa.css';
+import { confirmarReservaMesa, getFechaHoy } from './ReservaMesa.utils';
 
 const mesas = [
   { id: 'mesa-1', nombre: 'Mesa 1 · Bohío Principal',    capacidad: '2 a 4 Personas',        desc: 'Ubicación fresca bajo sombra de palma con vista al jardín.' },
@@ -14,7 +14,7 @@ const mesas = [
 const horas    = ['12:00 PM', '01:00 PM', '02:00 PM', '03:00 PM', '04:00 PM', '05:00 PM'];
 const horasFin = ['02:00 PM', '03:00 PM', '04:00 PM', '05:00 PM', '06:00 PM', '07:00 PM'];
 
-function Hospedaje() {
+function ReservaMesa() {
   const [mesa,       setMesa]       = useState(mesas[0].nombre);
   const [fecha,      setFecha]      = useState(getFechaHoy());
   const [horaInicio, setHoraInicio] = useState('12:00 PM');
@@ -87,7 +87,7 @@ function Hospedaje() {
               onKeyDown={e => e.key === 'Enter' && setMesa(m.nombre)}
             >
               <span className="mesa-badge">Disponible</span>
-              <h4>{m.nombre}</h4>
+              <h3>{m.nombre}</h3>
               <p>👥 Capacidad: {m.capacidad}</p>
               <small>{m.desc}</small>
             </div>
@@ -110,4 +110,4 @@ function Hospedaje() {
   );
 }
 
-export default Hospedaje;
+export default ReservaMesa;

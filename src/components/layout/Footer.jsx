@@ -6,14 +6,14 @@ function Footer() {
       <div className="footer-main">
         <div className="footer-brand">
           <div className="footer-logo-wrap">
-            <img src="/logo.jpeg" alt="Villa Adelaida" className="footer-logo-img" />
+            <img src="/assets/brand/logo-header-footer.png" alt="Villa Adelaida" className="footer-logo-img" />
           </div>
           <h3>VILLA ADELAIDA</h3>
-          <p>Centro Turístico y Ecológico. Tu refugio de naturaleza y descanso.</p>
+          <p>Centro Turístico y Ecológico. Naturaleza, río y gastronomía típica en Manaure, Cesar.</p>
           <div className="socials">
-            <a href="#" aria-label="Facebook">f</a>
-            <a href="#" aria-label="Instagram">📷</a>
-            <a href="#" aria-label="TikTok">🎵</a>
+            <span aria-label="Facebook">f</span>
+            <span aria-label="Instagram">📷</span>
+            <span aria-label="TikTok">🎵</span>
           </div>
         </div>
 
@@ -34,9 +34,11 @@ function Footer() {
 
         <div>
           <h4>Contacto Directo</h4>
-          <a href="tel:+573145741186">+57 314 574 1186</a>
-          <a href="mailto:contacto@villaadelaida.com">contacto@villaadelaida.com</a>
-          <span>Colombia</span>
+          <a href="tel:+573145238716">+57 314 523 8716</a>
+          <a href="tel:+573226516884">+57 322 651 6884</a>
+          <a href="tel:+573147840545">+57 314 784 0545</a>
+          <a href="https://wa.link/ewr2c9" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <span>Manaure, Cesar · Colombia</span>
         </div>
       </div>
 

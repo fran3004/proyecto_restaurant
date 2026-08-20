@@ -1,4 +1,4 @@
-import './Pasadia.css';
+import './Recuerdos.css';
 
 const recuerdos = [
   {
@@ -27,7 +27,7 @@ const recuerdos = [
   },
 ];
 
-function Pasadia() {
+function Recuerdos() {
   return (
     <section className="section" id="recuerdos">
       <div className="section-heading">
@@ -53,4 +53,4 @@ function Pasadia() {
   );
 }
 
-export default Pasadia;
+export default Recuerdos;

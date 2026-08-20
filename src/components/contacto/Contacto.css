@@ -1,7 +1,7 @@
 .contact {
-  background: #fefdfa;
+  background: var(--color-surface);
   padding: 90px max(28px, calc((100vw - 1200px) / 2));
-  border-top: 1px solid #e8e2d5;
+  border-top: 1px solid var(--color-border);
 }
 .contact-inner {
   display: grid;
@@ -9,8 +9,9 @@
   gap: 70px;
   align-items: center;
 }
+.contact-inner > * { min-width: 0; }
 .contact-copy > p:not(.eyebrow) {
-  color: #6c756c;
+  color: var(--color-text-muted);
   font-size: 13px;
   max-width: 560px;
 }
@@ -19,72 +20,35 @@
   display: flex;
   gap: 15px;
   padding: 14px 0;
-  border-bottom: 1px solid #eee8dc;
+  border-bottom: 1px solid var(--color-border);
 }
-.contact-list span { color: #e05a00; font-size: 20px; width: 24px; }
+.contact-list span { color: var(--color-secondary); font-size: 20px; width: 24px; }
 .contact-list small {
   display: block;
   font-size: 8px;
   letter-spacing: .15em;
-  color: #8a948c;
+  color: var(--color-text-subtle);
 }
 .contact-list strong {
   display: block;
   font-size: 13px;
-  color: #183b24;
+  color: var(--color-primary);
+  overflow-wrap: anywhere;
 }
 
-/* MAPA DECORATIVO */
+/* MAPA */
 .map-card {
   min-height: 380px;
-  border-radius: 12px;
+  border-radius: var(--radius-sm);
   overflow: hidden;
-  box-shadow: 0 12px 35px rgba(24,59,36,.12);
+  box-shadow: 0 12px 35px var(--color-alpha-primary-12-alt);
 }
 .fake-map {
   height: 100%;
   min-height: 380px;
-  background: #d8e5d3;
+  background: var(--color-map);
   position: relative;
   overflow: hidden;
-}
-.map-water {
-  position: absolute;
-  right: -50px;
-  top: 0;
-  width: 50%;
-  height: 100%;
-  background: #b7d8d8;
-  clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 15% 65%, 8% 40%);
-  opacity: .7;
-}
-.map-road {
-  position: absolute;
-  height: 12px;
-  background: #fff;
-  box-shadow: 0 0 0 2px rgba(170,176,155,.35);
-  transform-origin: left;
-}
-.r1 { width: 90%; left: -5%; top: 30%; transform: rotate(18deg); }
-.r2 { width: 80%; left: 25%; top: 60%; transform: rotate(-22deg); }
-.r3 { width: 65%; left: 10%; top: 78%; transform: rotate(4deg); }
-.map-pin {
-  position: absolute;
-  left: 48%;
-  top: 43%;
-  font-size: 36px;
-}
-.map-label {
-  position: absolute;
-  left: 53%;
-  top: 39%;
-  background: #fff;
-  padding: 5px 10px;
-  border-radius: 6px;
-  font-size: 11px;
-  font-weight: 700;
-  box-shadow: 0 3px 10px rgba(0,0,0,.15);
-  color: #183b24;
 }
 
 @media(max-width: 900px) {

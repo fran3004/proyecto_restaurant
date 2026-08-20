@@ -10,10 +10,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 max(20px, 4vw);
-  background: rgba(249, 247, 242, 0.92);
+  background: var(--color-alpha-surface-92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(18, 51, 29, 0.08);
+  border-bottom: 1px solid var(--color-border-soft);
   gap: 16px;
 }
 
@@ -28,32 +28,34 @@
 .brand-logo-wrap {
   width: 50px;
   height: 50px;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   padding: 3px;
-  background: linear-gradient(135deg, #e8a020 0%, #f5c842 40%, #c97b10 100%);
-  box-shadow: 0 0 0 1px rgba(232,160,32,.25), 0 4px 14px rgba(232,160,32,.3);
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 40%, var(--color-gold-dark) 100%);
+  box-shadow: 0 0 0 1px var(--color-alpha-gold-25-alt), 0 4px 14px var(--color-alpha-gold-30-alt);
   flex-shrink: 0;
   transition: transform .3s, box-shadow .3s;
 }
 .brand:hover .brand-logo-wrap {
   transform: scale(1.06);
-  box-shadow: 0 0 0 1px rgba(232,160,32,.4), 0 6px 20px rgba(232,160,32,.45);
+  box-shadow: 0 0 0 1px var(--color-alpha-gold-40-alt), 0 6px 20px var(--color-alpha-gold-45);
 }
 .brand-logo-img {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   object-fit: cover;
+  object-position: center;
+  image-rendering: auto;
   display: block;
 }
 
 .brand-text { display: flex; flex-direction: column; gap: 1px; }
 .brand-text strong {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-title);
   font-size: 14px;
   font-weight: 700;
   letter-spacing: .16em;
-  color: #12331d;
+  color: var(--color-primary-dark);
   line-height: 1;
   white-space: nowrap;
 }
@@ -62,7 +64,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .18em;
-  color: #e05a00;
+  color: var(--color-secondary);
   line-height: 1;
   white-space: nowrap;
 }
@@ -71,14 +73,15 @@
 .nav {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 20px;
   font-size: 11.5px;
   font-weight: 600;
-  color: #12331d;
+  color: var(--color-primary-dark);
   /* centrado absoluto */
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
 }
 
 .nav > a {
@@ -92,38 +95,44 @@
   position: absolute;
   bottom: -3px; left: 0; right: 0;
   height: 1.5px;
-  background: #e05a00;
+  background: var(--color-secondary);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform .25s ease;
 }
-.nav > a:hover { color: #e05a00; opacity: 1; }
+.nav > a:hover { color: var(--color-secondary); opacity: 1; }
 .nav > a:hover::after { transform: scaleX(1); }
 
 /* ── BOTÓN RESERVAR MASTER ── */
 .booking-dropdown { position: relative; flex-shrink: 0; }
+
+.nav > .booking-dropdown {
+  position: fixed;
+  top: 14px;
+  right: max(20px, 4vw);
+}
 
 .btn-reserve-master {
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 11px 22px;
-  border-radius: 50px;
-  background: linear-gradient(135deg, #e05a00 0%, #f3701a 100%);
-  color: #fff;
+  border-radius: var(--radius-pill);
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-bright) 100%);
+  color: var(--color-white);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(224,90,0,.28);
+  box-shadow: 0 4px 15px var(--color-alpha-secondary-28-alt);
   transition: transform .25s, box-shadow .25s;
   white-space: nowrap;
 }
 .btn-reserve-master:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(224,90,0,.4);
+  box-shadow: 0 8px 24px var(--color-alpha-secondary-40-alt);
 }
 
 .dropdown-arrow {
@@ -140,11 +149,11 @@
   top: calc(100% + 10px);
   right: 0;
   width: 240px;
-  background: #fff;
-  border-radius: 16px;
+  background: var(--color-white);
+  border-radius: var(--radius-md);
   padding: 8px;
-  box-shadow: 0 16px 40px rgba(18,51,29,.14);
-  border: 1px solid rgba(18,51,29,.07);
+  box-shadow: 0 16px 40px var(--color-alpha-primary-14-alt2);
+  border: 1px solid var(--color-alpha-primary-07-alt2);
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
@@ -164,11 +173,11 @@
   align-items: center;
   gap: 12px;
   padding: 12px 14px;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   transition: background .2s;
   cursor: pointer;
 }
-.dropdown-item:hover { background: #f9f7f2; }
+.dropdown-item:hover { background: var(--color-background); }
 
 .dropdown-icon { font-size: 22px; flex-shrink: 0; }
 
@@ -176,12 +185,12 @@
   display: block;
   font-size: 13px;
   font-weight: 700;
-  color: #12331d;
+  color: var(--color-primary-dark);
 }
 .dropdown-text span {
   display: block;
   font-size: 10.5px;
-  color: #66706b;
+  color: var(--color-text-soft);
   margin-top: 1px;
 }
 
@@ -191,7 +200,7 @@
   background: none;
   border: 0;
   font-size: 26px;
-  color: #12331d;
+  color: var(--color-primary-dark);
   cursor: pointer;
   padding: 4px;
   flex-shrink: 0;
@@ -208,16 +217,22 @@
     display: none;
     flex-direction: column;
     align-items: stretch;
-    background: rgba(249,247,242,.97);
+    background: var(--color-alpha-surface-97);
     backdrop-filter: blur(16px);
     padding: 18px 24px 22px;
-    box-shadow: 0 12px 30px rgba(0,0,0,.08);
-    border-bottom: 2px solid rgba(224,90,0,.12);
+    box-shadow: 0 12px 30px var(--color-alpha-black-08-alt);
+    border-bottom: 2px solid var(--color-alpha-secondary-12-alt2);
     gap: 0;
   }
   .nav.open { display: flex; }
-  .nav > a { padding: 11px 4px; border-bottom: 1px solid rgba(18,51,29,.06); }
-  .nav > a:last-child { border-bottom: none; }
+  .nav > a { padding: 11px 4px; border-bottom: 1px solid var(--color-alpha-primary-06-alt2); }
+  .nav > a:last-of-type { border-bottom: none; }
+  .nav > .booking-dropdown {
+    position: relative;
+    top: auto;
+    right: auto;
+    padding-top: 14px;
+  }
   .menu-toggle { display: block; }
 }
 

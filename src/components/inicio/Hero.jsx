@@ -73,9 +73,9 @@ function Hero() {
 
         {/* ── Contenido ── */}
         <div className="hero-content">
-          <p className="eyebrow light">VILLA ADELAIDA · CENTRO ECOLÓGICO</p>
-          <h1>Conecta con lo<br /><em>auténtico</em></h1>
-          <p>Naturaleza, gastronomía local y experiencias vivas diseñadas para renovar tu energía.</p>
+          <p className="eyebrow light">VILLA ADELAIDA · MANAURE, CESAR</p>
+          <h1>Villa Adelaida:<br /><em>conecta con lo auténtico</em></h1>
+          <p>Naturaleza, río y gastronomía típica para compartir en familia, en pareja o con amigos.</p>
           <div className="hero-actions">
             <a className="btn btn-primary" href="#contacto">Reservar experiencia</a>
             <a className="btn btn-ghost" href="#experiencias">Ver planes</a>

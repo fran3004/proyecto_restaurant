@@ -1,6 +1,6 @@
 footer {
-  background: #0e2616;
-  color: #fff;
+  background: var(--color-primary-deep);
+  color: var(--color-white);
   padding: 60px max(28px, calc((100vw - 1200px) / 2)) 25px;
 }
 .footer-main {
@@ -13,67 +13,74 @@ footer {
 .footer-logo-wrap {
   width: 72px;
   height: 72px;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   padding: 3px;
-  background: linear-gradient(135deg, #e8a020 0%, #f5c842 50%, #c97b10 100%);
-  box-shadow: 0 0 0 1px rgba(232,160,32,.3), 0 4px 18px rgba(0,0,0,.3);
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 50%, var(--color-gold-dark) 100%);
+  box-shadow: 0 0 0 1px var(--color-alpha-gold-30), 0 4px 18px var(--color-alpha-black-30);
   margin-bottom: 12px;
 }
 .footer-logo-img {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  border-radius: var(--radius-circle);
   object-fit: cover;
+  object-position: center;
+  image-rendering: auto;
   display: block;
 }
 
 .footer-brand h3 {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-title);
   font-size: 26px;
   margin: 0 0 4px;
-  color: #fff;
+  color: var(--color-white);
 }
-.footer-brand p { font-size: 11px; color: rgba(255,255,255,.65); }
+.footer-brand p {
+  max-width: 300px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--color-alpha-white-65);
+}
 
 footer h4 {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-title);
   font-size: 22px;
   margin: 0 0 14px;
-  color: #ffb380;
+  color: var(--color-secondary-light);
 }
 footer .footer-main > div > a,
 footer .footer-main > div > span {
   display: block;
   font-size: 11px;
-  color: rgba(255,255,255,.75);
+  color: var(--color-alpha-white-75);
   margin: 6px 0;
   transition: color .2s;
 }
-footer .footer-main > div > a:hover { color: #fff; }
+footer .footer-main > div > a:hover { color: var(--color-white); }
 
 .socials {
   display: flex;
   gap: 10px;
   margin-top: 18px;
 }
-.socials a {
+.socials span {
   width: 32px;
   height: 32px;
-  border: 1px solid rgba(255,255,255,.3);
-  border-radius: 50%;
+  border: 1px solid var(--color-alpha-white-30);
+  border-radius: var(--radius-circle);
   display: grid !important;
   place-items: center;
   font-size: 13px;
   transition: .2s;
 }
-.socials a:hover { background: #e05a00; border-color: #e05a00; }
+.socials span { cursor: default; }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255,255,255,.15);
+  border-top: 1px solid var(--color-alpha-white-15);
   margin-top: 40px;
   padding-top: 20px;
   font-size: 10px;
-  color: rgba(255,255,255,.5);
+  color: var(--color-alpha-white-50);
   text-align: right;
 }
 

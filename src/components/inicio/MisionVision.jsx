@@ -1,6 +1,6 @@
-import './Nosotros.css';
+import './MisionVision.css';
 
-function Nosotros() {
+function MisionVision() {
   return (
     <section className="section-mv" id="nosotros">
       <div className="mv-container">
@@ -49,4 +49,4 @@ function Nosotros() {
   );
 }
 
-export default Nosotros;
+export default MisionVision;
