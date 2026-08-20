@@ -1,104 +1,96 @@
 .contact {
-  background:#fefdf8;
-  padding:90px max(28px,calc((100vw - 1200px)/2));
-  border-top:1px solid #e9e5d8
+  background: #fefdfa;
+  padding: 90px max(28px, calc((100vw - 1200px) / 2));
+  border-top: 1px solid #e8e2d5;
 }
 .contact-inner {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:70px;
-  align-items:center
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
 }
-.contact-copy h2 { max-width:540px }
-.contact-copy>p:not(.eyebrow) {
-  color:#6c756c;
-  font-size:13px;
-  max-width:560px
+.contact-copy > p:not(.eyebrow) {
+  color: #6c756c;
+  font-size: 13px;
+  max-width: 560px;
 }
-.contact-list { margin:28px 0 }
-.contact-list>div {
-  display:flex;
-  gap:15px;
-  padding:13px 0;
-  border-bottom:1px solid #e5e2d8
+.contact-list { margin: 28px 0; }
+.contact-list > div {
+  display: flex;
+  gap: 15px;
+  padding: 14px 0;
+  border-bottom: 1px solid #eee8dc;
 }
-.contact-list span {
-  color:#a32b0d;
-  font-size:18px;
-  width:24px
-}
+.contact-list span { color: #e05a00; font-size: 20px; width: 24px; }
 .contact-list small {
-  display:block;
-  font-size:8px;
-  letter-spacing:.15em;
-  color:#8b8e88
+  display: block;
+  font-size: 8px;
+  letter-spacing: .15em;
+  color: #8a948c;
 }
 .contact-list strong {
-  display:block;
-  font-size:12px;
-  color:#365a3c
+  display: block;
+  font-size: 13px;
+  color: #183b24;
 }
+
+/* MAPA DECORATIVO */
 .map-card {
-  min-height:380px;
-  border-radius:8px;
-  overflow:hidden;
-  box-shadow:0 12px 35px rgba(36,75,42,.12)
+  min-height: 380px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(24,59,36,.12);
 }
 .fake-map {
-  height:100%;
-  min-height:380px;
-  background:#dfe9d9;
-  position:relative;
-  overflow:hidden;
-  background-image:linear-gradient(30deg,transparent 45%,rgba(255,255,255,.9) 46%,rgba(255,255,255,.9) 48%,transparent 49%),linear-gradient(120deg,transparent 44%,rgba(255,255,255,.75) 45%,rgba(255,255,255,.75) 48%,transparent 49%);
-  background-size:130px 110px,170px 150px
+  height: 100%;
+  min-height: 380px;
+  background: #d8e5d3;
+  position: relative;
+  overflow: hidden;
 }
 .map-water {
-  position:absolute;
-  right:-50px;
-  top:0;
-  width:50%;
-  height:100%;
-  background:#b7d8d8;
-  clip-path:polygon(25% 0,100% 0,100% 100%,0 100%,15% 65%,8% 40%);
-  opacity:.7
+  position: absolute;
+  right: -50px;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: #b7d8d8;
+  clip-path: polygon(25% 0, 100% 0, 100% 100%, 0 100%, 15% 65%, 8% 40%);
+  opacity: .7;
 }
 .map-road {
-  position:absolute;
-  height:12px;
-  background:#fff;
-  box-shadow:0 0 0 2px rgba(170,176,155,.35);
-  transform-origin:left
+  position: absolute;
+  height: 12px;
+  background: #fff;
+  box-shadow: 0 0 0 2px rgba(170,176,155,.35);
+  transform-origin: left;
 }
-.r1 { width:90%; left:-5%; top:30%; transform:rotate(18deg) }
-.r2 { width:80%; left:25%; top:60%; transform:rotate(-22deg) }
-.r3 { width:65%; left:10%; top:78%; transform:rotate(4deg) }
+.r1 { width: 90%; left: -5%; top: 30%; transform: rotate(18deg); }
+.r2 { width: 80%; left: 25%; top: 60%; transform: rotate(-22deg); }
+.r3 { width: 65%; left: 10%; top: 78%; transform: rotate(4deg); }
 .map-pin {
-  position:absolute;
-  left:48%;
-  top:43%;
-  font-size:42px;
-  color:#a72c0d;
-  text-shadow:0 2px 3px #fff
+  position: absolute;
+  left: 48%;
+  top: 43%;
+  font-size: 36px;
 }
 .map-label {
-  position:absolute;
-  left:53%;
-  top:39%;
-  background:#fff;
-  padding:5px 9px;
-  border-radius:4px;
-  font-size:10px;
-  font-weight:700;
-  box-shadow:0 2px 8px rgba(0,0,0,.1)
+  position: absolute;
+  left: 53%;
+  top: 39%;
+  background: #fff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: 0 3px 10px rgba(0,0,0,.15);
+  color: #183b24;
 }
 
-@media(max-width:900px) {
-  .contact-inner { grid-template-columns:1fr }
-  .map-card { min-height:300px }
+@media(max-width: 900px) {
+  .contact-inner { grid-template-columns: 1fr; gap: 36px; }
+  .map-card { min-height: 300px; }
 }
-
-@media(max-width:600px) {
-  .contact { padding:65px 18px }
-  .contact-inner { gap:30px }
+@media(max-width: 600px) {
+  .contact { padding: 65px 18px; }
 }

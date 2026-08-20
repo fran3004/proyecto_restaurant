@@ -1,29 +1,34 @@
 import { useState } from 'react';
 import './App.css';
-import Contacto from './components/contacto/Contacto';
+
+import Header       from './components/layout/Header';
+import Footer       from './components/layout/Footer';
+import Hero         from './components/home/Hero';
+import Nosotros     from './components/home/Nosotros';
+import Hospedaje    from './components/alojamiento/Hospedaje';
 import Experiencias from './components/home/Experiencias';
-import Footer from './components/layout/Footer';
-import Galeria from './components/home/Galeria';
-import Header from './components/layout/Header';
-import Hero from './components/home/Hero';
-import Hospedaje from './components/alojamiento/Hospedaje';
-import Pasadia from './components/alojamiento/Pasadia';
-import Servicios from './components/home/Servicios';
+import Galeria      from './components/home/Galeria';
+import Pasadia      from './components/alojamiento/Pasadia';
+import Servicios    from './components/home/Servicios';
+import Contacto     from './components/contacto/Contacto';
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState('Familia');
 
   return (
     <>
-      <Header menuOpen={menuOpen} onMenuToggle={() => setMenuOpen((isOpen) => !isOpen)} />
+      <Header
+        menuOpen={menuOpen}
+        onMenuToggle={() => setMenuOpen(open => !open)}
+      />
       <main>
         <Hero />
-        <Pasadia activeTab={activeTab} onTabChange={setActiveTab} />
+        <Nosotros />
         <Hospedaje />
         <Experiencias />
-        <Servicios />
         <Galeria />
+        <Pasadia />
+        <Servicios />
         <Contacto />
       </main>
       <Footer />

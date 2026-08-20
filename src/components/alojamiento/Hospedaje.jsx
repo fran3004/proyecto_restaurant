@@ -1,76 +1,110 @@
+import { useState } from 'react';
 import './Hospedaje.css';
+import { confirmarReservaMesa, getFechaHoy } from './Hospedaje.utils';
+
+const mesas = [
+  { id: 'mesa-1', nombre: 'Mesa 1 · Bohío Principal',    capacidad: '2 a 4 Personas',        desc: 'Ubicación fresca bajo sombra de palma con vista al jardín.' },
+  { id: 'mesa-2', nombre: 'Mesa 2 · Jardín de las Aves', capacidad: '2 a 6 Personas',        desc: 'Al aire libre, rodeada de flora y avistamiento de aves.' },
+  { id: 'mesa-3', nombre: 'Mesa 3 · Mirador Ecológico',  capacidad: '2 Personas (Romántica)', desc: 'Vista panorámica al bosque campestre. Ideal para parejas.' },
+  { id: 'mesa-4', nombre: 'Mesa 4 · Salón Familiar',     capacidad: '6 a 10 Personas',       desc: 'Mesa amplia en madera para grupos o cumpleaños.' },
+  { id: 'mesa-5', nombre: 'Mesa 5 · Bohío Cacao',        capacidad: '4 a 6 Personas',        desc: 'Cerca de la huerta ecológica y talleres interactivos.' },
+  { id: 'mesa-6', nombre: 'Mesa 6 · Terraza del Lago',   capacidad: '4 Personas',            desc: 'Brisa constante con vista al estanque natural.' },
+];
+
+const horas    = ['12:00 PM', '01:00 PM', '02:00 PM', '03:00 PM', '04:00 PM', '05:00 PM'];
+const horasFin = ['02:00 PM', '03:00 PM', '04:00 PM', '05:00 PM', '06:00 PM', '07:00 PM'];
 
 function Hospedaje() {
+  const [mesa,       setMesa]       = useState(mesas[0].nombre);
+  const [fecha,      setFecha]      = useState(getFechaHoy());
+  const [horaInicio, setHoraInicio] = useState('12:00 PM');
+  const [horaFin,    setHoraFin]    = useState('03:00 PM');
+  const [personas,   setPersonas]   = useState(2);
+
+  const handleConfirmar = () =>
+    confirmarReservaMesa({ mesa, fecha, horaInicio, horaFin, personas });
+
   return (
-    <section className="section cream" id="hospedaje">
-      <div className="section-heading">
-        <div>
-          <p className="eyebrow">HOSPEDAJE</p>
-          <h2>Cabañas, glamping y suites</h2>
+    <section className="reserva-section section" id="reserva-mesas">
+      <span className="section-eyebrow">RESTAURANTE NUESTRA SAZÓN</span>
+      <h2 className="section-title">Reserva tu Mesa</h2>
+
+      <div className="booking-box">
+
+        {/* ── Controles ── */}
+        <div className="booking-controls">
+          <div className="form-group">
+            <label htmlFor="resFecha">Fecha</label>
+            <input
+              type="date"
+              id="resFecha"
+              value={fecha}
+              min={getFechaHoy()}
+              onChange={e => setFecha(e.target.value)}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="resHoraInicio">Hora de entrada</label>
+            <select id="resHoraInicio" value={horaInicio} onChange={e => setHoraInicio(e.target.value)}>
+              {horas.map(h => <option key={h}>{h}</option>)}
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="resHoraFin">Hora estimada de salida</label>
+            <select id="resHoraFin" value={horaFin} onChange={e => setHoraFin(e.target.value)}>
+              {horasFin.map(h => <option key={h}>{h}</option>)}
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="resPersonas">Personas</label>
+            <input
+              type="number"
+              id="resPersonas"
+              min={1}
+              max={20}
+              value={personas}
+              onChange={e => setPersonas(e.target.value)}
+            />
+          </div>
         </div>
-        <p>Empieza por nuestras cabañas eco y glamping en el bosque. También tenemos suites para quien prefiera habitación tradicional.</p>
-      </div>
 
-      <div className="cards lodging">
-        <article className="card lodging-card">
-          <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=900&q=85" alt="Cabaña de madera" />
-          <div className="card-body">
-            <span className="tag">PAREJA · NATURALEZA</span>
-            <h3>Cabaña Eco</h3>
-            <p>Cabaña de madera y guadua para dos personas. Techo de palma, hamaca interior y acceso a jacuzzi.</p>
-            <div className="price">Desde $660.000 <small>COP</small></div>
-            <small>2 planes disponibles</small>
-            <div className="card-actions"><a className="btn btn-outline" href="#contacto">Ver más</a><a className="btn btn-primary" href="#contacto">Reservar</a></div>
-          </div>
-        </article>
+        {/* ── Selector de mesas ── */}
+        <span className="section-eyebrow" style={{ marginBottom: '14px', display: 'block' }}>
+          SELECCIONA TU UBICACIÓN PREFERIDA
+        </span>
 
-        <article className="card lodging-card">
-          <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=900&q=85" alt="Cabaña en naturaleza" />
-          <div className="card-body">
-            <span className="tag">FAMILIAR</span>
-            <h3>Cabaña Alpina</h3>
-            <p>Cabaña amplia en guadua para grupos y familias. Dos niveles con hamacas, zona BBQ y jacuzzi.</p>
-            <div className="price">Desde $1.400.000 <small>COP</small></div>
-            <small>1 plan disponible</small>
-            <div className="card-actions"><a className="btn btn-outline" href="#contacto">Ver más</a><a className="btn btn-primary" href="#contacto">Reservar</a></div>
-          </div>
-        </article>
+        <div className="mesas-grid">
+          {mesas.map(m => (
+            <div
+              key={m.id}
+              className={`mesa-card${mesa === m.nombre ? ' selected' : ''}`}
+              onClick={() => setMesa(m.nombre)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={e => e.key === 'Enter' && setMesa(m.nombre)}
+            >
+              <span className="mesa-badge">Disponible</span>
+              <h4>{m.nombre}</h4>
+              <p>👥 Capacidad: {m.capacidad}</p>
+              <small>{m.desc}</small>
+            </div>
+          ))}
+        </div>
 
-        <article className="card lodging-card">
-          <img src="https://images.unsplash.com/photo-1470214304380-aadaedcfff1b?auto=format&fit=crop&w=900&q=85" alt="Glamping rodeado de naturaleza" />
-          <div className="card-body">
-            <span className="tag">PAREJA · DOMO</span>
-            <h3>Glamping</h3>
-            <p>Domo geodésico en el bosque con jacuzzi privado. Comodidad campestre y experiencias al aire libre.</p>
-            <div className="price">Desde $760.000 <small>COP</small></div>
-            <small>1 plan disponible</small>
-            <div className="card-actions"><a className="btn btn-outline" href="#contacto">Ver más</a><a className="btn btn-primary" href="#contacto">Reservar</a></div>
+        {/* ── Resumen + CTA ── */}
+        <div className="booking-summary">
+          <div>
+            <p>Ubicación: <strong>{mesa}</strong></p>
+            <p>Horario: <strong>De {horaInicio} a {horaFin}</strong>&nbsp;|&nbsp;Personas: <strong>{personas}</strong></p>
           </div>
-        </article>
+          <button className="btn-whatsapp-confirm" onClick={handleConfirmar}>
+            Confirmar por WhatsApp
+          </button>
+        </div>
 
-        <article className="card lodging-card">
-          <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=900&q=85" alt="Suite de hotel" />
-          <div className="card-body">
-            <span className="tag">HOTEL</span>
-            <h3>Mini Suite</h3>
-            <p>Tres tipos de mini suite para elegir según tu plan y preferencia. Ideal para parejas o estadías corporativas.</p>
-            <div className="price">Desde $336.000 <small>COP</small></div>
-            <small>2 planes disponibles</small>
-            <div className="card-actions"><a className="btn btn-outline" href="#contacto">Ver más</a><a className="btn btn-primary" href="#contacto">Reservar</a></div>
-          </div>
-        </article>
-
-        <article className="card lodging-card">
-          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=85" alt="Suite principal" />
-          <div className="card-body">
-            <span className="tag">PREMIUM</span>
-            <h3>Suite Principal</h3>
-            <p>Suite amplia con sala de estar, hamaca interior y vista al jardín tropical.</p>
-            <div className="price">Desde $480.000 <small>COP</small></div>
-            <small>1 plan disponible</small>
-            <div className="card-actions"><a className="btn btn-outline" href="#contacto">Ver más</a><a className="btn btn-primary" href="#contacto">Reservar</a></div>
-          </div>
-        </article>
       </div>
     </section>
   );

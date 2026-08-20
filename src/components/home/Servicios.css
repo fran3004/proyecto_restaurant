@@ -1,57 +1,57 @@
 .services {
-  background:#043918;
-  color:#fff;
-  padding:90px max(28px,calc((100vw - 1200px)/2));
-  position:relative;
-  overflow:hidden
+  background: #12301c;
+  color: #fff;
+  padding: 90px max(28px, calc((100vw - 1200px) / 2));
+  position: relative;
+  overflow: hidden;
 }
-.services:after {
-  content:"";
-  position:absolute;
-  inset:auto -80px -150px auto;
-  width:480px;
-  height:480px;
-  border-radius:50%;
-  border:70px solid rgba(78,147,75,.15);
-  transform:rotate(25deg)
-}
-.light-heading h2 { color:#fff }
-.light-heading>p { color:rgba(255,255,255,.65) }
+.light-heading h2 { color: #fff; }
+.light-heading > p { color: rgba(255,255,255,.75); }
+
 .service-grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 .service-grid article {
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:8px;
-  padding:26px
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 10px;
+  padding: 28px;
+  transition: .3s;
+}
+.service-grid article:hover {
+  background: rgba(255,255,255,.11);
+  transform: translateY(-3px);
 }
 .service-icon {
-  width:42px;
-  height:42px;
-  border:1px solid currentColor;
-  border-radius:50%;
-  display:grid;
-  place-items:center;
-  margin-bottom:20px
+  width: 44px;
+  height: 44px;
+  border: 1px solid #e05a00;
+  color: #e05a00;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-bottom: 20px;
+  font-size: 20px;
 }
 .service-grid h3 {
-  font-family:"Cormorant Garamond",serif;
-  font-size:30px;
-  margin:0
+  font-family: "Cormorant Garamond", serif;
+  font-size: 28px;
+  margin: 0 0 10px;
+  color: #fff;
 }
-.service-grid p {
-  color:rgba(255,255,255,.67);
-  font-size:12px
-}
+.service-grid p { color: rgba(255,255,255,.7); font-size: 12.5px; }
 .service-grid a {
-  font-size:10px;
-  font-weight:700;
-  color:#d6c19b
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffb380;
+  display: inline-block;
+  margin-top: 10px;
+  transition: .2s;
 }
+.service-grid a:hover { color: #fff; }
 
-@media(max-width:600px) {
-  .service-grid { grid-template-columns:1fr }
+@media(max-width: 900px) {
+  .service-grid { grid-template-columns: 1fr; gap: 14px; }
 }
