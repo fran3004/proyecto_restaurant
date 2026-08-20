@@ -1,0 +1,26 @@
+.tabs {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:25px
+}
+.tab {
+  border:0;
+  background:none;
+  padding:8px 14px;
+  color:#617066;
+  font-size:10px;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  cursor:pointer;
+  border-radius:999px
+}
+.tab.active {
+  background:#1c7137;
+  color:white
+}
+.offer-card img { height:250px }
+
+@media(max-width:600px) {
+  .offer-card img { height:200px }
+}

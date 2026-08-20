@@ -1,24 +1,33 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Contacto from './components/contacto/Contacto';
+import Experiencias from './components/home/Experiencias';
+import Footer from './components/layout/Footer';
+import Galeria from './components/home/Galeria';
+import Header from './components/layout/Header';
+import Hero from './components/home/Hero';
+import Hospedaje from './components/alojamiento/Hospedaje';
+import Pasadia from './components/alojamiento/Pasadia';
+import Servicios from './components/home/Servicios';
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('Familia');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header menuOpen={menuOpen} onMenuToggle={() => setMenuOpen((isOpen) => !isOpen)} />
+      <main>
+        <Hero />
+        <Pasadia activeTab={activeTab} onTabChange={setActiveTab} />
+        <Hospedaje />
+        <Experiencias />
+        <Servicios />
+        <Galeria />
+        <Contacto />
+      </main>
+      <Footer />
+    </>
   );
 }
 
