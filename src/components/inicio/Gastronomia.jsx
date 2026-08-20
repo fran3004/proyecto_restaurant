@@ -1,50 +1,66 @@
 import './Gastronomia.css';
-
-const videos = [
-  {
-    img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=85',
-    alt: 'Preparación de comida típica regional',
-    titulo: 'Comida Típica Regional',
-    desc: 'Sabores tradicionales de la región para disfrutar después de una jornada de naturaleza y río.',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=800&q=85',
-    alt: 'Bebida de bienvenida en Villa Adelaida',
-    titulo: 'Bebida de Bienvenida',
-    desc: 'Recibe tu visita con una bebida de bienvenida y disfruta el ambiente del centro turístico.',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=85',
-    alt: 'Ambiente del restaurante Villa Adelaida',
-    titulo: 'Asados al Carbón',
-    desc: 'Parrilladas y asados al carbón para compartir en familia, en pareja o con amigos.',
-  },
-];
+import { categorias, formatoPrecio, useGastronomia } from './Gastronomia.utils';
 
 function Gastronomia() {
+  const {
+    categoriaActiva,
+    setCategoriaActiva,
+    cartaCompleta,
+    setCartaCompleta,
+    visibles,
+  } = useGastronomia();
+
   return (
     <section className="section cream" id="sazon">
       <div className="section-heading">
         <div>
           <p className="eyebrow">NUESTRA SAZÓN</p>
-          <h2>Sabores de la Villa</h2>
+          <h2>Carta de la Villa</h2>
         </div>
-        <p>Comida típica regional y asados al carbón en un entorno rodeado de naturaleza. Conoce el sabor de Villa Adelaida.</p>
+        <p>Recetas criollas, asados al carbón y bebidas para disfrutar en medio de la naturaleza.</p>
       </div>
 
-      <div className="video-grid">
-        {videos.map(v => (
-          <article className="video-card" key={v.titulo}>
-            <div className="video-thumb">
-              <img src={v.img} alt={v.alt} />
-              <div className="play-btn">▶</div>
+      <div className="menu-toolbar">
+        <div className="menu-tabs" role="tablist" aria-label="Filtrar carta por categoría">
+          {categorias.map(categoria => (
+            <button
+              className={`menu-tab${categoriaActiva === categoria ? ' active' : ''}`}
+              key={categoria}
+              onClick={() => setCategoriaActiva(categoria)}
+              role="tab"
+              aria-selected={categoriaActiva === categoria}
+            >
+              {categoria}
+            </button>
+          ))}
+        </div>
+        <div className="menu-actions">
+          <a className="btn btn-outline" href="#reserva-mesas">Reservar mesa</a>
+        </div>
+      </div>
+
+      <div className="menu-grid">
+        {visibles.map(producto => (
+          <article className="menu-card" key={producto.nombre}>
+            <div className="menu-image-wrap">
+              <img src={producto.imagen} alt={producto.nombre} />
+              <span className="menu-category">{producto.categoria}</span>
             </div>
-            <div className="video-body">
-              <h3>{v.titulo}</h3>
-              <p>{v.desc}</p>
+            <div className="menu-body">
+              <div className="menu-title-row">
+                <h3>{producto.nombre}</h3>
+                <strong>{formatoPrecio(producto.precio)}</strong>
+              </div>
+              <p>{producto.descripcion}</p>
             </div>
           </article>
         ))}
+      </div>
+
+      <div className="menu-complete">
+        <button className="btn btn-primary" onClick={() => setCartaCompleta(completa => !completa)}>
+          {cartaCompleta ? 'Ver menos' : 'Ver carta completa'}
+        </button>
       </div>
     </section>
   );

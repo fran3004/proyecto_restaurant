@@ -11,6 +11,7 @@ import Gastronomia  from './components/inicio/Gastronomia';
 import Recuerdos    from './components/recuerdos/Recuerdos';
 import Servicios    from './components/inicio/Servicios';
 import Contacto     from './components/contacto/Contacto';
+import WhatsAppButton from './components/layout/WhatsAppButton';
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -32,6 +33,7 @@ function App() {
         <Contacto />
       </main>
       <Footer />
+      <WhatsAppButton />
     </>
   );
 }
