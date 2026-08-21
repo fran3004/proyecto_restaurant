@@ -45,6 +45,7 @@ function ReservaMesa() {
     enviarReserva,
     volverADatos,
     modificar,
+    resetearFormulario,
   } = useReservaMesa();
   const mesa = mesas.find(item => item.id === mesaSeleccionada);
   const mesaEnConsulta = mesas.find(item => item.id === mesaConsultada);
@@ -161,7 +162,7 @@ function ReservaMesa() {
                   </div>
                   <div className="availability-hour-list">
                     {horas.map(hora => {
-                      const estado = getEstadoHorario(mesaEnConsulta, reserva.fecha, hora.value);
+                      const estado = getEstadoHorario(mesaEnConsulta, reserva.fecha, hora.value, reserva.duracion);
                       return (
                         <button
                           className={`availability-hour ${estado}${reserva.horaLlegada === hora.value ? ' current' : ''}`}
@@ -302,6 +303,7 @@ function ReservaMesa() {
               {!enviada && <button className="btn btn-outline" type="button" onClick={volverADatos}>Modificar reserva</button>}
               {enviada && <button className="btn btn-outline" type="button" onClick={modificar}>Modificar reserva</button>}
               {!enviada && <button className="btn-whatsapp-confirm" type="button" onClick={enviarReserva}>Enviar por WhatsApp</button>}
+              {enviada && <button className="btn-whatsapp-confirm" type="button" onClick={resetearFormulario}>Finalizar</button>}
             </div>
           </div>
         )}

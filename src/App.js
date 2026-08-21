@@ -9,7 +9,6 @@ import ReservaMesa  from './components/reservas/ReservaMesa';
 import Experiencias from './components/inicio/Experiencias';
 import Gastronomia  from './components/inicio/Gastronomia';
 import Recuerdos    from './components/recuerdos/Recuerdos';
-import Servicios    from './components/inicio/Servicios';
 import Contacto     from './components/contacto/Contacto';
 import WhatsAppButton from './components/layout/WhatsAppButton';
 
@@ -24,12 +23,11 @@ function App() {
       />
       <main>
         <Hero />
-        <MisionVision />
         <ReservaMesa />
         <Experiencias />
         <Gastronomia />
         <Recuerdos />
-        <Servicios />
+        <MisionVision />
         <Contacto />
       </main>
       <Footer />

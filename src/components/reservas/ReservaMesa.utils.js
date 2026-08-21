@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { experiencias } from '../inicio/Experiencias.utils';
 
 const WHATSAPP_NUMBER = '573012706114';
@@ -63,9 +63,17 @@ export function getOccupiedSlots(mesa, fecha) {
   if (!fecha || (new Date(`${fecha}T00:00:00`).getDay() === 0 && mesa.id === 'mesa-6')) return [];
   const dia = Number(fecha.slice(-2));
   const numeroMesa = Number(mesa.id.split('-')[1]);
-  const primeraFranja = (dia + numeroMesa) % 4;
-  const segundaFranja = (dia * numeroMesa) % 5;
-  return [...new Set([primeraFranja, segundaFranja])].map(indice => horas[indice].value);
+  const primeraMesaOcupada = dia % mesas.length + 1;
+  const cantidadMesasOcupadas = dia % 3 === 0 ? 1 : 2;
+  const segundaMesaOcupada = primeraMesaOcupada % mesas.length + 1;
+  const mesaEstaOcupada = [primeraMesaOcupada, segundaMesaOcupada]
+    .slice(0, cantidadMesasOcupadas)
+    .includes(numeroMesa);
+
+  if (!mesaEstaOcupada) return [];
+
+  const franjaOcupada = (dia + numeroMesa) % horas.length;
+  return [horas[franjaOcupada].value];
 }
 
 export function hayConflictoHorario(mesa, fecha, horaLlegada, duracion) {
@@ -76,8 +84,8 @@ export function hayConflictoHorario(mesa, fecha, horaLlegada, duracion) {
   });
 }
 
-export function getEstadoHorario(mesa, fecha, hora) {
-  return getOccupiedSlots(mesa, fecha).includes(hora) ? 'occupied' : 'available';
+export function getEstadoHorario(mesa, fecha, hora, duracion = 1) {
+  return hayConflictoHorario(mesa, fecha, hora, duracion) ? 'occupied' : 'available';
 }
 
 export function getEstadoMesa(mesa, fecha, mesaSeleccionada) {
@@ -137,20 +145,33 @@ export function validarReserva(reserva, mesaSeleccionada, tipoReserva, experienc
 export function confirmarReservaMesa(reserva, mesa, tipoReserva, experienciaSeleccionada) {
   const horaSalida = getHoraSalida(reserva.horaLlegada, reserva.duracion);
   const observaciones = reserva.observaciones.trim() || 'Ninguna';
+  const tipoDetalle = tipoReserva === 'mesa' ? mesa.nombre : experienciaSeleccionada;
+  const tipoLabel = tipoReserva === 'mesa' ? 'Mesa' : 'Experiencia';
+
   const mensaje = [
-    'Hola Villa Adelaida, quiero solicitar esta reserva:',
+    '🌿 *VILLA ADELAIDA*',
+    '*SOLICITUD DE RESERVA*',
+    '━━━━━━━━━━━━━━━━━━━━',
     '',
-    `Cliente: ${reserva.nombre}`,
-    `Teléfono: ${reserva.telefono}`,
-    `Fecha: ${reserva.fecha}`,
-    `Hora: ${getHoraLabel(reserva.horaLlegada)} a ${getHoraLabel(horaSalida)}`,
-    `Duración: ${reserva.duracion} hora(s)`,
-    `Personas: ${reserva.personas}`,
-    `${tipoReserva === 'mesa' ? 'Mesa' : 'Experiencia'}: ${tipoReserva === 'mesa' ? mesa.nombre : experienciaSeleccionada}`,
-    `Tipo de visita: ${reserva.tipoVisita}`,
-    `Observaciones: ${observaciones}`,
+    '👤 *DATOS DEL CLIENTE*',
+    `• Nombre: ${reserva.nombre}`,
+    `• Teléfono: ${reserva.telefono}`,
     '',
-    '¿Tienen disponibilidad?'
+    '📅 *DETALLES DE LA RESERVA*',
+    `• Fecha: ${formatearFechaCorta(reserva.fecha)} (${reserva.fecha})`,
+    `• Horario: ${getHoraLabel(reserva.horaLlegada)} - ${getHoraLabel(horaSalida)}`,
+    `• Duración: ${reserva.duracion} hora(s)`,
+    '',
+    `${tipoReserva === 'mesa' ? '🪑' : '🌿'} *${tipoLabel}:* ${tipoDetalle}`,
+    `👥 *Personas:* ${reserva.personas}`,
+    `🎉 *Motivo de visita:* ${reserva.tipoVisita}`,
+    '',
+    '📝 *NOTAS ADICIONALES*',
+    observaciones,
+    '',
+    '━━━━━━━━━━━━━━━━━━━━',
+    '¿Podrían confirmarnos la disponibilidad para esta fecha y horario?',
+    'Muchas gracias. 🙏',
   ].join('\n');
 
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`, '_blank', 'noopener,noreferrer');
@@ -177,6 +198,28 @@ export function useReservaMesa() {
   const [paso, setPaso] = useState(1);
   const [errores, setErrores] = useState({});
   const [enviada, setEnviada] = useState(false);
+
+  // REQ 3: limpiar datos de sesión anterior al montar el componente
+  // Solo resetea la reserva — no toca localStorage ni ningún otro estado del sitio
+  const resetearFormulario = () => {
+    setReserva({ ...initialReserva, fecha: getFechaHoy() });
+    setTipoReserva('mesa');
+    setExperienciaSeleccionada('');
+    setMesaSeleccionada('mesa-1');
+    setMesaConsultada('mesa-1');
+    setCalendarioAbierto(false);
+    setPaso(1);
+    setErrores({});
+    setEnviada(false);
+  };
+
+  // Al montar: asegurar fecha de hoy (evita fechas pasadas si el estado persistió en HMR)
+  useEffect(() => {
+    setReserva(prev => ({ ...prev, fecha: getFechaHoy() }));
+    setPaso(1);
+    setEnviada(false);
+    setErrores({});
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const estadosMesas = useMemo(
     () => mesas.reduce((estados, mesa) => ({ ...estados, [mesa.id]: getEstadoMesa(mesa, reserva.fecha, mesaSeleccionada) }), {}),
@@ -290,5 +333,6 @@ export function useReservaMesa() {
     enviarReserva,
     volverADatos,
     modificar,
+    resetearFormulario,
   };
 }
