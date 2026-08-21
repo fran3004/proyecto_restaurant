@@ -1,26 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import './Hero.css';
-
-const slides = [
-  {
-    img: 'https://images.unsplash.com/photo-1511497584788-8767610419ea?auto=format&fit=crop&w=2200&q=90',
-    label: 'Naturaleza viva',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=2200&q=90',
-    label: 'Piscina y descanso',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=2200&q=90',
-    label: 'Paisajes ecológicos',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=2200&q=90',
-    label: 'Cabañas en el bosque',
-  },
-];
-
-const INTERVAL = 5000; // ms entre cambios
+import { heroCategories, INTERVAL, slides } from './Hero.utils';
 
 function Hero() {
   const [current, setCurrent] = useState(0);
@@ -42,9 +22,7 @@ function Hero() {
     goTo((current + 1) % slides.length);
   }, [current, goTo]);
 
-  const prevSlide = useCallback(() => {
-    goTo(current === 0 ? slides.length - 1 : current - 1);
-  }, [current, goTo]);
+  const slideActual = slides[current];
 
   // Autoplay
   useEffect(() => {
@@ -75,16 +53,12 @@ function Hero() {
         <div className="hero-content">
           <p className="eyebrow light">VILLA ADELAIDA · MANAURE, CESAR</p>
           <h1>Villa Adelaida:<br /><em>conecta con lo auténtico</em></h1>
-          <p>Naturaleza, río y gastronomía típica para compartir en familia, en pareja o con amigos.</p>
+          <p>{slideActual.description}</p>
           <div className="hero-actions">
             <a className="btn btn-primary" href="#reserva-experiencias">Reservar experiencia</a>
             <a className="btn btn-ghost" href="#experiencias">Ver planes</a>
           </div>
         </div>
-
-        {/* ── Controles ── */}
-        <button className="hero-arrow hero-arrow--prev" onClick={prevSlide} aria-label="Anterior">‹</button>
-        <button className="hero-arrow hero-arrow--next" onClick={next} aria-label="Siguiente">›</button>
 
         {/* ── Dots ── */}
         <div className="hero-dots">
@@ -112,12 +86,18 @@ function Hero() {
           <span>🌿</span>
           <strong>Vive la Experiencia Adelaida</strong>
           <div className="hero-tags">
-            <span className="hero-tag">🌳 Pasadía Ecológico</span>
-            <span className="hero-tag">👨‍👩‍👧 Día Familiar</span>
-            <span className="hero-tag">🎉 Celebración</span>
-            <span className="hero-tag active-tag">💚 Escapada en Pareja</span>
+            {heroCategories.map(category => (
+              <button
+                className={`hero-tag${current === category.slide ? ' active-tag' : ''}`}
+                key={category.label}
+                type="button"
+                onClick={() => goTo(category.slide)}
+              >
+                {category.icon} {category.label}
+              </button>
+            ))}
           </div>
-          <p className="hero-tag-desc">Cena al atardecer y noche en cabaña. Solo ustedes y la naturaleza.</p>
+          <p className="hero-tag-desc">{slideActual.description}</p>
         </div>
 
       </section>
