@@ -1,5 +1,5 @@
-import './MasInformacion.css';
-import { items } from './MasInformacion.utils';
+import '../../styles/inicio/MasInformacion.css';
+import { items } from '../../utils/inicio/MasInformacion.utils';
 
 function MasInformacion() {
   return (

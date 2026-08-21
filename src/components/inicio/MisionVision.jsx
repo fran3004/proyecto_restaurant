@@ -1,4 +1,4 @@
-import './MisionVision.css';
+import '../../styles/inicio/MisionVision.css';
 
 function MisionVision() {
   return (

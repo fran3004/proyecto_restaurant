@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
-import './Hero.css';
-import { heroCategories, INTERVAL, slides } from './Hero.utils';
+import '../../styles/inicio/Hero.css';
+import { heroCategories, INTERVAL, slides } from '../../utils/inicio/Hero.utils';
 
 function Hero() {
   const [current, setCurrent] = useState(0);

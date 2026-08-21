@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import './Recuerdos.css';
-import { getSiguienteRecurso, recuerdos } from './Recuerdos.utils';
+import '../../styles/recuerdos/Recuerdos.css';
+import { getSiguienteRecurso, recuerdos } from '../../utils/recuerdos/Recuerdos.utils';
 
 function Recuerdos() {
   const [videoSeleccionado, setVideoSeleccionado] = useState(null);

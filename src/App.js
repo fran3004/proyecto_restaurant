@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './App.css';
+import './styles/global/App.css';
 
 import Header       from './components/layout/Header';
 import Footer       from './components/layout/Footer';
@@ -23,10 +23,10 @@ function App() {
       />
       <main>
         <Hero />
-        <ReservaMesa />
         <Experiencias />
         <Gastronomia />
         <Recuerdos />
+        <ReservaMesa />
         <MisionVision />
         <Contacto />
       </main>

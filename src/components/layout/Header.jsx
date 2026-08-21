@@ -1,4 +1,4 @@
-import './Header.css';
+import '../../styles/layout/Header.css';
 
 function Header({ menuOpen, onMenuToggle }) {
   const closeAll = () => {
