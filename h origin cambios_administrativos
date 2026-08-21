@@ -1,0 +1,24 @@
+*   [33md9a69c5[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mcambios_administrativos[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m Merge pull request #6 from fran3004/cambios_administrativos
+[31m|[m[32m\[m  
+[31m|[m * [33md9a30a7[m[33m ([m[1;31morigin/cambios_administrativos[m[33m)[m Update header and footer logo branding
+* [32m|[m [33m42f0abd[m Delete build-log.txt
+* [32m|[m   [33mf5980b2[m Merge pull request #5 from damianjose592/daamiann
+[33m|[m[34m\[m [32m\[m  
+[33m|[m * [32m|[m [33m127ad7e[m Add media gallery, comments, and UI utils
+[33m|[m[33m/[m [32m/[m  
+* [32m|[m [33m7bc9642[m Merge pull request #4 from fran3004/cambios_administrativos
+[35m|[m[32m\[m[32m|[m 
+[35m|[m * [33ma2aedda[m Add experience booking flow and contact updates
+[35m|[m * [33mf0ec6d2[m Refactor menu & reservations; add WhatsApp button
+* [36m|[m [33m2fcc597[m Merge pull request #3 from fran3004/cambios_administrativos
+[1;31m|[m[36m\[m[36m|[m 
+[1;31m|[m * [33m6b09d78[m Rebranding del sitio y reservas
+[1;31m|[m[1;31m/[m  
+* [33m28fca81[m Delete build-log.txt
+*   [33m6bba77c[m Merge pull request #2 from damianjose592/damian
+[1;33m|[m[1;34m\[m  
+[1;33m|[m * [33ma6978a5[m Redesign Villa Adelaida landing page
+[1;33m|[m[1;33m/[m  
+*   [33maa5ce64[m Merge pull request #1 from fran3004/primer-prototipo
+[1;35m|[m[1;36m\[m  
+[1;35m|[m * [33md43e5ad[m Refactor components into folders & extract CSS
