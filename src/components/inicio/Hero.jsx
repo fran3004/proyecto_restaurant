@@ -77,7 +77,7 @@ function Hero() {
           <h1>Villa Adelaida:<br /><em>conecta con lo auténtico</em></h1>
           <p>Naturaleza, río y gastronomía típica para compartir en familia, en pareja o con amigos.</p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href="#contacto">Reservar experiencia</a>
+            <a className="btn btn-primary" href="#reserva-experiencias">Reservar experiencia</a>
             <a className="btn btn-ghost" href="#experiencias">Ver planes</a>
           </div>
         </div>

@@ -55,6 +55,7 @@
   z-index: 6;
   max-width: 640px;
   color: var(--color-white);
+  margin-top: -54px;
 }
 
 .hero h1 {
@@ -83,6 +84,7 @@
   margin-top: 28px;
   flex-wrap: wrap;
 }
+.hero-actions .btn { position: relative; z-index: 1; }
 
 /* ── Flechas prev/next ── */
 .hero-arrow {
@@ -171,13 +173,14 @@
 .hero-stay {
   position: absolute;
   z-index: 5;
-  bottom: 12px;
+  bottom: 3px;
   left: 0;
   right: 0;
-  padding: 18px 7vw 20px;
-  border-top: 1px solid var(--color-alpha-white-18);
-  background: var(--color-alpha-dark-55);
-  backdrop-filter: blur(8px);
+  padding: 20px 7vw 24px;
+  border-top: 1px solid var(--color-alpha-white-22);
+  background: linear-gradient(180deg, rgba(10, 30, 18, .32) 0%, rgba(10, 30, 18, .82) 28%, rgba(10, 30, 18, .94) 100%);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 -14px 30px rgba(10, 30, 18, .2);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -245,15 +248,17 @@
    RESPONSIVE
 ══════════════════ */
 @media (max-width: 900px) {
-  .hero { min-height: 90vh; padding: 120px 24px 180px; }
+  .hero { min-height: 90vh; padding: 120px 24px 210px; }
+  .hero-content { margin-top: -28px; }
   .hero-arrow { display: none; }
   .hero-dots { bottom: 160px; }
 }
 
 @media (max-width: 600px) {
-  .hero { min-height: 100svh; padding: 110px 20px 200px; }
+  .hero { min-height: 100svh; padding: 110px 20px 230px; }
   .hero h1 { font-size: 52px; }
   .hero-content > p:not(.eyebrow) { font-size: 14px; }
+  .hero-content { margin-top: -12px; }
   .hero-actions { flex-direction: column; align-items: flex-start; }
   .hero-stay { padding: 14px 20px 16px; }
   .hero-tag { font-size: 10px; padding: 5px 10px; }
