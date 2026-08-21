@@ -26,12 +26,9 @@
 }
 
 .brand-logo-wrap {
-  width: 50px;
-  height: 50px;
-  border-radius: var(--radius-circle);
-  padding: 3px;
-  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 40%, var(--color-gold-dark) 100%);
-  box-shadow: 0 0 0 1px var(--color-alpha-gold-25-alt), 0 4px 14px var(--color-alpha-gold-30-alt);
+  width: 90px;
+  height: 62px;
+  padding: 0;
   flex-shrink: 0;
   transition: transform .3s, box-shadow .3s;
 }
@@ -42,9 +39,9 @@
 .brand-logo-img {
   width: 100%;
   height: 100%;
-  border-radius: var(--radius-circle);
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  transform: scale(1.56);
   image-rendering: auto;
   display: block;
 }
@@ -172,7 +169,7 @@
 
 @media (max-width: 600px) {
   .site-header { height: 68px; padding: 0 16px; }
-  .brand-logo-wrap { width: 42px; height: 42px; }
+  .brand-logo-wrap { width: 72px; height: 50px; }
   .brand-text strong { font-size: 12px; }
   .brand-text small  { font-size: 7px; }
   .nav { top: 68px; }

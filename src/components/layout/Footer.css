@@ -11,20 +11,17 @@ footer {
 
 /* Logo circular */
 .footer-logo-wrap {
-  width: 72px;
-  height: 72px;
-  border-radius: var(--radius-circle);
-  padding: 3px;
-  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 50%, var(--color-gold-dark) 100%);
-  box-shadow: 0 0 0 1px var(--color-alpha-gold-30), 0 4px 18px var(--color-alpha-black-30);
+  width: 125px;
+  height: 90px;
+  padding: 0;
   margin-bottom: 12px;
 }
 .footer-logo-img {
   width: 100%;
   height: 100%;
-  border-radius: var(--radius-circle);
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
+  transform: scale(1.44);
   image-rendering: auto;
   display: block;
 }
