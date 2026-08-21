@@ -1,6 +1,7 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
+import { experiencias } from '../inicio/Experiencias.utils';
 
-const WHATSAPP_URL = 'https://wa.link/ewr2c9';
+const WHATSAPP_NUMBER = '573012706114';
 
 export const mesas = [
   { id: 'mesa-1', nombre: 'Bohío Principal', capacidad: 4, desc: 'Ubicación fresca bajo sombra de palma con vista al jardín.', ambiente: 'Natural y tranquilo' },
@@ -58,12 +59,43 @@ export function getHoraLabel(valor) {
   return `${hora12}:${String(minutos).padStart(2, '0')} ${sufijo}`;
 }
 
-export function getEstadoMesa(mesa, fecha, mesaSeleccionada) {
-  if (mesa.id === mesaSeleccionada) return 'selected';
-  if (fecha && new Date(`${fecha}T00:00:00`).getDay() === 0 && mesa.id === 'mesa-6') return 'unavailable';
-  const dia = fecha ? Number(fecha.slice(-2)) : 1;
+export function getOccupiedSlots(mesa, fecha) {
+  if (!fecha || (new Date(`${fecha}T00:00:00`).getDay() === 0 && mesa.id === 'mesa-6')) return [];
+  const dia = Number(fecha.slice(-2));
   const numeroMesa = Number(mesa.id.split('-')[1]);
-  return (dia + numeroMesa) % 4 === 0 ? 'occupied' : 'available';
+  const primeraFranja = (dia + numeroMesa) % 4;
+  const segundaFranja = (dia * numeroMesa) % 5;
+  return [...new Set([primeraFranja, segundaFranja])].map(indice => horas[indice].value);
+}
+
+export function hayConflictoHorario(mesa, fecha, horaLlegada, duracion) {
+  const salida = getHoraSalida(horaLlegada, duracion);
+  return getOccupiedSlots(mesa, fecha).some(horaOcupada => {
+    const salidaOcupada = getHoraSalida(horaOcupada, 2);
+    return horaLlegada < salidaOcupada && salida > horaOcupada;
+  });
+}
+
+export function getEstadoHorario(mesa, fecha, hora) {
+  return getOccupiedSlots(mesa, fecha).includes(hora) ? 'occupied' : 'available';
+}
+
+export function getEstadoMesa(mesa, fecha, mesaSeleccionada) {
+  if (fecha && new Date(`${fecha}T00:00:00`).getDay() === 0 && mesa.id === 'mesa-6') return 'unavailable';
+  const estado = getOccupiedSlots(mesa, fecha).length >= horas.length ? 'occupied' : 'available';
+  return mesa.id === mesaSeleccionada && estado === 'available' ? 'selected' : estado;
+}
+
+export function getFechaConDesplazamiento(fecha, desplazamiento) {
+  const fechaBase = new Date(`${fecha}T12:00:00`);
+  fechaBase.setDate(fechaBase.getDate() + desplazamiento);
+  return fechaBase.toISOString().split('T')[0];
+}
+
+export function formatearFechaCorta(fecha) {
+  return new Intl.DateTimeFormat('es-CO', { weekday: 'short', day: 'numeric', month: 'short' })
+    .format(new Date(`${fecha}T12:00:00`))
+    .replace('.', '');
 }
 
 export function getEstadoLabel(estado) {
@@ -75,7 +107,7 @@ export function getEstadoLabel(estado) {
   }[estado];
 }
 
-export function validarReserva(reserva, mesaSeleccionada) {
+export function validarReserva(reserva, mesaSeleccionada, tipoReserva, experienciaSeleccionada) {
   const errores = {};
   const hoy = getFechaHoy();
   const mesa = mesas.find(item => item.id === mesaSeleccionada);
@@ -88,8 +120,12 @@ export function validarReserva(reserva, mesaSeleccionada) {
   if (!reserva.horaLlegada) errores.horaLlegada = 'Selecciona la hora de llegada.';
   if (!reserva.duracion) errores.duracion = 'Selecciona la duración.';
   if (!personas || personas < 1) errores.personas = 'Debe haber al menos una persona.';
-  if (mesa && personas > mesa.capacidad) errores.personas = `Esta mesa tiene capacidad para ${mesa.capacidad} personas.`;
-  if (!mesa) errores.mesa = 'Selecciona una mesa disponible.';
+  if (tipoReserva === 'mesa' && mesa && personas > mesa.capacidad) errores.personas = `Esta mesa tiene capacidad para ${mesa.capacidad} personas.`;
+  if (tipoReserva === 'mesa' && !mesa) errores.mesa = 'Selecciona una mesa disponible.';
+  if (tipoReserva === 'mesa' && mesa && hayConflictoHorario(mesa, reserva.fecha, reserva.horaLlegada, reserva.duracion)) {
+    errores.horaLlegada = 'Esta mesa ya está ocupada en esa franja. Elige otra hora.';
+  }
+  if (tipoReserva === 'experiencia' && !experienciaSeleccionada) errores.experiencia = 'Selecciona una experiencia.';
   if (!reserva.tipoVisita) errores.tipoVisita = 'Selecciona el tipo de visita.';
 
   const horaSalida = getHoraSalida(reserva.horaLlegada, reserva.duracion);
@@ -98,7 +134,7 @@ export function validarReserva(reserva, mesaSeleccionada) {
   return errores;
 }
 
-export function confirmarReservaMesa(reserva, mesa) {
+export function confirmarReservaMesa(reserva, mesa, tipoReserva, experienciaSeleccionada) {
   const horaSalida = getHoraSalida(reserva.horaLlegada, reserva.duracion);
   const observaciones = reserva.observaciones.trim() || 'Ninguna';
   const mensaje = [
@@ -110,14 +146,14 @@ export function confirmarReservaMesa(reserva, mesa) {
     `Hora: ${getHoraLabel(reserva.horaLlegada)} a ${getHoraLabel(horaSalida)}`,
     `Duración: ${reserva.duracion} hora(s)`,
     `Personas: ${reserva.personas}`,
-    `Mesa: ${mesa.nombre}`,
+    `${tipoReserva === 'mesa' ? 'Mesa' : 'Experiencia'}: ${tipoReserva === 'mesa' ? mesa.nombre : experienciaSeleccionada}`,
     `Tipo de visita: ${reserva.tipoVisita}`,
     `Observaciones: ${observaciones}`,
     '',
     '¿Tienen disponibilidad?'
   ].join('\n');
 
-  window.open(`${WHATSAPP_URL}?text=${encodeURIComponent(mensaje)}`, '_blank', 'noopener,noreferrer');
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`, '_blank', 'noopener,noreferrer');
 }
 
 const initialReserva = {
@@ -133,7 +169,11 @@ const initialReserva = {
 
 export function useReservaMesa() {
   const [reserva, setReserva] = useState(initialReserva);
+  const [tipoReserva, setTipoReserva] = useState('mesa');
+  const [experienciaSeleccionada, setExperienciaSeleccionada] = useState('');
   const [mesaSeleccionada, setMesaSeleccionada] = useState('mesa-1');
+  const [mesaConsultada, setMesaConsultada] = useState('mesa-1');
+  const [calendarioAbierto, setCalendarioAbierto] = useState(false);
   const [paso, setPaso] = useState(1);
   const [errores, setErrores] = useState({});
   const [enviada, setEnviada] = useState(false);
@@ -143,14 +183,10 @@ export function useReservaMesa() {
     [reserva.fecha, mesaSeleccionada]
   );
 
-  useEffect(() => {
-    const mesaActual = mesas.find(mesa => mesa.id === mesaSeleccionada);
-    const estadoReal = mesaActual ? getEstadoMesa(mesaActual, reserva.fecha, '') : 'unavailable';
-    if (mesaActual && estadoReal !== 'available') {
-      const primeraDisponible = mesas.find(mesa => getEstadoMesa(mesa, reserva.fecha, '') === 'available');
-      setMesaSeleccionada(primeraDisponible ? primeraDisponible.id : '');
-    }
-  }, [estadosMesas, mesaSeleccionada, reserva.fecha]);
+  const fechasDisponibilidad = useMemo(
+    () => Array.from({ length: 14 }, (_, indice) => getFechaConDesplazamiento(getFechaHoy(), indice)),
+    []
+  );
 
   const actualizarCampo = (campo, valor) => {
     setReserva(actual => ({ ...actual, [campo]: valor }));
@@ -159,21 +195,50 @@ export function useReservaMesa() {
   };
 
   const seleccionarMesa = mesa => {
-    if (estadosMesas[mesa.id] !== 'available') return;
-    setMesaSeleccionada(mesa.id);
+    const estado = getEstadoMesa(mesa, reserva.fecha, '');
+    setMesaConsultada(mesa.id);
+    setCalendarioAbierto(true);
+    setMesaSeleccionada(estado === 'available' ? mesa.id : '');
     setErrores(actual => ({ ...actual, mesa: '' }));
+  };
+
+  const seleccionarFechaCalendario = fecha => {
+    const mesa = mesas.find(item => item.id === mesaConsultada);
+    const estado = mesa ? getEstadoMesa(mesa, fecha, '') : 'unavailable';
+    actualizarCampo('fecha', fecha);
+    setMesaSeleccionada(estado !== 'unavailable' ? mesaConsultada : '');
+    if (estado === 'available') setErrores(actual => ({ ...actual, mesa: '' }));
+  };
+
+  const seleccionarHoraCalendario = hora => {
+    actualizarCampo('horaLlegada', hora);
+    setMesaSeleccionada(mesaConsultada);
+    setErrores(actual => ({ ...actual, mesa: '', horaLlegada: '' }));
   };
 
   const revisarReserva = event => {
     event.preventDefault();
-    const nuevosErrores = validarReserva(reserva, mesaSeleccionada);
+    const nuevosErrores = validarReserva(reserva, mesaSeleccionada, tipoReserva, experienciaSeleccionada);
     setErrores(nuevosErrores);
     if (Object.keys(nuevosErrores).length === 0) setPaso(3);
   };
 
   const continuarMesa = () => {
+    if (tipoReserva === 'experiencia') {
+      if (!experienciaSeleccionada) {
+        setErrores(actual => ({ ...actual, experiencia: 'Selecciona una experiencia.' }));
+        return;
+      }
+      setPaso(2);
+      return;
+    }
     if (!mesaSeleccionada) {
       setErrores(actual => ({ ...actual, mesa: 'Selecciona una mesa disponible.' }));
+      return;
+    }
+    const mesa = mesas.find(item => item.id === mesaSeleccionada);
+    if (mesa && hayConflictoHorario(mesa, reserva.fecha, reserva.horaLlegada, reserva.duracion)) {
+      setErrores(actual => ({ ...actual, horaLlegada: 'La mesa está ocupada en esa franja. Elige otra hora disponible.' }));
       return;
     }
     setPaso(2);
@@ -185,7 +250,7 @@ export function useReservaMesa() {
 
   const enviarReserva = () => {
     const mesa = mesas.find(item => item.id === mesaSeleccionada);
-    confirmarReservaMesa(reserva, mesa);
+    confirmarReservaMesa(reserva, mesa, tipoReserva, experienciaSeleccionada);
     setEnviada(true);
   };
 
@@ -202,9 +267,20 @@ export function useReservaMesa() {
   return {
     reserva,
     actualizarCampo,
+    tipoReserva,
+    setTipoReserva,
+    experienciaSeleccionada,
+    setExperienciaSeleccionada,
+    experiencias,
     mesaSeleccionada,
+    mesaConsultada,
     seleccionarMesa,
+    seleccionarFechaCalendario,
+    seleccionarHoraCalendario,
+    calendarioAbierto,
+    setCalendarioAbierto,
     estadosMesas,
+    fechasDisponibilidad,
     paso,
     errores,
     enviada,

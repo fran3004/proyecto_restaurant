@@ -1,6 +1,6 @@
 import './WhatsAppButton.css';
 
-const WHATSAPP_URL = 'https://wa.link/ewr2c9';
+const WHATSAPP_URL = 'https://wa.me/573012706114';
 
 function WhatsAppButton() {
   return (

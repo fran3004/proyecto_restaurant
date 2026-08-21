@@ -14,9 +14,7 @@ function Contacto() {
               <span>☎</span>
               <div>
                 <small>TELÉFONO / WHATSAPP</small>
-                <a href="tel:+573145238716"><strong>+57 314 523 8716</strong></a>
-                <a href="tel:+573226516884"><strong>+57 322 651 6884</strong></a>
-                <a href="tel:+573147840545"><strong>+57 314 784 0545</strong></a>
+                <a href="tel:+573012706114"><strong>+57 301 270 6114</strong></a>
               </div>
             </div>
             <div>
@@ -28,7 +26,7 @@ function Contacto() {
             </div>
           </div>
 
-          <a className="btn btn-primary" href="https://wa.link/ewr2c9" target="_blank" rel="noopener noreferrer">
+          <a className="btn btn-primary" href="https://wa.me/573012706114" target="_blank" rel="noopener noreferrer">
             Escribir por WhatsApp
           </a>
         </div>

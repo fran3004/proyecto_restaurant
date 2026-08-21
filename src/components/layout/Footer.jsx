@@ -34,10 +34,8 @@ function Footer() {
 
         <div>
           <h4>Contacto Directo</h4>
-          <a href="tel:+573145238716">+57 314 523 8716</a>
-          <a href="tel:+573226516884">+57 322 651 6884</a>
-          <a href="tel:+573147840545">+57 314 784 0545</a>
-          <a href="https://wa.link/ewr2c9" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a href="tel:+573012706114">+57 301 270 6114</a>
+          <a href="https://wa.me/573012706114" target="_blank" rel="noopener noreferrer">WhatsApp</a>
           <span>Manaure, Cesar · Colombia</span>
         </div>
       </div>
