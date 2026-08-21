@@ -1,6 +1,6 @@
-import './Footer.css';
+import '../../styles/layout/Footer.css';
 import Comentarios from './Comentarios';
-import { socialLinks } from './Footer.utils';
+import { socialLinks } from '../../utils/layout/Footer.utils';
 
 function Footer() {
   return (

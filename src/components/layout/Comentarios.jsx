@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import './Comentarios.css';
-import { validarComentario, marcarComentarioEnviado, enviarComentarioPorWhatsApp } from './Comentarios.utils';
+import '../../styles/layout/Comentarios.css';
+import { validarComentario, marcarComentarioEnviado, enviarComentarioPorWhatsApp } from '../../utils/layout/Comentarios.utils';
 
 function Comentarios() {
   const [texto, setTexto] = useState('');

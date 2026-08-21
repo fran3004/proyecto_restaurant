@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import './ReservaMesa.css';
+import '../../styles/reservas/ReservaMesa.css';
 import {
   duraciones,
   formatearFechaCorta,
@@ -14,7 +14,7 @@ import {
   mesas,
   tiposVisita,
   useReservaMesa,
-} from './ReservaMesa.utils';
+} from '../../utils/reservas/ReservaMesa.utils';
 
 function ReservaMesa() {
   const availabilityCalendarRef = useRef(null);

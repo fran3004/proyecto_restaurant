@@ -1,4 +1,4 @@
-import './WhatsAppButton.css';
+import '../../styles/layout/WhatsAppButton.css';
 
 const WHATSAPP_URL = 'https://wa.me/573012706114';
 

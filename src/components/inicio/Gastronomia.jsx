@@ -1,5 +1,5 @@
-import './Gastronomia.css';
-import { categorias, formatoPrecio, useGastronomia } from './Gastronomia.utils';
+import '../../styles/inicio/Gastronomia.css';
+import { categorias, formatoPrecio, useGastronomia } from '../../utils/inicio/Gastronomia.utils';
 
 function Gastronomia() {
   const {

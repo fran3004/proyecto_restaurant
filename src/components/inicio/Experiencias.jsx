@@ -1,5 +1,5 @@
-import './Experiencias.css';
-import { categorias, useExperiencias } from './Experiencias.utils';
+import '../../styles/inicio/Experiencias.css';
+import { categorias, useExperiencias } from '../../utils/inicio/Experiencias.utils';
 
 function Experiencias() {
   const { categoriaActiva, setCategoriaActiva, visibles } = useExperiencias();

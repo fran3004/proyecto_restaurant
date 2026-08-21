@@ -1,5 +1,5 @@
-import './Servicios.css';
-import { servicios } from './Servicios.utils';
+import '../../styles/inicio/Servicios.css';
+import { servicios } from '../../utils/inicio/Servicios.utils';
 
 function Servicios() {
   return (
