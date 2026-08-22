@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './styles/global/App.css';
+import useScrollReveal from './utils/useScrollReveal';
 
 import Header       from './components/layout/Header';
 import Footer       from './components/layout/Footer';
@@ -14,6 +15,7 @@ import WhatsAppButton from './components/layout/WhatsAppButton';
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const scrollRevealRef = useScrollReveal();
 
   return (
     <>
@@ -21,7 +23,7 @@ function App() {
         menuOpen={menuOpen}
         onMenuToggle={() => setMenuOpen(open => !open)}
       />
-      <main>
+      <main ref={scrollRevealRef}>
         <Hero />
         <Experiencias />
         <Gastronomia />

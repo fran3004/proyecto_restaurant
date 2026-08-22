@@ -2,10 +2,10 @@ import '../../styles/inicio/MisionVision.css';
 
 function MisionVision() {
   return (
-    <section className="section-mv" id="nosotros">
+    <section className="section-mv" id="nosotros" data-reveal="section">
       <div className="mv-container">
 
-        <div className="mv-header">
+        <div className="mv-header" data-reveal="heading">
           <span className="section-eyebrow">NUESTRA ESENCIA</span>
           <h2 className="section-title">Misión &amp; Visión</h2>
         </div>
@@ -13,7 +13,7 @@ function MisionVision() {
         <div className="mv-grid">
 
           {/* Misión */}
-          <article className="mv-card">
+          <article className="mv-card" data-reveal="item">
             <div>
               <span className="mv-badge">01 / PROPÓSITO</span>
               <h3>Nuestra Misión</h3>
@@ -26,7 +26,7 @@ function MisionVision() {
           </article>
 
           {/* Visión destacada */}
-          <article className="mv-card highlight">
+          <article className="mv-card highlight" data-reveal="item">
             <div>
               <span className="mv-badge">02 / FUTURO</span>
               <h3>Nuestra Visión</h3>

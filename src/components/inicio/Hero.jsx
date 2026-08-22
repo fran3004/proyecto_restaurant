@@ -103,9 +103,9 @@ function Hero() {
       </section>
 
       {/* ── Intro ── */}
-      <section className="intro">
+      <section className="intro" data-reveal="section">
         <p className="eyebrow">UN REFUGIO NATURAL</p>
-        <h2>Respira aire puro y crea memorias</h2>
+        <h2 data-reveal="heading">Respira aire puro y crea memorias</h2>
         <p>Un espacio rodeado de fauna, senderos verdes y la mejor gastronomía típica. Villa Adelaida es el destino perfecto para quienes buscan desconectar de la rutina.</p>
       </section>
     </>

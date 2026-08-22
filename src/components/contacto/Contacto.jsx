@@ -2,9 +2,9 @@ import '../../styles/contacto/Contacto.css';
 
 function Contacto() {
   return (
-    <section className="contact" id="contacto">
+    <section className="contact" id="contacto" data-reveal="section">
       <div className="contact-inner">
-        <div className="contact-copy">
+        <div className="contact-copy" data-reveal="content">
           <p className="eyebrow">RESERVAS Y UBICACIÓN</p>
           <h2>Planea tu visita hoy</h2>
           <p>Escríbenos directamente por WhatsApp. Nuestro equipo te ayudará a elegir la mejor experiencia de naturaleza, río y gastronomía según la ocasión.</p>
@@ -31,7 +31,7 @@ function Contacto() {
           </a>
         </div>
 
-        <div className="map-card">
+        <div className="map-card" data-reveal="content">
           <iframe
             className="fake-map"
             title="Mapa de Villa Adelaida en Manaure, Cesar"

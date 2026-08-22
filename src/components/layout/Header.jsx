@@ -12,7 +12,7 @@ function Header({ menuOpen, onMenuToggle }) {
       <a className="brand" href="#inicio" onClick={closeAll}>
         <div className="brand-logo-wrap">
           <img
-            src="/assets/brand/logo-header-footer.png"
+            src={`${process.env.PUBLIC_URL}/assets/brand/logo-header-footer.png`}
             alt="Villa Adelaida – Centro Turístico y Ecológico"
             className="brand-logo-img"
           />

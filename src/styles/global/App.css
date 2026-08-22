@@ -129,6 +129,38 @@ a{text-decoration:none;color:inherit}
 button,input{font:inherit}
 section[id]{scroll-margin-top:80px}
 
+/* ── REVEAL AL ENTRAR EN PANTALLA ── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+[data-reveal="heading"] { transition-delay: .04s; }
+[data-reveal="content"] { transition-delay: .1s; }
+[data-reveal="item"]:nth-child(2) { transition-delay: .06s; }
+[data-reveal="item"]:nth-child(3) { transition-delay: .12s; }
+[data-reveal="item"]:nth-child(4) { transition-delay: .18s; }
+[data-reveal="item"]:nth-child(n + 5) { transition-delay: .22s; }
+
+.scroll-reveal-ready > section[data-reveal] {
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal],
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* ── EYEBROW ── */
 .eyebrow{font-size:10px;font-weight:700;letter-spacing:.28em;color:var(--color-secondary);text-transform:uppercase;margin:0 0 12px}
 .eyebrow.light{color:var(--color-secondary-light)}

@@ -8,7 +8,7 @@ function Footer() {
       <div className="footer-main">
         <div className="footer-brand">
           <div className="footer-logo-wrap">
-            <img src="/assets/brand/logo-header-footer.png" alt="Villa Adelaida" className="footer-logo-img" />
+            <img src={`${process.env.PUBLIC_URL}/assets/brand/logo-header-footer.png`} alt="Villa Adelaida" className="footer-logo-img" />
           </div>
           <h3>VILLA ADELAIDA</h3>
           <p>Centro Turístico y Ecológico. Naturaleza, río y gastronomía típica en Manaure, Cesar.</p>
