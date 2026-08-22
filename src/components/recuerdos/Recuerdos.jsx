@@ -110,7 +110,7 @@ function Recuerdos() {
           <article
             className={`memory-item ${r.clase}${elementoSeleccionado === index ? ' is-selected' : ''}`}
             data-reveal="item"
-            key={r.autor}
+            key={r.id}
             onClick={() => r.tipo === 'video' ? abrirVideo(r, index) : abrirImagen(index)}
             tabIndex="0"
             onKeyDown={event => {

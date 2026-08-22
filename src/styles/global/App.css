@@ -131,9 +131,14 @@ section[id]{scroll-margin-top:80px}
 
 /* ── REVEAL AL ENTRAR EN PANTALLA ── */
 [data-reveal] {
+  opacity: 1;
+  transform: none;
+  transition: opacity .65s ease, transform .65s ease;
+}
+
+[data-reveal].reveal-pending {
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity .65s ease, transform .65s ease;
 }
 
 [data-reveal].is-visible {
@@ -154,6 +159,7 @@ section[id]{scroll-margin-top:80px}
 
 @media (prefers-reduced-motion: reduce) {
   [data-reveal],
+  [data-reveal].reveal-pending,
   [data-reveal].is-visible {
     opacity: 1;
     transform: none;

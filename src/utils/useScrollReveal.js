@@ -1,5 +1,7 @@
 import { useEffect, useRef } from 'react';
 
+const REVEAL_FALLBACK_DELAY = 1500;
+
 function useScrollReveal() {
   const containerRef = useRef(null);
 
@@ -11,14 +13,25 @@ function useScrollReveal() {
     const elements = container.querySelectorAll('[data-reveal]');
     const supportsIntersectionObserver = 'IntersectionObserver' in window;
     let observer = null;
+    const fallbackTimers = new Map();
+
+    const reveal = element => {
+      element.classList.remove('reveal-pending');
+      element.classList.add('is-visible');
+      const timer = fallbackTimers.get(element);
+      if (timer) {
+        window.clearTimeout(timer);
+        fallbackTimers.delete(element);
+      }
+    };
 
     if (!supportsIntersectionObserver) {
-      elements.forEach(element => element.classList.add('is-visible'));
+      elements.forEach(reveal);
     } else {
       observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) return;
-          entry.target.classList.add('is-visible');
+          reveal(entry.target);
           observer.unobserve(entry.target);
         });
       }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
@@ -27,8 +40,11 @@ function useScrollReveal() {
     const observeRevealElements = nodes => {
       nodes.forEach(element => {
         if (element.classList.contains('is-visible')) return;
-        if (supportsIntersectionObserver) observer.observe(element);
-        else element.classList.add('is-visible');
+        element.classList.add('reveal-pending');
+        if (supportsIntersectionObserver) {
+          observer.observe(element);
+          fallbackTimers.set(element, window.setTimeout(() => reveal(element), REVEAL_FALLBACK_DELAY));
+        } else reveal(element);
       });
     };
 
@@ -52,6 +68,8 @@ function useScrollReveal() {
     return () => {
       if (observer) observer.disconnect();
       mutationObserver.disconnect();
+      fallbackTimers.forEach(timer => window.clearTimeout(timer));
+      fallbackTimers.clear();
     };
   }, []);
 
