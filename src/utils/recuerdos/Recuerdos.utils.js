@@ -1,7 +1,7 @@
 export const recuerdos = [
   {
     tipo: 'video',
-    video: '/assets/videos/recuerdos/WhatsApp%20Video%202026-08-20%20at%2010.40.56%20PM.mp4',
+    video: `${process.env.PUBLIC_URL}/assets/videos/recuerdos/WhatsApp%20Video%202026-08-20%20at%2010.40.56%20PM.mp4`,
     alt: 'Visitantes compartiendo un momento especial en Villa Adelaida',
     texto: 'Un momento para recordar',
     autor: 'Experiencias que permanecen',
@@ -9,7 +9,7 @@ export const recuerdos = [
   },
   {
     tipo: 'video',
-    video: '/assets/videos/recuerdos/WhatsApp%20Video%202026-08-20%20at%2010.40.59%20PM.mp4',
+    video: `${process.env.PUBLIC_URL}/assets/videos/recuerdos/WhatsApp%20Video%202026-08-20%20at%2010.40.59%20PM.mp4`,
     alt: 'Naturaleza y visitantes disfrutando Villa Adelaida',
     texto: 'Naturaleza que se siente',
     autor: 'Villa Adelaida · Centro ecológico',
@@ -19,7 +19,7 @@ export const recuerdos = [
   { tipo: 'image', img: 'https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=900&q=85', alt: 'Piscina en un entorno natural', texto: 'Tiempo para desconectarse', autor: 'Descanso en la Villa', clase: 'memory-image-small' },
   {
     tipo: 'video',
-    video: '/assets/videos/recuerdos/WhatsApp%20Video%202026-08-20%20at%2010.41.02%20PM.mp4',
+    video: `${process.env.PUBLIC_URL}/assets/videos/recuerdos/WhatsApp%20Video%202026-08-20%20at%2010.41.02%20PM.mp4`,
     alt: 'Visitantes viviendo una experiencia al aire libre en Villa Adelaida',
     texto: 'Así se vive la Villa',
     autor: 'Naturaleza, alegría y descanso',
