@@ -5,8 +5,8 @@ function Experiencias() {
   const { categoriaActiva, setCategoriaActiva, visibles } = useExperiencias();
 
   return (
-    <section className="section experiencias-section" id="experiencias">
-      <div className="section-heading experiencias-heading">
+    <section className="section experiencias-section" id="experiencias" data-reveal="section">
+      <div className="section-heading experiencias-heading" data-reveal="heading">
         <div>
           <p className="eyebrow">NUESTRAS EXPERIENCIAS</p>
           <h2>Elige cómo quieres vivir Villa Adelaida</h2>
@@ -33,7 +33,7 @@ function Experiencias() {
 
       <div className="experiencias-grid">
         {visibles.map(experiencia => (
-          <article className="experiencia-card" key={experiencia.nombre}>
+          <article className="experiencia-card" key={experiencia.nombre} data-reveal="item">
             <div className="experiencia-image-wrap">
               <img src={experiencia.imagen} alt={experiencia.alt} />
               <span className="experiencia-tag">{experiencia.etiqueta}</span>

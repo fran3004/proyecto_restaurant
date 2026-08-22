@@ -11,8 +11,8 @@ function Gastronomia() {
   } = useGastronomia();
 
   return (
-    <section className="section cream" id="sazon">
-      <div className="section-heading">
+    <section className="section cream" id="sazon" data-reveal="section">
+      <div className="section-heading" data-reveal="heading">
         <div>
           <p className="eyebrow">NUESTRA SAZÓN</p>
           <h2>Carta de la Villa</h2>
@@ -41,7 +41,7 @@ function Gastronomia() {
 
       <div className="menu-grid">
         {visibles.map(producto => (
-          <article className="menu-card" key={producto.nombre}>
+          <article className="menu-card" key={producto.nombre} data-reveal="item">
             <div className="menu-image-wrap">
               <img src={producto.imagen} alt={producto.nombre} />
               <span className="menu-category">{producto.categoria}</span>

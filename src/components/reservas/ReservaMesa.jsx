@@ -72,10 +72,10 @@ function ReservaMesa() {
   }, [paso]);
 
   return (
-    <section className="reserva-section section" id="reserva-mesas">
-      <span className="section-eyebrow">RESTAURANTE NUESTRA SAZÓN</span>
-      <h2 className="section-title">Reserva tu visita</h2>
-      <p className="reserva-intro">Organiza tu visita y déjanos todos los detalles para atenderte mejor.</p>
+    <section className="reserva-section section" id="reserva-mesas" data-reveal="section">
+      <span className="section-eyebrow" data-reveal="heading">RESTAURANTE NUESTRA SAZÓN</span>
+      <h2 className="section-title" data-reveal="heading">Reserva tu visita</h2>
+      <p className="reserva-intro" data-reveal="content">Organiza tu visita y déjanos todos los detalles para atenderte mejor.</p>
 
       <div className="reserva-steps" aria-label="Pasos de la reserva">
         <div className={`reserva-step${paso >= 1 ? ' active' : ''}`}><span>1</span><strong>Elige tu mesa</strong></div>

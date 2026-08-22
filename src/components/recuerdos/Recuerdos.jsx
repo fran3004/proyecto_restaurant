@@ -46,8 +46,8 @@ function Recuerdos() {
   const recursoActual = recursoSeleccionado !== null ? recuerdos[recursoSeleccionado] : null;
 
   return (
-    <section className="section" id="recuerdos">
-      <div className="section-heading">
+    <section className="section" id="recuerdos" data-reveal="section">
+      <div className="section-heading" data-reveal="heading">
         <div>
           <p className="eyebrow">RECUERDOS VIVOS</p>
           <h2>Historias de quienes nos visitan</h2>
@@ -59,6 +59,7 @@ function Recuerdos() {
         {recuerdos.map((r, index) => (
           <article
             className={`memory-item ${r.clase}${elementoSeleccionado === index ? ' is-selected' : ''}`}
+            data-reveal="item"
             key={r.autor}
             onClick={() => r.tipo === 'video' ? abrirVideo(r, index) : abrirImagen(index)}
             tabIndex="0"
