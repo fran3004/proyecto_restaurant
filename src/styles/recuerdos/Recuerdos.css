@@ -6,6 +6,28 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+.memories-brochure-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin: 28px 0;
+  color: #0070BA;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.memories-brochure-icon {
+  flex-shrink: 0;
+}
+.memories-brochure-link:hover {
+  color: #005a94;
+  text-decoration: underline;
+}
 .memory-item {
   position: relative;
   border-radius: var(--radius-sm);

@@ -105,6 +105,17 @@ function Recuerdos() {
         <p>Detén el tiempo, dale play y vuelve a sentir la naturaleza, la alegría y la energía de Villa Adelaida.</p>
       </div>
 
+      <a
+        className="memories-brochure-link"
+        href={`${process.env.PUBLIC_URL}/brochure/`}
+      >
+        <svg className="memories-brochure-icon" width="20" height="18" viewBox="0 0 24 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 3h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2V3Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M22 3h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7V3Z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        Ver brochure
+      </a>
+
       <div className="memories-mosaic">
         {recuerdos.map((r, index) => (
           <article
