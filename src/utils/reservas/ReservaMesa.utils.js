@@ -1,7 +1,6 @@
 import { useMemo, useState, useEffect } from 'react';
+import { WHATSAPP_URL } from '../../config/contact';
 import { experiencias } from '../inicio/Experiencias.utils';
-
-const WHATSAPP_NUMBER = '573012706114';
 
 export const mesas = [
   { id: 'mesa-1', nombre: 'Bohío Principal', capacidad: 4, desc: 'Ubicación fresca bajo sombra de palma con vista al jardín.', ambiente: 'Natural y tranquilo' },
@@ -174,7 +173,7 @@ export function confirmarReservaMesa(reserva, mesa, tipoReserva, experienciaSele
     'Muchas gracias. 🙏',
   ].join('\n');
 
-  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`, '_blank', 'noopener,noreferrer');
+  window.open(`${WHATSAPP_URL}?text=${encodeURIComponent(mensaje)}`, '_blank', 'noopener,noreferrer');
 }
 
 const initialReserva = {

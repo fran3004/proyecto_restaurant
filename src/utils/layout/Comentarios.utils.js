@@ -1,3 +1,5 @@
+import { WHATSAPP_URL } from '../../config/contact';
+
 /**
  * Comentarios.utils.js
  * Lógica de la caja de comentarios del Footer.
@@ -39,7 +41,6 @@ export function marcarComentarioEnviado() {
  * @param {string} texto
  */
 export function enviarComentarioPorWhatsApp(texto) {
-  const WHATSAPP_NUMBER = '573012706114';
   const mensaje = [
     '💬 *COMENTARIO DE VISITANTE — VILLA ADELAIDA*',
     '─────────────────────────────',
@@ -51,7 +52,7 @@ export function enviarComentarioPorWhatsApp(texto) {
   ].join('\n');
 
   window.open(
-    `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`,
+    `${WHATSAPP_URL}?text=${encodeURIComponent(mensaje)}`,
     '_blank',
     'noopener,noreferrer'
   );

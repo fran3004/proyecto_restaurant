@@ -1,4 +1,5 @@
 import '../../styles/contacto/Contacto.css';
+import { CONTACT_PHONE, WHATSAPP_NUMBER, WHATSAPP_URL } from '../../config/contact';
 
 function Contacto() {
   return (
@@ -14,7 +15,7 @@ function Contacto() {
               <span>☎</span>
               <div>
                 <small>TELÉFONO / WHATSAPP</small>
-                <a href="tel:+573012706114"><strong>+57 301 270 6114</strong></a>
+                <a href={`tel:+${WHATSAPP_NUMBER}`}><strong>{CONTACT_PHONE}</strong></a>
               </div>
             </div>
             <div>
@@ -26,7 +27,7 @@ function Contacto() {
             </div>
           </div>
 
-          <a className="btn btn-primary" href="https://wa.me/573012706114" target="_blank" rel="noopener noreferrer">
+          <a className="btn btn-primary" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
             Escribir por WhatsApp
           </a>
         </div>
