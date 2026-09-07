@@ -1,0 +1,141 @@
+@media print {
+  @page { size: A4 portrait; margin: 8mm; }
+
+  *, *::before, *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html,
+  body {
+    background: var(--cream) !important;
+    font-size: 10pt;
+  }
+
+  .no-print { display: none !important; }
+
+  .reveal-on-scroll,
+  .reveal-on-scroll.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .spread,
+  .feature,
+  .feature-inner,
+  .spread-body,
+  .mosaic,
+  .interstitial,
+  .contact-spread,
+  .map-section,
+  .manaure-section {
+    min-height: auto !important;
+    max-height: none !important;
+  }
+
+  .cover {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    min-height: 255mm;
+    max-height: 255mm;
+    break-after: page;
+    break-inside: avoid;
+    overflow: hidden;
+  }
+
+  .cover-rail,
+  .spread-rail,
+  .feature > .spread-rail {
+    writing-mode: horizontal-tb;
+    transform: none;
+    text-orientation: mixed;
+    width: 100%;
+    min-height: auto;
+    padding: 7px 12px;
+    letter-spacing: .18em;
+    font-size: 8pt;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    order: -1;
+  }
+
+  .spread,
+  .feature {
+    grid-template-columns: 1fr;
+    display: grid;
+    background: var(--paper);
+  }
+
+  .cover-main {
+    min-height: 0;
+    max-height: none;
+    flex: 1;
+    padding: 12mm 10mm;
+  }
+
+  .cover-photo { min-height: 100%; }
+  .cover-content { break-inside: avoid; max-width: 100%; }
+  .cover-title { font-size: 26pt; max-width: none; line-height: 1.08; }
+  .cover-meta { break-inside: avoid; }
+
+  #contacto { break-before: page; page-break-before: always; }
+
+  .interstitial {
+    min-height: 42mm;
+    max-height: 48mm;
+    break-inside: avoid;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .interstitial img { max-height: 48mm; object-fit: cover; }
+
+  .interstitial + section,
+  .interstitial + .spread,
+  .interstitial + .map-section {
+    break-before: avoid;
+    page-break-before: avoid;
+  }
+
+  .spread,
+  .feature,
+  .mosaic,
+  .interstitial,
+  .contact-spread,
+  .map-section,
+  .manaure-section {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .spread-body,
+  .feature-inner { grid-template-columns: 1fr 1fr; break-inside: auto; }
+  .feature-inner { min-height: auto; }
+
+  .feature-copy,
+  .feature-photo,
+  .tile,
+  .info-block {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .feature-photo { min-height: 52mm; max-height: 90mm; }
+  .feature-photo img { max-height: 90mm; object-fit: cover; }
+  .feature-title { font-size: 22pt; margin-bottom: 10px; }
+
+  .mosaic-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .tile-hero { grid-column: span 2; min-height: 58mm; }
+  .tile { min-height: 38mm; padding: 14px; }
+
+  .map-layout { grid-template-columns: 1fr; }
+  .map-frame { max-height: 145mm; overflow: hidden; }
+  .map-frame iframe { height: 140mm; min-height: 0; }
+
+  .contact-layout { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .site-footer { break-inside: avoid; }
+  .footer-logo { height: 16mm; max-width: 75mm; }
+  a { text-decoration: none; color: inherit; }
+}

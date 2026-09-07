@@ -1,0 +1,113 @@
+.contact-spread {
+  padding: clamp(56px, 9vw, 100px) var(--page-pad);
+  background: var(--paper);
+}
+
+.contact-layout {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: clamp(32px, 6vw, 64px);
+}
+
+.contact-lead {
+  max-width: 620px;
+  margin: 0 0 28px;
+  font-family: var(--font-ui);
+  font-size: clamp(16px, 1.8vw, 19px);
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.info-stack { display: grid; gap: 12px; }
+
+.info-block {
+  padding: 22px 24px;
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+
+.info-block h4 {
+  margin: 0 0 8px;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.info-block p {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.contact-links {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--deep);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.contact-link:hover,
+.contact-link:focus-visible {
+  border-color: var(--green);
+  box-shadow: var(--shadow);
+  outline: none;
+}
+
+.contact-link-icon {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--deep);
+  color: #fff;
+  border-radius: 8px;
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .04em;
+}
+
+.contact-link-text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.contact-link-text strong {
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--deep);
+}
+
+.contact-link-text span {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: var(--muted);
+  word-break: break-word;
+}
+
+@media (max-width: 980px) {
+  .contact-layout { grid-template-columns: 1fr; }
+}

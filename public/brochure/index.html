@@ -8,312 +8,34 @@
       content="Brochure de Villa Adelaida, restaurante y centro turístico en Manaure, Cesar."
     />
     <title>Brochure — Villa Adelaida | Manaure, Cesar</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/cover.css" />
+    <link rel="stylesheet" href="css/spread.css" />
+    <link rel="stylesheet" href="css/mosaic.css" />
+    <link rel="stylesheet" href="css/feature.css" />
+    <link rel="stylesheet" href="css/interstitial.css" />
+    <link rel="stylesheet" href="css/map.css" />
+    <link rel="stylesheet" href="css/manaure.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/print.css" />
   </head>
   <body>
-    <nav class="brochure-nav no-print" aria-label="Navegación del brochure">
-      <a class="brand-link" href="../" aria-label="Volver al sitio principal de Villa Adelaida">
-        <img src="../assets/brand/logo-header-footer.png" alt="Villa Adelaida" />
-      </a>
-      <button type="button" onclick="window.print()">Descargar / Imprimir PDF</button>
-    </nav>
+    <div id="mount-nav"></div>
+    <div id="mount-cover"></div>
+    <div id="mount-bienvenida-indice"></div>
+    <div id="mount-mosaic"></div>
+    <div id="mount-experiencia-destacada"></div>
+    <div id="mount-sazon"></div>
+    <div id="mount-interstitial"></div>
+    <div id="mount-ubicacion"></div>
+    <div id="mount-descubre-manaure"></div>
+    <div id="mount-contacto"></div>
+    <div id="mount-footer"></div>
 
-    <main>
-      <section class="brochure-cover" aria-labelledby="cover-title">
-        <div class="cover-content">
-          <p class="cover-kicker">BROCHURE · VILLA ADELAIDA · MANAURE, CESAR</p>
-          <h1 id="cover-title">Villa Adelaida:<br /><em>conecta con lo auténtico</em></h1>
-          <p class="cover-subtitle">Manaure, Cesar · A 200 metros del río Manaure</p>
-        </div>
-      </section>
-
-      <section class="brochure-index" aria-labelledby="index-title">
-        <p class="section-kicker">PARA RECORRER LA VILLA</p>
-        <h2 id="index-title">Índice</h2>
-        <ol>
-          <li><a href="#quienes-somos"><span>01</span>Quiénes somos</a></li>
-          <li><a href="#experiencias"><span>02</span>Experiencias</a></li>
-          <li><a href="#sazon"><span>03</span>Nuestra sazón</a></li>
-          <li><a href="#recuerdos-preview"><span>04</span>Recuerdos</a></li>
-          <li><a href="#descubre-manaure"><span>05</span>Descubre Manaure</a></li>
-          <li><a href="#ubicacion-contacto"><span>06</span>Ubicación y contacto</a></li>
-        </ol>
-      </section>
-
-      <section class="brochure-section brochure-about" id="quienes-somos" aria-labelledby="about-title">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">QUIÉNES SOMOS</p>
-            <h2 id="about-title">Un refugio natural con sabor a montaña</h2>
-          </div>
-          <p>A 200 metros del río Manaure, Villa Adelaida reúne naturaleza, descanso y cocina de territorio.</p>
-        </div>
-        <div class="about-copy">
-          <p>Villa Adelaida es uno de los complejos agro-ecoturísticos insignia de Manaure. A solo 200 metros del río, es un lugar para respirar aire puro, compartir sin prisa y conectar con la naturaleza viva de la región.</p>
-          <p>La experiencia combina el paisaje con la gastronomía de la Serranía del Perijá. Al frente del restaurante está el chef Pedro De Los Reyes, especializado en cocina criolla de alta montaña y en llevar a la mesa los sabores auténticos del territorio.</p>
-          <p>Los fines de semana, los kioscos privados se llenan de música de trío vallenato en vivo: una escena cálida para celebrar, conversar y crear recuerdos alrededor de la mesa.</p>
-        </div>
-      </section>
-
-      <section class="brochure-section brochure-experiences" id="experiencias" aria-labelledby="experiences-title">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">NUESTRAS EXPERIENCIAS</p>
-            <h2 id="experiences-title">Elige cómo quieres vivir Villa Adelaida</h2>
-          </div>
-          <p>Planes para compartir, descansar y conectar con la naturaleza, el río y la gastronomía típica regional.</p>
-        </div>
-
-        <div class="brochure-experiences-grid">
-          <article class="brochure-experience-card">
-            <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Piscina rodeada de naturaleza para un pasadía" />
-            <div class="brochure-experience-body">
-              <p class="experience-category">PASADÍAS</p>
-              <h3>Pasadía Villa Adelaida</h3>
-              <p>Experiencia de día completo con naturaleza, piscina, gastronomía y espacios para compartir.</p>
-              <div class="experience-meta"><span>Duración: día completo</span><strong>$95.000</strong></div>
-            </div>
-          </article>
-
-          <article class="brochure-experience-card">
-            <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Escapada romántica en un entorno natural" />
-            <div class="brochure-experience-body">
-              <p class="experience-category">PAREJAS</p>
-              <h3>Noche Romántica</h3>
-              <p>Experiencia para parejas con un ambiente especial, naturaleza y tiempo para conectar.</p>
-              <div class="experience-meta"><span>Duración: una noche</span><strong>$380.000</strong></div>
-            </div>
-          </article>
-
-          <article class="brochure-experience-card">
-            <img src="https://images.unsplash.com/photo-1504150558240-0b4fd8946624?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Familia compartiendo en un espacio natural" />
-            <div class="brochure-experience-body">
-              <p class="experience-category">FAMILIA</p>
-              <h3>Día Familiar</h3>
-              <p>Un plan para disfrutar en familia con espacios de naturaleza, piscina y actividades para compartir.</p>
-              <div class="experience-meta"><span>Duración: día completo</span><strong>$120.000</strong></div>
-            </div>
-          </article>
-
-          <article class="brochure-experience-card">
-            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Sendero natural entre montañas y vegetación" />
-            <div class="brochure-experience-body">
-              <p class="experience-category">NATURALEZA Y AVENTURA</p>
-              <h3>Senderismo Ecológico</h3>
-              <p>Recorrido para descubrir el entorno natural, respirar aire puro y vivir una pausa activa.</p>
-              <div class="experience-meta"><span>Duración: media jornada</span><strong>$95.000</strong></div>
-            </div>
-          </article>
-
-          <article class="brochure-experience-card">
-            <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Espacio de hospedaje rodeado de naturaleza" />
-            <div class="brochure-experience-body">
-              <p class="experience-category">ALOJAMIENTO</p>
-              <h3>Escapada Villa Adelaida</h3>
-              <p>Una pausa de descanso con hospedaje y la posibilidad de conectar con la naturaleza y el río.</p>
-              <div class="experience-meta"><span>Duración: fin de semana</span><strong>$380.000</strong></div>
-            </div>
-          </article>
-
-          <article class="brochure-experience-card">
-            <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Espacio preparado para un evento" />
-            <div class="brochure-experience-body">
-              <p class="experience-category">EVENTOS</p>
-              <h3>Eventos Villa Adelaida</h3>
-              <p>Espacios para celebraciones y reuniones con el ambiente natural y la sazón de Villa Adelaida.</p>
-              <div class="experience-meta"><span>Duración: según evento</span><strong>$120.000</strong></div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="brochure-section brochure-flavor" id="sazon" aria-labelledby="flavor-title">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">NUESTRA SAZÓN</p>
-            <h2 id="flavor-title">El sabor de la Serranía del Perijá</h2>
-          </div>
-          <p>El chef Pedro De Los Reyes lleva la cocina criolla de alta montaña a una mesa rodeada de naturaleza, kioscos privados y trío vallenato en vivo los fines de semana.</p>
-        </div>
-
-        <div class="flavor-grid">
-          <article class="flavor-card">
-            <p class="flavor-category">PLATOS CRIOLLOS</p>
-            <div class="flavor-title-row"><h3>Sancocho de Gallina con Arroz</h3><strong>$30.000</strong></div>
-            <p>Sancocho tradicional de gallina acompañado de arroz.</p>
-          </article>
-          <article class="flavor-card">
-            <p class="flavor-category">PLATOS CRIOLLOS</p>
-            <div class="flavor-title-row"><h3>Gallina Guisada</h3><strong>$32.000</strong></div>
-            <p>Gallina guisada con el sabor casero de la cocina regional.</p>
-          </article>
-          <article class="flavor-card">
-            <p class="flavor-category">PLATOS CRIOLLOS</p>
-            <div class="flavor-title-row"><h3>Chivo Guisado con Salsa de Coco</h3><strong>$40.000</strong></div>
-            <p>Chivo guisado acompañado de una suave salsa de coco.</p>
-          </article>
-          <article class="flavor-card">
-            <p class="flavor-category">ASADOS AL CARBÓN Y PARRILLA</p>
-            <div class="flavor-title-row"><h3>Churrasco de Cerdo (315 gr)</h3><strong>$42.000</strong></div>
-            <p>Corte de cerdo preparado a la parrilla, 315 gramos.</p>
-          </article>
-          <article class="flavor-card">
-            <p class="flavor-category">ASADOS AL CARBÓN Y PARRILLA</p>
-            <div class="flavor-title-row"><h3>Churrasco (320 gr al carbón)</h3><strong>$47.000</strong></div>
-            <p>Churrasco de 320 gramos sellado al carbón.</p>
-          </article>
-          <article class="flavor-card">
-            <p class="flavor-category">ASADOS AL CARBÓN Y PARRILLA</p>
-            <div class="flavor-title-row"><h3>Pechuga Asada al Carbón (330 gr)</h3><strong>$39.000</strong></div>
-            <p>Pechuga de 330 gramos asada al carbón.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="brochure-section brochure-memories" id="recuerdos-preview" aria-labelledby="memories-title">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">RECUERDOS</p>
-            <h2 id="memories-title">Momentos para volver a vivir</h2>
-          </div>
-          <p>Un vistazo a la naturaleza, el descanso y las historias que nacen en Villa Adelaida.</p>
-        </div>
-
-        <div class="memories-mosaic">
-          <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Paisaje natural amplio rodeado de árboles" />
-          <img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Piscina en un entorno natural" />
-          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&amp;fit=crop&amp;w=900&amp;q=85" alt="Restaurante rodeado de naturaleza" />
-        </div>
-        <div class="memories-footer">
-          <p>La galería completa e interactiva te espera en el sitio principal.</p>
-          <a href="../#recuerdos">Ver todos los recuerdos →</a>
-        </div>
-      </section>
-
-      <section class="brochure-section brochure-destinations" id="descubre-manaure" aria-labelledby="destinations-title">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">DESCUBRE MANAURE</p>
-            <h2 id="destinations-title">Más allá de Villa Adelaida</h2>
-          </div>
-          <p>Villa Adelaida es la puerta de entrada perfecta para conocer el resto de la oferta ecoturística de Manaure, Cesar.</p>
-        </div>
-
-        <div class="destinations-grid">
-          <article class="destination-card">
-            <p class="destination-number">01</p>
-            <h3>Cuatritours Manaure</h3>
-            <p>Rutas todoterreno guiadas en cuatrimotos por el casco urbano, los miradores de la Serranía, Pozo Azul y los senderos de los ríos.</p>
-          </article>
-          <article class="destination-card">
-            <p class="destination-number">02</p>
-            <h3>Parapente Manaure</h3>
-            <p>Vuelos biplaza guiados junto a pilotos certificados, con despegues desde las montañas más altas y vistas panorámicas del Cesar.</p>
-          </article>
-          <article class="destination-card">
-            <p class="destination-number">03</p>
-            <h3>Mashiramo Glamping</h3>
-            <p>Domos geodésicos de lujo con comidas tradicionales, caminatas por el bosque de niebla, horticultura y fogatas nocturnas.</p>
-          </article>
-          <article class="destination-card">
-            <p class="destination-number">04</p>
-            <h3>Finca Absolom - La Casita de la Mora</h3>
-            <p>Agroturismo familiar en la vereda El Cinco, con senderos de plantaciones, recolección de moras y miradores sobre las montañas.</p>
-          </article>
-          <article class="destination-card">
-            <p class="destination-number">05</p>
-            <h3>Los Pinos</h3>
-            <p>Bosque de pinos en Sabanas de León para caminar, acampar, tomar fotografías y compartir en familia, incluso con mascotas.</p>
-          </article>
-          <article class="destination-card">
-            <p class="destination-number">06</p>
-            <h3>Reserva Natural ProAves Chamicero del Perijá</h3>
-            <p>Santuario de más de 400 hectáreas para proteger el bosque altoandino y observar el endémico Chamicero del Perijá.</p>
-          </article>
-          <article class="destination-card">
-            <p class="destination-number">07</p>
-            <h3>Photours</h3>
-            <p>Rutas de senderismo guiado para aprender a fotografiar la flora, la fauna y los paisajes de Manaure con celular o cámara.</p>
-          </article>
-          <article class="destination-card">
-            <p class="destination-number">08</p>
-            <h3>Currascal</h3>
-            <p>Tradición cafetera de la zona alta, con recolección, despulpe y catación de café serrano junto a baños en riachuelos.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="brochure-section brochure-contact" id="contacto" aria-labelledby="contact-title">
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">UBICACIÓN Y CONTACTO</p>
-            <h2 id="contact-title">Planea tu visita a Villa Adelaida</h2>
-          </div>
-          <p>Escríbenos para elegir la mejor experiencia de naturaleza, río y gastronomía según la ocasión.</p>
-        </div>
-
-        <div class="contact-layout">
-          <div class="contact-details">
-            <div class="contact-detail">
-              <span class="contact-detail-icon" aria-hidden="true">☎</span>
-              <div>
-                <small>TELÉFONO</small>
-                <a href="tel:+573012706114">+57 301 270 6114</a>
-              </div>
-            </div>
-            <div class="contact-detail">
-              <span class="contact-detail-icon" aria-hidden="true">⌖</span>
-              <div>
-                <small>WHATSAPP</small>
-                <a class="no-print" href="https://wa.me/573012706114" target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a>
-              </div>
-            </div>
-            <div class="contact-detail">
-              <span class="contact-detail-icon" aria-hidden="true">⌂</span>
-              <div>
-                <small>DIRECCIÓN</small>
-                <p>Carretera Troncal vía Arjona, Sector La Rosita, Manaure, Cesar</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="brochure-map">
-            <iframe
-              title="Mapa de Villa Adelaida en Manaure, Cesar"
-              src="https://www.google.com/maps?q=Villa+Adelaida,+Manaure,+Cesar,+Colombia&amp;output=embed"
-              width="100%"
-              height="100%"
-              loading="lazy"
-              allowfullscreen
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- secciones de contenido: siguientes prompts -->
-
-    <footer class="brochure-footer">
-      <div class="footer-brand">
-        <img src="../assets/brand/logo-header-footer.png" alt="Villa Adelaida" />
-        <p>Centro Turístico y Ecológico. Naturaleza, río y gastronomía típica en Manaure, Cesar.</p>
-      </div>
-      <div class="footer-socials" aria-label="Redes sociales de Villa Adelaida">
-        <a href="https://www.facebook.com/villadelaidatur/" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Villa Adelaida">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M14 8h3V4h-3c-3.3 0-5 2-5 5v3H6v4h3v8h4v-8h3l1-4h-4V9c0-.7.3-1 1-1Z" /></svg>
-        </a>
-        <a href="https://www.instagram.com/restaurantevilladelaida/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Villa Adelaida">
-          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect width="17" height="17" x="3.5" y="3.5" rx="4" fill="none" stroke="currentColor" stroke-width="1.8" /><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8" /><circle cx="17.4" cy="6.7" r="1" fill="currentColor" /></svg>
-        </a>
-      </div>
-      <a class="footer-back no-print" href="../">← Volver al sitio principal</a>
-    </footer>
+    <script src="js/load-sections.js"></script>
+    <script src="js/reveal.js"></script>
   </body>
 </html>

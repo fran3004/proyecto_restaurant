@@ -1,0 +1,43 @@
+.interstitial {
+  position: relative;
+  min-height: clamp(320px, 55vh, 620px);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.interstitial img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.interstitial-overlay {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+  padding: 32px;
+  max-width: 720px;
+}
+
+.interstitial-overlay h2 {
+  font-size: clamp(36px, 7vw, 72px);
+  text-transform: uppercase;
+}
+
+.interstitial-overlay p {
+  margin: 16px 0 0;
+  font-family: var(--font-ui);
+  font-size: 16px;
+  color: rgba(255, 255, 255, .85);
+}
+
+.interstitial::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 51, 29, .48);
+}
