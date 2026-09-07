@@ -1,0 +1,132 @@
+.mosaic {
+  padding: clamp(56px, 9vw, 110px) var(--page-pad);
+  background: var(--paper);
+}
+
+.mosaic-head {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  max-width: var(--max);
+  margin: 0 auto 36px;
+}
+
+.mosaic-title {
+  font-size: clamp(28px, 4.5vw, 46px);
+  max-width: 15ch;
+  line-height: 1.02;
+  margin-bottom: 0;
+}
+
+.mosaic-lead {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: clamp(16px, 1.8vw, 19px);
+  font-weight: 600;
+  line-height: 1.55;
+  color: var(--ink);
+  max-width: 680px;
+}
+
+.mosaic-note {
+  margin: 0;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 680px;
+}
+
+.mosaic-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr .8fr;
+  grid-template-rows: auto auto;
+  gap: 14px;
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.tile {
+  position: relative;
+  padding: 28px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.tile-hero {
+  grid-row: span 2;
+  min-height: 100%;
+  background: center / cover no-repeat;
+  color: #fff;
+}
+
+.tile-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(18, 51, 29, .62) 0%, rgba(18, 51, 29, .88) 100%);
+  z-index: 0;
+}
+
+.tile-photo {
+  background: center / cover;
+  color: #fff;
+}
+
+.tile-photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(18, 51, 29, .88), rgba(18, 51, 29, .2));
+}
+
+.tile-plain {
+  background: var(--white);
+  border: 1px solid var(--line);
+}
+
+.tile > * { position: relative; z-index: 1; }
+
+.tile-tag {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  opacity: .8;
+  margin-bottom: 8px;
+}
+
+.tile h3 {
+  font-size: clamp(22px, 2.5vw, 32px);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.tile-price {
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: var(--lime);
+  margin-top: 8px;
+}
+
+.tile-plain .tile-price { color: var(--green); }
+
+.tile-note {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  line-height: 1.45;
+  opacity: .85;
+}
+
+@media (max-width: 980px) {
+  .mosaic-grid { grid-template-columns: 1fr 1fr; }
+  .tile-hero { grid-row: span 1; grid-column: span 2; }
+}
+
+@media (max-width: 640px) {
+  .mosaic-grid { grid-template-columns: 1fr; }
+  .tile-hero { grid-column: span 1; }
+}
