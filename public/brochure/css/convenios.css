@@ -1,0 +1,1468 @@
+.convenios-section {
+  padding: var(--space-section) var(--page-pad) 0;
+  background: var(--paper);
+  overflow-x: hidden;
+}
+
+.convenios-section + .convenios-section {
+  padding-top: clamp(48px, 7vw, 84px);
+}
+
+.convenios-intro {
+  max-width: var(--max);
+  margin: 0 auto var(--space-5);
+  display: grid;
+  gap: var(--space-3);
+}
+
+.convenios-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--forest);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.convenio-rural,
+.convenio-immersive,
+.convenio-editorial,
+.convenio-quiet,
+.convenio-block,
+.convenio-feature,
+.convenio-side {
+  border: 1px solid rgba(22, 43, 30, .08);
+  box-shadow: var(--shadow-soft);
+}
+
+.convenios-kicker::before {
+  content: "";
+  width: 52px;
+  height: 1px;
+  background: rgba(22, 43, 30, .3);
+}
+
+.convenios-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr);
+  gap: clamp(20px, 4vw, 40px);
+  align-items: end;
+}
+
+.convenios-header h2 {
+  max-width: 12ch;
+  font-family: var(--serif);
+  font-size: clamp(32px, 5vw, 58px);
+  line-height: .92;
+  letter-spacing: -.03em;
+  color: var(--forest);
+}
+
+.convenios-lead {
+  margin: 0;
+  max-width: 28rem;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(22, 43, 30, .72);
+}
+
+.convenios-shell {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(24px, 3vw, 36px);
+}
+
+.convenios-contrast {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(18px, 2.2vw, 30px);
+}
+
+.convenio-rural-journey {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(22px, 3vw, 34px);
+}
+
+.convenio-rural {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  overflow: hidden;
+  border: 1px solid rgba(59, 45, 30, .12);
+  background: linear-gradient(135deg, rgba(248, 240, 227, 1) 0%, rgba(239, 229, 214, 1) 100%);
+  box-shadow: var(--shadow-soft);
+}
+
+.convenio-rural::before {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  right: -80px;
+  top: -50px;
+  border-radius: 58% 42% 61% 39% / 41% 50% 50% 59%;
+  background: rgba(170, 113, 54, .12);
+}
+
+.convenio-rural--mora {
+  background: linear-gradient(135deg, rgba(246, 235, 222, 1) 0%, rgba(234, 214, 182, 1) 100%);
+}
+
+.convenio-rural--topiarios {
+  background: linear-gradient(135deg, rgba(232, 241, 227, 1) 0%, rgba(216, 227, 206, 1) 100%);
+}
+
+.convenio-rural-media {
+  position: relative;
+  min-height: 560px;
+  background-size: cover;
+  background-position: center;
+  isolation: isolate;
+}
+
+.convenio-rural-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center center;
+  background: #e7d5b5;
+  z-index: 0;
+}
+
+.convenio-rural--mora .convenio-rural-media {
+  background: #e4d4b5;
+  background-position: center center;
+}
+
+.convenio-rural--topiarios .convenio-rural-media {
+  background-image: url('https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=1200&q=80');
+  background-position: center 40%;
+}
+
+.convenio-rural-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(58, 39, 25, .12), rgba(58, 39, 25, 0));
+}
+
+.convenio-rural-label {
+  position: absolute;
+  z-index: 1;
+  left: 22px;
+  top: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 12px;
+  background: rgba(63, 41, 25, .22);
+  border: 1px solid rgba(255,255,255,.25);
+  color: #f8f3eb;
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.convenio-rural-copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  padding: clamp(28px, 3.2vw, 42px);
+  color: var(--forest);
+}
+
+.convenios-section--sabores-paisaje .convenio-rural--mora .convenio-rural-copy {
+  background: linear-gradient(180deg, rgba(255,255,255,.2), rgba(255,255,255,.08));
+}
+
+.convenios-section--sabores-paisaje .convenio-rural--topiarios .convenio-rural-copy {
+  background: linear-gradient(180deg, rgba(255,255,255,.24), rgba(234,241,227,.18));
+}
+
+.convenio-rural-copy h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(30px, 3vw, 46px);
+  line-height: .95;
+  letter-spacing: -.04em;
+  color: var(--forest);
+}
+
+.convenio-rural-copy p {
+  margin: 0;
+  color: rgba(22, 43, 30, .88);
+}
+
+.convenio-meta-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.convenio-meta {
+  display: grid;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(52, 57, 44, .18);
+}
+
+.convenio-meta span {
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(22, 43, 30, .82);
+}
+
+.convenio-meta strong {
+  font-size: 13px;
+  line-height: 1.7;
+  font-weight: 600;
+  color: var(--forest);
+}
+
+.convenios-section--sabores-paisaje .convenio-meta > span,
+.convenios-section--sabores-paisaje .convenio-meta > strong,
+.convenios-section--sabores-paisaje .convenio-rural--mora .convenio-meta > span,
+.convenios-section--sabores-paisaje .convenio-rural--mora .convenio-meta > strong,
+.convenios-section--sabores-paisaje .convenio-rural--topiarios .convenio-meta > span,
+.convenios-section--sabores-paisaje .convenio-rural--topiarios .convenio-meta > strong {
+  color: #111111 !important;
+  text-shadow: none !important;
+  opacity: 1 !important;
+}
+
+.convenio-signature {
+  width: fit-content;
+  padding: 10px 14px;
+  border: 1px solid rgba(123, 80, 23, .25);
+  background: rgba(255,255,255,.3);
+  color: var(--forest);
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.convenio-rural-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.convenio-rural-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(13, 29, 21, .9);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.convenio-rural-list li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(137, 89, 40, .82);
+  box-shadow: 0 0 0 4px rgba(137, 89, 40, .12);
+}
+
+.convenio-editorial-collection {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(24px, 3vw, 38px);
+}
+
+.convenio-editorial {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+  min-height: 640px;
+  overflow: hidden;
+  border: 1px solid rgba(22, 43, 30, .08);
+  background: #f3efe8;
+  box-shadow: var(--shadow-soft);
+}
+
+.convenio-editorial--periplo {
+  background: rgba(247, 242, 235, .9);
+}
+
+.convenio-editorial--metallura {
+  background: rgba(242, 236, 225, .9);
+}
+
+.convenio-editorial-visual {
+  position: relative;
+  min-height: 640px;
+  background-size: cover;
+  background-position: center;
+}
+
+.convenio-editorial--periplo .convenio-editorial-visual {
+  background-image: url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1400&q=80');
+  background-position: center 62%;
+}
+
+.convenio-editorial--metallura .convenio-editorial-visual {
+  background-image: url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1400&q=80');
+  background-position: center 50%;
+}
+
+.convenio-editorial-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(18, 31, 21, .12), rgba(18, 31, 21, .52));
+}
+
+.convenio-editorial-tag {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  z-index: 1;
+  display: inline-flex;
+  padding: 9px 12px;
+  border: 1px solid rgba(255,255,255,.24);
+  background: rgba(18, 31, 21, .2);
+  backdrop-filter: blur(4px);
+  color: #f7f4ee;
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.convenio-editorial-figure {
+  position: absolute;
+  right: 26px;
+  bottom: 18px;
+  z-index: 1;
+  font-family: var(--serif);
+  font-size: clamp(62px, 7vw, 110px);
+  line-height: 1;
+  letter-spacing: -.08em;
+  color: rgba(255,255,255,.22);
+}
+
+.convenio-editorial-copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  padding: clamp(28px, 3vw, 46px);
+  color: var(--forest);
+}
+
+.convenios-section--montana-biodiversidad .convenio-editorial--periplo .convenio-editorial-copy {
+  background: linear-gradient(180deg, rgba(248,244,237,.18), rgba(247,242,235,.34));
+}
+
+.convenios-section--montana-biodiversidad .convenio-editorial--metallura .convenio-editorial-copy {
+  background: linear-gradient(180deg, rgba(242,236,225,.12), rgba(242,236,225,.26));
+}
+
+.convenio-editorial-copy h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(34px, 3vw, 52px);
+  line-height: .94;
+  letter-spacing: -.05em;
+  color: var(--forest);
+}
+
+.convenio-editorial-copy p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: rgba(22, 43, 30, .72);
+}
+
+.convenio-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(22, 43, 30, .14);
+}
+
+.convenio-facts div {
+  display: grid;
+  gap: 8px;
+}
+
+.convenio-facts span {
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(22, 43, 30, .7);
+}
+
+.convenio-facts strong {
+  color: var(--forest);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.convenio-editorial-note {
+  display: grid;
+  gap: 8px;
+  padding: 14px 0 0;
+  border-top: 1px solid rgba(22, 43, 30, .12);
+}
+
+.convenio-editorial-note strong {
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(22, 43, 30, .72);
+}
+
+.convenio-editorial-note p {
+  color: var(--forest);
+  font-size: 14px;
+}
+
+.convenio-editorial-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.convenio-editorial-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(22, 43, 30, .78);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.convenio-editorial-list li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(88, 109, 73, .86);
+  box-shadow: 0 0 0 4px rgba(88, 109, 73, .1);
+}
+
+.convenio-editorial--metallura .convenio-editorial-copy {
+  order: 1;
+}
+
+.convenio-editorial--metallura .convenio-editorial-visual {
+  order: 2;
+}
+
+.convenio-gallery-quiet {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(22px, 2.5vw, 32px);
+}
+
+.convenio-quiet {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+  min-height: 620px;
+  overflow: hidden;
+  border: 1px solid rgba(35, 42, 31, .1);
+  background: linear-gradient(135deg, rgba(247, 242, 235, 1) 0%, rgba(236, 230, 219, 1) 100%);
+  box-shadow: var(--shadow-soft);
+}
+
+.convenio-quiet--photours {
+  background: rgba(247, 242, 235, .96);
+}
+
+.convenio-quiet--coruscans {
+  background: rgba(236, 233, 224, .96);
+}
+
+.convenio-quiet-media {
+  position: relative;
+  min-height: 620px;
+  background-size: cover;
+  background-position: center;
+}
+
+.convenio-quiet--photours .convenio-quiet-media {
+  background-image: url('https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1200&q=80');
+  background-position: center 52%;
+}
+
+.convenio-quiet--coruscans .convenio-quiet-media {
+  background-image: url('https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=1200&q=80');
+  background-position: center 38%;
+}
+
+.convenio-quiet-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(22, 20, 17, .06), rgba(22, 20, 17, .34));
+}
+
+.convenio-quiet-caption,
+.convenio-rural-label,
+.convenio-editorial-tag,
+.convenio-immersive-tag,
+.convenio-flag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255,255,255,.2);
+  background: rgba(18, 31, 21, .22);
+  color: #f8f4ee;
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.convenio-quiet-caption {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  z-index: 1;
+}
+
+.convenio-quiet-copy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  padding: clamp(28px, 2.8vw, 40px);
+  color: var(--forest);
+}
+
+.convenios-section--fotografia-descanso .convenio-quiet--photours .convenio-quiet-copy {
+  background: linear-gradient(180deg, rgba(255,255,255,.24), rgba(247,242,235,.4));
+}
+
+.convenios-section--fotografia-descanso .convenio-quiet--coruscans .convenio-quiet-copy {
+  background: linear-gradient(180deg, rgba(250,247,240,.2), rgba(243,235,221,.52));
+}
+
+.convenio-quiet-copy h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(32px, 3vw, 46px);
+  line-height: .96;
+  letter-spacing: -.05em;
+  color: var(--forest);
+}
+
+.convenio-quiet-note {
+  display: grid;
+  gap: 8px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(22, 43, 30, .12);
+}
+
+.convenio-quiet-note strong {
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(22, 43, 30, .7);
+}
+
+.convenio-quiet-note p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--forest);
+}
+
+.convenio-quiet-signature {
+  width: fit-content;
+  padding: 10px 14px;
+  border: 1px solid rgba(64, 71, 52, .18);
+  background: rgba(255,255,255,.28);
+  color: var(--forest);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.convenio-facts--compact {
+  gap: 12px;
+}
+
+.convenio-facts--compact strong {
+  font-size: 12px;
+}
+
+@media (max-width: 980px) {
+  .convenio-rural {
+    grid-template-columns: 1fr;
+  }
+
+  .convenio-rural-media {
+    min-height: 420px;
+  }
+
+  .convenio-quiet {
+    grid-template-columns: 1fr;
+  }
+
+  .convenio-quiet-media {
+    min-height: 420px;
+  }
+
+  .convenio-side {
+    grid-template-rows: auto auto;
+  }
+
+  .convenio-side-image {
+    min-height: 240px;
+  }
+}
+
+@media (max-width: 640px) {
+  .convenios-section,
+  .convenios-shell,
+  .convenios-contrast,
+  .convenio-rural-journey,
+  .convenio-editorial-collection,
+  .convenio-gallery-quiet {
+    overflow-x: hidden;
+  }
+
+  .convenio-rural-copy,
+  .convenio-rural-label,
+  .convenio-quiet-copy,
+  .convenio-editorial-copy,
+  .convenio-immersive-copy,
+  .convenio-side-copy {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .convenio-rural-copy {
+    padding-top: 22px;
+    padding-bottom: 24px;
+  }
+
+  .convenio-rural-list li,
+  .convenio-editorial-list li,
+  .convenio-mini-list li {
+    font-size: 12.5px;
+  }
+
+  .convenio-facts--compact {
+    grid-template-columns: 1fr;
+  }
+
+  .convenio-flag,
+  .convenio-rural-label,
+  .convenio-editorial-tag,
+  .convenio-quiet-caption,
+  .convenio-immersive-tag {
+    white-space: normal;
+    max-width: calc(100% - 28px);
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 980px) {
+  .convenio-editorial {
+    grid-template-columns: 1fr;
+  }
+
+  .convenio-editorial-visual {
+    min-height: 420px;
+  }
+
+  .convenio-editorial--metallura .convenio-editorial-copy,
+  .convenio-editorial--metallura .convenio-editorial-visual {
+    order: initial;
+  }
+}
+
+@media (max-width: 640px) {
+  .convenio-editorial-copy {
+    padding: 22px 20px 24px;
+  }
+
+  .convenio-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .convenio-rural-label,
+  .convenio-quiet-caption,
+  .convenio-editorial-tag,
+  .convenio-immersive-tag,
+  .convenio-flag {
+    letter-spacing: .12em;
+  }
+}
+
+.convenio-immersive {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(300px, .8fr);
+  overflow: hidden;
+  border: 1px solid rgba(22, 43, 30, .08);
+  box-shadow: var(--shadow-soft);
+}
+
+.convenio-immersive--flight {
+  background: rgba(17, 35, 30, .98);
+}
+
+.convenio-immersive--glamping {
+  background: var(--sand);
+}
+
+.convenio-immersive-media {
+  position: relative;
+  min-height: 620px;
+  background-size: cover;
+  background-position: center;
+}
+
+.convenio-immersive--flight .convenio-immersive-media {
+  background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1400&q=80');
+  background-position: center 50%;
+}
+
+.convenio-immersive--glamping .convenio-immersive-media {
+  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1400&q=80');
+  background-position: center 58%;
+}
+
+.convenio-immersive-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(8, 20, 18, .1), rgba(8, 20, 18, .52));
+}
+
+.convenio-immersive-tag {
+  position: absolute;
+  left: 22px;
+  top: 22px;
+  z-index: 1;
+  display: inline-flex;
+  padding: 9px 12px;
+  background: rgba(12, 28, 24, .32);
+  border: 1px solid rgba(255,255,255,.2);
+  backdrop-filter: blur(6px);
+  color: #f6f0e8;
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.convenio-immersive-figure {
+  position: absolute;
+  right: 26px;
+  bottom: 16px;
+  z-index: 1;
+  font-family: var(--serif);
+  font-size: clamp(86px, 12vw, 140px);
+  line-height: 1;
+  letter-spacing: -.08em;
+  color: rgba(255,255,255,.18);
+}
+
+.convenio-immersive-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  padding: clamp(28px, 3.5vw, 42px);
+}
+
+.convenio-immersive--flight .convenio-immersive-copy {
+  background: rgba(8, 22, 19, .65);
+  color: #f7f3ec;
+}
+
+.convenio-immersive--glamping .convenio-immersive-copy {
+  background: linear-gradient(180deg, rgba(255,255,255,.3) 0%, rgba(255,255,255,.2) 100%);
+  color: var(--forest);
+}
+
+.convenios-section--adrenalina-escapada .convenio-immersive--flight .convenio-immersive-copy {
+  background: linear-gradient(180deg, rgba(8, 22, 19, .78) 0%, rgba(8, 22, 19, .88) 100%);
+  border-left: 1px solid rgba(255,255,255,.08);
+}
+
+.convenios-section--adrenalina-escapada .convenio-immersive--glamping .convenio-immersive-copy {
+  background: linear-gradient(180deg, rgba(255,255,255,.34) 0%, rgba(249,242,229,.72) 100%);
+  border-left: 1px solid rgba(75, 67, 48, .08);
+}
+
+.convenio-immersive-copy h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(34px, 3.2vw, 54px);
+  line-height: .9;
+  letter-spacing: -.04em;
+}
+
+.convenio-immersive--flight .convenio-immersive-copy h3,
+.convenio-immersive--flight .convenio-immersive-copy p,
+.convenio-immersive--flight .convenio-immersive-copy .convenio-list li,
+.convenio-immersive--flight .convenio-immersive-copy .convenio-stats span,
+.convenio-immersive--flight .convenio-immersive-copy .convenio-stats strong,
+.convenio-immersive--flight .convenio-immersive-copy .convenio-tag {
+  color: #f7f3ec;
+}
+
+.convenio-immersive--glamping .convenio-immersive-copy h3,
+.convenio-immersive--glamping .convenio-immersive-copy p,
+.convenio-immersive--glamping .convenio-immersive-copy .convenio-list li,
+.convenio-immersive--glamping .convenio-immersive-copy .convenio-stats span,
+.convenio-immersive--glamping .convenio-immersive-copy .convenio-stats strong,
+.convenio-immersive--glamping .convenio-immersive-copy .convenio-tag,
+.convenio-immersive--glamping .convenio-benefit span,
+.convenio-immersive--glamping .convenio-benefit strong,
+.convenio-immersive--glamping .convenio-biocultural {
+  color: var(--forest);
+}
+
+.convenio-immersive-copy p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.convenio-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,.18);
+}
+
+.convenio-stats--warm {
+  border-top-color: rgba(22, 43, 30, .18);
+}
+
+.convenio-stats div {
+  display: grid;
+  gap: 6px;
+}
+
+.convenio-stats span {
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  opacity: .76;
+}
+
+.convenio-stats strong {
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.convenio-benefit {
+  display: grid;
+  gap: 6px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(22, 43, 30, .18);
+}
+
+.convenio-benefit span {
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.convenio-benefit strong {
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.convenio-biocultural {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.convenio-block {
+  position: relative;
+  overflow: hidden;
+  min-height: 540px;
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  background: var(--linen);
+  border: 1px solid rgba(22, 43, 30, .08);
+  box-shadow: var(--shadow-soft);
+}
+
+.convenio-media {
+  position: relative;
+  min-height: 420px;
+  background-size: cover;
+  background-position: center;
+}
+
+.convenio-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(18, 51, 29, .18), rgba(18, 51, 29, .02));
+}
+
+.convenio-copy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  padding: clamp(28px, 4vw, 48px);
+  background: rgba(255,255,255,.35);
+}
+
+.convenio-tag {
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--mist);
+}
+
+.convenio-brand {
+  display: block;
+  max-width: 150px;
+  max-height: 72px;
+  width: auto;
+  height: auto;
+  margin-bottom: 8px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 20px rgba(10, 20, 16, .12));
+}
+
+.convenio-copy h3 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: .94;
+  color: var(--forest);
+}
+
+.convenio-copy p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(22, 43, 30, .75);
+}
+
+.convenio-copy strong {
+  color: inherit;
+  font-weight: 700;
+}
+
+.convenio-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.convenio-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: rgba(22, 43, 30, .74);
+}
+
+.convenio-list li::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 0 3px rgba(200, 134, 10, .15);
+}
+
+.convenio-block[data-tone="dark"] .convenio-copy {
+  background: rgba(18, 51, 29, .96);
+}
+
+.convenio-block[data-tone="dark"] .convenio-tag,
+.convenio-block[data-tone="dark"] .convenio-copy h3,
+.convenio-block[data-tone="dark"] .convenio-copy p,
+.convenio-block[data-tone="dark"] .convenio-list li {
+  color: var(--linen);
+}
+
+.convenio-block[data-tone="dark"] .convenio-list li::before {
+  background: var(--amber);
+  box-shadow: 0 0 0 3px rgba(232, 160, 32, .18);
+}
+
+.convenio-block[data-tone="warm"] {
+  background: #f6ead9;
+}
+
+.convenio-block[data-tone="warm"] .convenio-copy {
+  background: rgba(255,255,255,.18);
+}
+
+.convenio-block[data-tone="mountain"] {
+  background: #edf0ea;
+}
+
+.convenio-block[data-tone="mountain"] .convenio-copy {
+  background: rgba(255,255,255,.28);
+}
+
+.convenio-block[data-tone="quiet"] {
+  background: #f1efe9;
+}
+
+.convenio-block[data-tone="quiet"] .convenio-copy {
+  background: rgba(255,255,255,.4);
+}
+
+.convenio-block[data-variant="reverse"] {
+  grid-template-columns: .8fr 1.2fr;
+}
+
+.convenio-block[data-variant="reverse"] .convenio-media {
+  order: 2;
+}
+
+.convenio-block[data-variant="reverse"] .convenio-copy {
+  order: 1;
+}
+
+.convenio-block[data-variant="split"] {
+  grid-template-columns: .9fr 1.1fr;
+}
+
+.convenio-block[data-variant="split"] .convenio-media {
+  min-height: 540px;
+}
+
+@media (max-width: 980px) {
+  .convenios-header {
+    grid-template-columns: 1fr;
+  }
+
+  .convenios-editorial {
+    grid-template-columns: 1fr;
+  }
+
+  .convenio-feature {
+    grid-template-columns: 1fr;
+  }
+
+  .convenio-feature-media {
+    min-height: 460px;
+  }
+
+  .convenio-side {
+    margin-top: 0;
+  }
+
+  .convenio-immersive {
+    grid-template-columns: 1fr;
+  }
+
+  .convenio-immersive-media {
+    min-height: 420px;
+  }
+
+  .convenio-block,
+  .convenio-block[data-variant="reverse"],
+  .convenio-block[data-variant="split"] {
+    grid-template-columns: 1fr;
+  }
+
+  .convenio-media {
+    min-height: 340px;
+  }
+
+  .convenio-block[data-variant="reverse"] .convenio-media,
+  .convenio-block[data-variant="reverse"] .convenio-copy {
+    order: initial;
+  }
+}
+
+@media (max-width: 640px) {
+  .convenio-copy,
+  .convenio-feature-copy,
+  .convenio-immersive-copy,
+  .convenio-quiet-copy,
+  .convenio-rural-copy,
+  .convenio-editorial-copy,
+  .convenio-side-copy {
+    padding: 22px 20px 24px;
+  }
+
+  .convenios-intro {
+    margin-bottom: 28px;
+  }
+
+  .convenio-feature-copy {
+    padding: 22px 20px 24px;
+  }
+
+  .convenio-meta-row {
+    grid-template-columns: 1fr;
+  }
+
+  .convenio-hero-meta {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .convenio-hero-meta strong {
+    max-width: none;
+    font-size: clamp(24px, 7vw, 36px);
+  }
+
+  .convenio-immersive-copy {
+    padding: 22px 20px 24px;
+  }
+
+  .convenio-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .convenio-brand {
+    max-width: 120px;
+    max-height: 56px;
+  }
+
+  .convenio-editorial-figure,
+  .convenio-immersive-figure {
+    right: 16px;
+    bottom: 12px;
+    font-size: clamp(54px, 16vw, 88px);
+  }
+
+  .convenio-feature-copy h3,
+  .convenio-immersive-copy h3,
+  .convenio-rural-copy h3,
+  .convenio-editorial-copy h3,
+  .convenio-quiet-copy h3,
+  .convenio-side-copy h3 {
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+}
+
+.convenio-feature {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, .8fr);
+  background: rgba(12, 38, 28, .98);
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+.convenio-feature-media {
+  position: relative;
+  min-height: 640px;
+  background-image: linear-gradient(135deg, rgba(12,38,28,.1), rgba(12,38,28,.5)), url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1500&q=80');
+  background-size: cover;
+  background-position: center 55%;
+}
+
+.convenio-feature-media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(8, 20, 24, .14), rgba(8, 20, 24, .58));
+}
+
+.convenio-flag {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255,255,255,.26);
+  background: rgba(10, 20, 16, .28);
+  backdrop-filter: blur(8px);
+  color: #f5f0e8;
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.convenio-hero-meta {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  bottom: 22px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #f5f0e8;
+}
+
+.convenio-hero-meta span {
+  font-size: 10px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, .9);
+}
+
+.convenio-hero-meta strong {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 44px);
+  line-height: .95;
+  letter-spacing: -.04em;
+  max-width: 10ch;
+  color: #ffffff;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, .45), 0 0 2px rgba(0, 0, 0, .5);
+}
+
+.convenio-feature-copy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  padding: clamp(26px, 3vw, 38px);
+  background: linear-gradient(180deg, rgba(8, 22, 19, .78) 0%, rgba(8, 22, 19, .9) 100%);
+  color: #f9f5ee;
+}
+
+.convenios-section--agua-aventura .convenio-side-copy {
+  background: linear-gradient(180deg, rgba(255,255,255,.38), rgba(246,240,230,.82));
+}
+
+.convenio-index {
+  color: rgba(255,255,255,.95);
+  font-size: 56px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.05em;
+  text-shadow: 0 3px 16px rgba(0, 0, 0, .35);
+}
+
+.convenios-section--agua-aventura .convenio-index {
+  color: #ffffff !important;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, .5);
+}
+
+.convenio-feature-heading {
+  display: grid;
+  gap: 8px;
+}
+
+.convenio-eyebrow {
+  display: inline-block;
+  color: rgba(255,255,255,.9);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.convenios-section--agua-aventura .convenio-eyebrow {
+  color: #f8f3ee !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, .35);
+}
+
+.convenio-feature-copy h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: .95;
+  letter-spacing: -.04em;
+  color: #ffffff;
+  text-shadow: 0 3px 18px rgba(0, 0, 0, .42);
+}
+
+.convenios-section--agua-aventura .convenio-feature-copy h3 {
+  color: #ffffff !important;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, .52);
+}
+
+.convenio-feature-copy p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(255,255,255,.98);
+}
+
+.convenios-section--agua-aventura .convenio-feature-copy p {
+  color: #f8f4ee !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, .28);
+}
+
+.convenios-section--agua-aventura .convenio-list li {
+  color: #ffffff !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, .35);
+}
+
+.convenios-section--agua-aventura .convenio-list li::before {
+  background: #f3be5a !important;
+  box-shadow: 0 0 0 3px rgba(243, 190, 90, .25);
+}
+
+.convenio-meta-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,.14);
+}
+
+.convenio-meta-row div {
+  display: grid;
+  gap: 6px;
+}
+
+.convenio-meta-row span,
+.convenio-side-meta span {
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.9);
+}
+
+.convenio-meta-row strong,
+.convenio-side-meta strong {
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.convenios-section--sabores-paisaje .convenio-rural--mora .convenio-meta strong,
+.convenios-section--sabores-paisaje .convenio-rural--topiarios .convenio-meta strong {
+  color: #111111 !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+}
+
+#convenios-sabores-paisaje .convenio-meta strong {
+  color: #111111 !important;
+  font-weight: 700 !important;
+  text-shadow: none !important;
+}
+
+.convenio-side {
+  position: relative;
+  display: grid;
+  grid-template-rows: minmax(0, 240px) auto;
+  background: #f7f3ec;
+  border: 1px solid rgba(22, 43, 30, .08);
+  box-shadow: var(--shadow-soft);
+  margin-top: clamp(34px, 5vw, 62px);
+  max-height: none;
+}
+
+.convenio-side-image {
+  position: relative;
+  overflow: hidden;
+  min-height: 200px;
+  height: clamp(200px, 22vw, 280px);
+  max-height: 280px;
+}
+
+.convenio-side-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.convenio-side-copy {
+  display: grid;
+  gap: 14px;
+  padding: clamp(18px, 3vw, 26px);
+  background: rgba(255,255,255,.7);
+}
+
+.convenio-side-copy h3 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 38px);
+  line-height: .96;
+  letter-spacing: -.04em;
+  color: var(--forest);
+}
+
+.convenio-side-copy p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.7;
+  color: rgba(22, 43, 30, .82);
+}
+
+.convenio-side-meta {
+  display: grid;
+  gap: 6px;
+  padding-top: 6px;
+  border-top: 1px solid rgba(17, 39, 27, .14);
+}
+
+.convenio-side-meta span {
+  color: rgba(22, 43, 30, .86);
+}
+
+.convenio-side-meta strong {
+  color: var(--forest);
+}
+
+.convenio-mini-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.convenio-mini-list li {
+  position: relative;
+  padding-left: 16px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgba(22, 43, 30, .88);
+}
+
+.convenio-mini-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d67915;
+  box-shadow: 0 0 0 2px rgba(214, 121, 21, .18);
+}
+
+
