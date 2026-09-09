@@ -14,13 +14,21 @@ const secciones = [
 
 const cargarSeccion = ([mountId, ruta]) =>
   fetch(ruta)
-    .then((respuesta) => respuesta.text())
+    .then((respuesta) => {
+      if (!respuesta.ok) {
+        throw new Error(`No se pudo cargar ${ruta}: ${respuesta.status}`);
+      }
+
+      return respuesta.text();
+    })
     .then((contenido) => {
       document.getElementById(mountId).innerHTML = contenido;
     });
 
 Promise.all(secciones.map(cargarSeccion)).then(() => {
   document.dispatchEvent(new Event('secciones-listas'));
+}).catch((error) => {
+  console.error('No se pudo completar la carga del brochure.', error);
 });
 
 document.addEventListener('click', (evento) => {
