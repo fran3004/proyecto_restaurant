@@ -10,6 +10,7 @@
   body {
     background: var(--cream) !important;
     font-size: 10pt;
+    scroll-behavior: auto !important;
   }
 
   .no-print { display: none !important; }
@@ -19,6 +20,42 @@
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
+  }
+
+  .btn:hover,
+  .btn:focus-visible,
+  .contact-link:hover,
+  .contact-link:focus-visible,
+  .map-link:hover,
+  .map-link:focus-visible {
+    transform: none !important;
+    box-shadow: none !important;
+    transition: none !important;
+  }
+
+  .map-link:hover,
+  .map-link:focus-visible {
+    background: transparent !important;
+    color: var(--green) !important;
+  }
+
+  .contact-link:hover,
+  .contact-link:focus-visible {
+    border-color: var(--line) !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  img,
+  iframe {
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 
   .spread,
@@ -76,15 +113,18 @@
   }
 
   .cover-photo { min-height: 100%; }
+  .cover-photo::after { opacity: 1; transition: none; }
   .cover-content { break-inside: avoid; max-width: 100%; }
   .cover-title { font-size: 26pt; max-width: none; line-height: 1.08; }
   .cover-meta { break-inside: avoid; }
+  .cover-continue { display: none !important; }
 
   #contacto { break-before: page; page-break-before: always; }
 
   .interstitial {
     min-height: 42mm;
     max-height: 48mm;
+    margin-block: 0;
     break-inside: avoid;
     break-after: avoid;
     page-break-after: avoid;
@@ -131,6 +171,7 @@
   .tile { min-height: 38mm; padding: 14px; }
 
   .map-layout { grid-template-columns: 1fr; }
+  .map-editorial .map-copy { padding: 0; }
   .map-frame { max-height: 145mm; overflow: hidden; }
   .map-frame iframe { height: 140mm; min-height: 0; }
 

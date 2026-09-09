@@ -4,6 +4,8 @@
   display: grid;
   place-items: center;
   overflow: hidden;
+  margin-block: clamp(16px, 3vw, 36px);
+  border-block: 1px solid rgba(208, 200, 184, .7);
 }
 
 .interstitial img {
@@ -19,17 +21,37 @@
   z-index: 1;
   text-align: center;
   color: #fff;
-  padding: 32px;
-  max-width: 720px;
+  padding: var(--space-5);
+  max-width: var(--max-content);
+}
+
+.interstitial-quote .interstitial-overlay {
+  max-width: 760px;
+  padding: clamp(40px, 8vw, 96px) var(--page-pad);
+}
+
+.interstitial-quote .interstitial-overlay.reveal-on-scroll { --reveal-delay: .14s; }
+
+.interstitial-quote .interstitial-overlay::before {
+  content: "“";
+  display: block;
+  height: .42em;
+  color: var(--lime);
+  font-family: var(--font-display);
+  font-size: clamp(70px, 10vw, 120px);
+  line-height: .7;
+  opacity: .9;
 }
 
 .interstitial-overlay h2 {
   font-size: clamp(36px, 7vw, 72px);
   text-transform: uppercase;
+  max-width: 13ch;
+  margin: 0 auto;
 }
 
 .interstitial-overlay p {
-  margin: 16px 0 0;
+  margin: var(--space-3) 0 0;
   font-family: var(--font-ui);
   font-size: 16px;
   color: rgba(255, 255, 255, .85);

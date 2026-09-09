@@ -1,15 +1,40 @@
 .mosaic {
-  padding: clamp(56px, 9vw, 110px) var(--page-pad);
+  padding: var(--space-section) var(--page-pad);
   background: var(--paper);
 }
 
 .mosaic-head {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 14px;
+  gap: var(--space-2);
   max-width: var(--max);
-  margin: 0 auto 36px;
+  margin: 0 auto var(--space-5);
 }
+
+.mosaic-experiences .mosaic-head {
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  align-items: end;
+  column-gap: clamp(24px, 6vw, 88px);
+}
+
+.mosaic-experiences {
+  position: relative;
+  padding-top: clamp(72px, 11vw, 132px);
+}
+
+.mosaic-experiences::before {
+  content: "";
+  display: block;
+  width: min(100%, var(--max));
+  height: 1px;
+  margin: 0 auto var(--space-5);
+  background: var(--line);
+}
+
+.mosaic-experiences .mosaic-head .section-label { grid-column: 1 / -1; }
+.mosaic-experiences .mosaic-head .mosaic-title { grid-column: 1; }
+.mosaic-experiences .mosaic-head .mosaic-lead,
+.mosaic-experiences .mosaic-head .mosaic-note { grid-column: 2; }
 
 .mosaic-title {
   font-size: clamp(28px, 4.5vw, 46px);
@@ -25,7 +50,7 @@
   font-weight: 600;
   line-height: 1.55;
   color: var(--ink);
-  max-width: 680px;
+  max-width: var(--max-content);
 }
 
 .mosaic-note {
@@ -34,21 +59,21 @@
   font-size: 14px;
   line-height: 1.55;
   color: var(--muted);
-  max-width: 680px;
+  max-width: var(--max-content);
 }
 
 .mosaic-grid {
   display: grid;
   grid-template-columns: 1.2fr .8fr .8fr;
   grid-template-rows: auto auto;
-  gap: 14px;
+  gap: var(--space-2);
   max-width: var(--max);
   margin: 0 auto;
 }
 
 .tile {
   position: relative;
-  padding: 28px;
+  padding: var(--space-5);
   min-height: 220px;
   display: flex;
   flex-direction: column;
@@ -67,7 +92,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(18, 51, 29, .62) 0%, rgba(18, 51, 29, .88) 100%);
+  background: linear-gradient(180deg, rgba(18, 51, 29, .62) 0%, var(--deep-soft) 100%);
   z-index: 0;
 }
 
@@ -80,7 +105,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(0deg, rgba(18, 51, 29, .88), rgba(18, 51, 29, .2));
+  background: linear-gradient(0deg, var(--deep-soft), rgba(18, 51, 29, .2));
 }
 
 .tile-plain {
@@ -88,11 +113,14 @@
   border: 1px solid var(--line);
 }
 
+.mosaic-experiences .tile-plain { border-top: 3px solid var(--line); }
+.mosaic-experiences .tile-plain:nth-child(3) { border-top-color: var(--lime); }
+
 .tile > * { position: relative; z-index: 1; }
 
 .tile-tag {
   font-family: var(--font-ui);
-  font-size: 10px;
+  font-size: var(--text-xs);
   letter-spacing: .18em;
   text-transform: uppercase;
   opacity: .8;
@@ -116,12 +144,17 @@
 
 .tile-note {
   font-family: var(--font-ui);
-  font-size: 13px;
+  font-size: var(--text-sm);
   line-height: 1.45;
   opacity: .85;
 }
 
 @media (max-width: 980px) {
+  .mosaic-experiences .mosaic-head { grid-template-columns: 1fr; }
+  .mosaic-experiences .mosaic-head .section-label,
+  .mosaic-experiences .mosaic-head .mosaic-title,
+  .mosaic-experiences .mosaic-head .mosaic-lead,
+  .mosaic-experiences .mosaic-head .mosaic-note { grid-column: auto; }
   .mosaic-grid { grid-template-columns: 1fr 1fr; }
   .tile-hero { grid-row: span 1; grid-column: span 2; }
 }

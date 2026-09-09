@@ -29,8 +29,12 @@
 
 .spread-body.single { grid-template-columns: 1fr; }
 
+.spread-welcome .spread-body { grid-template-columns: .9fr 1.1fr; }
+.spread-welcome .panel-dark { padding-right: clamp(40px, 5vw, 64px); }
+.spread-welcome .panel-light { padding-left: clamp(40px, 5vw, 64px); }
+
 .panel {
-  padding: clamp(36px, 6vw, 72px);
+  padding: var(--space-6);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -45,7 +49,7 @@
 
 .section-label {
   font-family: var(--font-ui);
-  font-size: 10px;
+  font-size: var(--text-xs);
   font-weight: 700;
   letter-spacing: .24em;
   text-transform: uppercase;
@@ -56,7 +60,7 @@
 .panel-dark .section-label { color: var(--lime); }
 
 .display-title {
-  font-size: clamp(32px, 5vw, 58px);
+  font-size: var(--text-display-md);
   text-transform: uppercase;
   margin-bottom: 20px;
 }
@@ -75,7 +79,7 @@
 
 .index-list {
   list-style: none;
-  margin: 32px 0 0;
+  margin: var(--space-5) 0 0;
   padding: 0;
   font-family: var(--font-ui);
 }
@@ -85,10 +89,12 @@
   grid-template-columns: 48px 1fr auto;
   gap: 16px;
   align-items: start;
-  padding: 14px 0;
+  padding: var(--space-3) 0;
   border-bottom: 1px solid var(--line);
-  font-size: 14px;
+  font-size: var(--text-sm);
 }
+
+.spread-welcome .index-list li { grid-template-columns: 52px 1fr minmax(110px, .7fr); }
 
 .index-list li > span:first-child {
   font-family: var(--font-display);
@@ -122,4 +128,5 @@
     padding: 12px 20px;
   }
   .spread-body { grid-template-columns: 1fr; }
+  .spread-welcome .spread-body { grid-template-columns: 1fr; }
 }
