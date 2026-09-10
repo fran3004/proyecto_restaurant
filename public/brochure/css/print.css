@@ -1,27 +1,31 @@
 @media print {
-  @page { size: A4 portrait; margin: 8mm; }
+  @page {
+    size: A4 portrait;
+    margin: 12mm 11mm 14mm;
+  }
 
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
-    box-shadow: none !important;
     text-shadow: none !important;
-    background-image: none !important;
+    box-shadow: none !important;
   }
 
   html,
   body {
-    background: #f6f1e8 !important;
-    color: #17251d !important;
-    font-size: 10pt;
+    background: var(--paper) !important;
+    color: var(--ink) !important;
+    font-size: 9.5pt;
+    line-height: 1.5;
     scroll-behavior: auto !important;
   }
 
-  body * {
-    color: #17251d !important;
-  }
+  body { overflow: visible !important; }
 
-  .no-print { display: none !important; }
+  .no-print,
+  .cover-continue { display: none !important; }
 
   .reveal-on-scroll,
   .reveal-on-scroll.is-visible {
@@ -37,250 +41,370 @@
   .map-link:hover,
   .map-link:focus-visible {
     transform: none !important;
-    box-shadow: none !important;
     transition: none !important;
   }
 
-  .nav,
+  a { color: inherit; text-decoration: none; }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  ul,
+  ol {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
   .cover,
-  .cover-left,
-  .cover-right,
   .spread,
-  .panel,
-  .mosaic,
-  .tile,
   .feature,
-  .feature-copy,
-  .feature-photo,
   .interstitial,
-  .interstitial-overlay,
   .map-section,
-  .map-copy,
-  .map-frame,
   .contact-spread,
-  .contact-link,
-  .info-block,
+  .convenios-section,
   .manaure-section,
-  .site-footer,
-  .social-row {
-    background: #fff !important;
-    background-color: #fff !important;
-    color: #17251d !important;
-  }
-
-  .cover-right::before,
-  .cover-photo::after,
-  .interstitial::after,
-  .tile::after,
-  .tile-hero::after,
-  .tile-photo::after,
-  .map-copy::before,
-  .contact-editorial::before {
-    display: none !important;
-    background: transparent !important;
+  .site-footer {
+    break-inside: auto;
+    page-break-inside: auto;
   }
 
   .cover,
-  .spread,
-  .feature,
-  .mosaic,
-  .interstitial,
-  .contact-spread,
-  .map-section,
-  .manaure-section,
-  .site-footer,
-  .tile,
-  .contact-link,
-  .info-block,
-  .map-copy,
-  .feature-copy,
-  .feature-photo {
-    break-inside: avoid !important;
-    page-break-inside: avoid !important;
-  }
-
-  .cover,
-  .cover-left,
-  .cover-right,
-  .spread,
-  .feature,
   .spread-body,
   .feature-inner,
-  .mosaic-grid,
   .map-layout,
   .contact-layout,
-  .manaure-section .mosaic-grid {
-    display: block !important;
-    grid-template-columns: none !important;
+  .convenio-feature,
+  .convenio-side,
+  .convenio-rural,
+  .convenio-quiet,
+  .convenio-editorial,
+  .convenio-immersive,
+  .convenio-gallery-quiet,
+  .convenio-editorial-collection {
+    display: grid !important;
   }
 
   .cover {
     min-height: 255mm;
-    max-height: 255mm;
-    overflow: hidden;
+    height: 255mm;
+    max-height: none;
+    overflow: visible;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
     break-after: page;
-    break-inside: avoid;
+    page-break-after: always;
+    background: var(--forest) !important;
   }
+
+  .cover-left {
+    min-width: 0;
+    padding: 22mm 16mm 16mm;
+    background: var(--forest) !important;
+    color: var(--sand) !important;
+  }
+
+  .cover-right {
+    min-width: 0;
+    position: relative;
+    inset: auto !important;
+    z-index: 1 !important;
+    overflow: hidden;
+    background: var(--forest) !important;
+  }
+
+  .cover-right::before { display: block !important; }
+
+  .cover-photo {
+    display: block !important;
+    background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=90') !important;
+    background-position: center !important;
+    background-size: cover !important;
+  }
+
+  .cover-mark span,
+  .cover-sub,
+  .cover-pill { color: rgba(255, 255, 255, .86) !important; }
+
+  .cover-headline h1 {
+    font-size: 46pt;
+    color: var(--sand) !important;
+  }
+
+  .cover-headline h1 em { color: var(--amber) !important; }
 
   .cover-rail,
   .spread-rail,
   .feature > .spread-rail {
     writing-mode: horizontal-tb;
     transform: none;
-    text-orientation: mixed;
     width: 100%;
     min-height: auto;
-    padding: 7px 12px;
-    letter-spacing: .18em;
-    font-size: 8pt;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    order: -1;
-    background: #f2efe7 !important;
-    color: #17251d !important;
-    border: 1px solid rgba(23, 37, 29, .15);
+    padding: 6px 10px;
+    font-size: 7.5pt;
+    white-space: normal;
+    overflow: visible;
+    background: var(--linen) !important;
+    color: var(--forest) !important;
+    border: 1px solid rgba(23, 37, 29, .18);
   }
 
-  .cover-main,
-  .cover-content,
-  .cover-bottom,
-  .cover-headline,
-  .cover-meta,
-  .cover-pills {
-    background: transparent !important;
-    color: #17251d !important;
-  }
-
-  .cover-title,
-  .display-title,
-  .feature-title,
-  .spread-title,
-  .mosaic-title,
-  .map-lead,
-  .detail-value,
-  .tile h3,
-  .contact-link-text strong,
-  .footer-tagline,
-  .social-row a,
-  .footer-meta p,
-  .interstitial-overlay h2 {
-    color: #17251d !important;
-  }
-
-  .cover-sub,
-  .spread-copy,
-  .tile-note,
-  .tile-tag,
-  .map-note,
-  .contact-link-text span,
-  .detail-label,
-  .info-block p,
-  .footer-tagline,
-  .social-row a,
-  .footer-meta p,
-  .interstitial-overlay p {
-    color: rgba(23, 37, 29, .75) !important;
-  }
-
-  .cover-headline h1 em,
-  .interstitial-overlay h2 .accent,
-  .tile-price,
-  .map-link,
-  .contact-link-icon,
-  .detail-row .detail-label,
-  .feature-copy-light .tier-secondary,
-  .feature-copy-light .tier-tertiary li strong {
-    color: #8e6b1d !important;
-  }
-
-  .cover-mark-rule,
-  .feature-number,
-  .feature-copy-light .feature-number,
-  .interstitial-overlay h2 .accent,
-  .tile-number {
-    opacity: .8;
-  }
-
-  .cover-continue,
-  .contact-link-icon {
-    display: none !important;
-  }
-
-  .map-link,
-  .contact-link {
-    border: 1px solid rgba(23, 37, 29, .2) !important;
-    border-radius: 0 !important;
-    background: #f6f1e8 !important;
-    color: #17251d !important;
-  }
-
-  .contact-layout {
-    grid-template-columns: 1fr !important;
-    gap: 14px;
-  }
-
-  .contact-link {
-    padding: 12px 14px !important;
-  }
-
-  #contacto { break-before: page; page-break-before: always; }
-
-  .interstitial {
-    min-height: 42mm;
-    max-height: 48mm;
-    margin-block: 0;
-    break-inside: avoid;
-    break-after: avoid;
-    page-break-after: avoid;
-  }
-
-  .interstitial img {
-    opacity: .18 !important;
-    filter: grayscale(1) !important;
-    max-height: 48mm;
-    object-fit: cover;
-  }
-
-  .interstitial + section,
-  .interstitial + .spread,
-  .interstitial + .map-section {
-    break-before: avoid;
-    page-break-before: avoid;
-  }
+  .spread,
+  .feature,
+  .mosaic,
+  .map-section,
+  .contact-spread,
+  .convenios-section,
+  .manaure-section,
+  .site-footer { margin-block: 0; }
 
   .spread-body,
   .feature-inner {
     grid-template-columns: 1fr 1fr !important;
-    break-inside: auto;
+    min-height: 0;
   }
 
-  .feature-inner { min-height: auto; }
+  .panel,
+  .feature-copy,
+  .feature-photo,
+  .map-copy,
+  .contact-editorial,
+  .convenio-immersive,
+  .convenio-editorial,
+  .info-block,
+  .contact-link,
+  .tile {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
 
-  .feature-photo { min-height: 52mm; max-height: 90mm; }
-  .feature-photo img { max-height: 90mm; object-fit: cover; }
-  .feature-title { font-size: 22pt; margin-bottom: 10px; }
+  .panel,
+  .feature-copy { padding: 15mm 13mm; }
 
-  .mosaic-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-  .tile-hero { grid-column: span 2; min-height: 58mm; }
-  .tile { min-height: 38mm; padding: 14px; }
+  .panel-dark,
+  .feature-copy.dark,
+  .tile-dark,
+  .map-copy,
+  .contact-editorial {
+    color: var(--sand) !important;
+    background: var(--forest) !important;
+  }
 
-  .map-layout { grid-template-columns: 1fr; }
-  .map-frame { max-height: 145mm; overflow: hidden; }
-  .map-frame iframe { height: 140mm; min-height: 0; }
+  .panel-light,
+  .feature-copy-light,
+  .tile-plain {
+    background: var(--linen) !important;
+    color: var(--forest) !important;
+  }
+
+  .display-title,
+  .spread-title,
+  .feature-title,
+  .mosaic-title,
+  .map-lead,
+  .interstitial-overlay h2,
+  .tile h3,
+  .convenios-header h2,
+  .convenio-feature-heading h3,
+  .convenio-rural-copy h3,
+  .convenio-quiet-copy h3,
+  .convenio-editorial-copy h3,
+  .convenio-side-copy h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .feature-photo,
+  .feature-photo img {
+    min-height: 0;
+    height: 100%;
+    max-height: 105mm;
+  }
+
+  .mosaic { padding: 14mm 0; }
+
+  .mosaic-grid {
+    grid-template-columns: 1.1fr .9fr !important;
+    grid-template-rows: auto auto;
+    gap: 5mm;
+  }
+
+  .tile {
+    min-height: 58mm;
+    padding: 9mm;
+  }
+
+  .tile-hero {
+    grid-row: span 2;
+    min-height: 120mm;
+  }
+
+  .tile-hero,
+  .tile-photo { background-size: cover !important; }
+
+  .interstitial,
+  .interstitial-quote {
+    min-height: 72mm;
+    height: 72mm;
+    max-height: none;
+    margin: 8mm 0;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .interstitial img {
+    display: block !important;
+    opacity: .82 !important;
+    filter: saturate(.85) contrast(1.04) brightness(.72) !important;
+    max-height: none;
+    object-fit: cover;
+  }
+
+  .interstitial::after {
+    display: block !important;
+    background: rgba(11, 28, 20, .46) !important;
+  }
+
+  .interstitial-overlay h2,
+  .interstitial-overlay p { color: var(--linen) !important; }
+
+  .map-section,
+  .contact-spread { padding: 14mm 0; }
+
+  .map-layout,
+  .contact-layout {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 7mm;
+  }
+
+  .map-copy { padding: 11mm; }
+
+  .map-frame {
+    padding: 3mm;
+    min-height: 86mm;
+    overflow: hidden;
+  }
+
+  .map-frame iframe {
+    height: 80mm;
+    min-height: 0;
+  }
 
   .detail-row {
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    gap: 12px;
-    border-bottom: 1px solid rgba(23,37,29,.15);
+    grid-template-columns: 30mm 1fr;
+    gap: 4mm;
+    padding: 3mm 0;
+  }
+
+  .contact-layout { align-items: start; }
+
+  .contact-link {
+    padding: 5mm;
+    border-radius: 2mm;
+  }
+
+  .contact-link-icon { display: inline-flex; }
+
+  .convenios-section,
+  .manaure-section { padding: 14mm 0; }
+
+  .convenios-section {
+    break-before: avoid;
+    page-break-before: avoid;
+  }
+
+  .convenios-section--agua-aventura {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .convenio-feature,
+  .convenio-rural,
+  .convenio-quiet,
+  .convenio-immersive,
+  .convenio-side {
+    grid-template-columns: 1fr 1fr !important;
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .convenio-feature-media,
+  .convenio-side-image,
+  .convenio-rural-media,
+  .convenio-quiet-media,
+  .convenio-editorial-visual {
+    min-height: 78mm;
+    max-height: 105mm;
+    overflow: hidden;
+  }
+
+  .convenio-feature-copy,
+  .convenio-side-copy,
+  .convenio-rural-copy,
+  .convenio-quiet-copy,
+  .convenio-editorial-copy,
+  .convenio-immersive-copy { padding: 9mm; }
+
+  .convenio-feature-media img,
+  .convenio-side-image img,
+  .convenio-rural-media img,
+  .convenio-quiet-media img,
+  .convenio-editorial-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .convenio-brand,
+  .footer-logo {
+    max-width: 55mm;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .convenio-meta-row,
+  .convenio-facts,
+  .convenio-facts--compact { break-inside: avoid; }
+
+  .convenio-meta-row {
+    grid-template-columns: 1fr !important;
   }
 
   .site-footer {
+    padding: 10mm 0 0;
+    background: var(--forest) !important;
+    color: var(--linen) !important;
     break-inside: avoid;
-    padding-top: 18px;
+    page-break-inside: avoid;
+    break-before: page;
+    page-break-before: always;
   }
 
-  .footer-logo { height: 16mm; max-width: 75mm; }
-  a { text-decoration: none; color: inherit; }
+  .site-footer .footer-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10mm;
+  }
+
+  .site-footer .social-row {
+    display: flex;
+    gap: 5mm;
+  }
+
+  .footer-tagline,
+  .footer-meta p,
+  .social-row a { color: var(--linen) !important; }
+
+  #contacto {
+    break-before: page;
+    page-break-before: always;
+  }
 }

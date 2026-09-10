@@ -58,7 +58,7 @@
   border: 1px solid rgba(255,255,255,.12);
 }
 
-.info-block h4 {
+.info-block h3 {
   margin: 0 0 8px;
   font-family: var(--font-ui);
   font-size: 10px;
