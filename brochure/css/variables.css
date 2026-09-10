@@ -69,7 +69,10 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
 
 section[id] { scroll-margin-top: var(--nav-offset); }
 
@@ -79,6 +82,7 @@ body {
   color: var(--ink);
   background: var(--paper);
   line-height: 1.65;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
 
