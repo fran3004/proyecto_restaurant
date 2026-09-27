@@ -1,5 +1,6 @@
 import '../../styles/layout/Footer.css';
 import Comentarios from './Comentarios';
+import { CONTACT_PHONE, WHATSAPP_NUMBER, WHATSAPP_URL } from '../../config/contact';
 import { socialLinks } from '../../utils/layout/Footer.utils';
 
 function Footer() {
@@ -39,8 +40,8 @@ function Footer() {
 
         <div>
           <h4>Contacto Directo</h4>
-          <a href="tel:+573012706114">+57 301 270 6114</a>
-          <a href="https://wa.me/573012706114" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a href={`tel:+${WHATSAPP_NUMBER}`}>{CONTACT_PHONE}</a>
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">WhatsApp</a>
           <span>Manaure, Cesar · Colombia</span>
         </div>
       </div>

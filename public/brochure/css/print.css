@@ -1,0 +1,410 @@
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm 11mm 14mm;
+  }
+
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  html,
+  body {
+    background: var(--paper) !important;
+    color: var(--ink) !important;
+    font-size: 9.5pt;
+    line-height: 1.5;
+    scroll-behavior: auto !important;
+  }
+
+  body { overflow: visible !important; }
+
+  .no-print,
+  .cover-continue { display: none !important; }
+
+  .reveal-on-scroll,
+  .reveal-on-scroll.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .btn:hover,
+  .btn:focus-visible,
+  .contact-link:hover,
+  .contact-link:focus-visible,
+  .map-link:hover,
+  .map-link:focus-visible {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  ul,
+  ol {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .cover,
+  .spread,
+  .feature,
+  .interstitial,
+  .map-section,
+  .contact-spread,
+  .convenios-section,
+  .manaure-section,
+  .site-footer {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .cover,
+  .spread-body,
+  .feature-inner,
+  .map-layout,
+  .contact-layout,
+  .convenio-feature,
+  .convenio-side,
+  .convenio-rural,
+  .convenio-quiet,
+  .convenio-editorial,
+  .convenio-immersive,
+  .convenio-gallery-quiet,
+  .convenio-editorial-collection {
+    display: grid !important;
+  }
+
+  .cover {
+    min-height: 255mm;
+    height: 255mm;
+    max-height: none;
+    overflow: visible;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+    break-after: page;
+    page-break-after: always;
+    background: var(--forest) !important;
+  }
+
+  .cover-left {
+    min-width: 0;
+    padding: 22mm 16mm 16mm;
+    background: var(--forest) !important;
+    color: var(--sand) !important;
+  }
+
+  .cover-right {
+    min-width: 0;
+    position: relative;
+    inset: auto !important;
+    z-index: 1 !important;
+    overflow: hidden;
+    background: var(--forest) !important;
+  }
+
+  .cover-right::before { display: block !important; }
+
+  .cover-photo {
+    display: block !important;
+    background-image: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=90') !important;
+    background-position: center !important;
+    background-size: cover !important;
+  }
+
+  .cover-mark span,
+  .cover-sub,
+  .cover-pill { color: rgba(255, 255, 255, .86) !important; }
+
+  .cover-headline h1 {
+    font-size: 46pt;
+    color: var(--sand) !important;
+  }
+
+  .cover-headline h1 em { color: var(--amber) !important; }
+
+  .cover-rail,
+  .spread-rail,
+  .feature > .spread-rail {
+    writing-mode: horizontal-tb;
+    transform: none;
+    width: 100%;
+    min-height: auto;
+    padding: 6px 10px;
+    font-size: 7.5pt;
+    white-space: normal;
+    overflow: visible;
+    background: var(--linen) !important;
+    color: var(--forest) !important;
+    border: 1px solid rgba(23, 37, 29, .18);
+  }
+
+  .spread,
+  .feature,
+  .mosaic,
+  .map-section,
+  .contact-spread,
+  .convenios-section,
+  .manaure-section,
+  .site-footer { margin-block: 0; }
+
+  .spread-body,
+  .feature-inner {
+    grid-template-columns: 1fr 1fr !important;
+    min-height: 0;
+  }
+
+  .panel,
+  .feature-copy,
+  .feature-photo,
+  .map-copy,
+  .contact-editorial,
+  .convenio-immersive,
+  .convenio-editorial,
+  .info-block,
+  .contact-link,
+  .tile {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .panel,
+  .feature-copy { padding: 15mm 13mm; }
+
+  .panel-dark,
+  .feature-copy.dark,
+  .tile-dark,
+  .map-copy,
+  .contact-editorial {
+    color: var(--sand) !important;
+    background: var(--forest) !important;
+  }
+
+  .panel-light,
+  .feature-copy-light,
+  .tile-plain {
+    background: var(--linen) !important;
+    color: var(--forest) !important;
+  }
+
+  .display-title,
+  .spread-title,
+  .feature-title,
+  .mosaic-title,
+  .map-lead,
+  .interstitial-overlay h2,
+  .tile h3,
+  .convenios-header h2,
+  .convenio-feature-heading h3,
+  .convenio-rural-copy h3,
+  .convenio-quiet-copy h3,
+  .convenio-editorial-copy h3,
+  .convenio-side-copy h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .feature-photo,
+  .feature-photo img {
+    min-height: 0;
+    height: 100%;
+    max-height: 105mm;
+  }
+
+  .mosaic { padding: 14mm 0; }
+
+  .mosaic-grid {
+    grid-template-columns: 1.1fr .9fr !important;
+    grid-template-rows: auto auto;
+    gap: 5mm;
+  }
+
+  .tile {
+    min-height: 58mm;
+    padding: 9mm;
+  }
+
+  .tile-hero {
+    grid-row: span 2;
+    min-height: 120mm;
+  }
+
+  .tile-hero,
+  .tile-photo { background-size: cover !important; }
+
+  .interstitial,
+  .interstitial-quote {
+    min-height: 72mm;
+    height: 72mm;
+    max-height: none;
+    margin: 8mm 0;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .interstitial img {
+    display: block !important;
+    opacity: .82 !important;
+    filter: saturate(.85) contrast(1.04) brightness(.72) !important;
+    max-height: none;
+    object-fit: cover;
+  }
+
+  .interstitial::after {
+    display: block !important;
+    background: rgba(11, 28, 20, .46) !important;
+  }
+
+  .interstitial-overlay h2,
+  .interstitial-overlay p { color: var(--linen) !important; }
+
+  .map-section,
+  .contact-spread { padding: 14mm 0; }
+
+  .map-layout,
+  .contact-layout {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 7mm;
+  }
+
+  .map-copy { padding: 11mm; }
+
+  .map-frame {
+    padding: 3mm;
+    min-height: 86mm;
+    overflow: hidden;
+  }
+
+  .map-frame iframe {
+    height: 80mm;
+    min-height: 0;
+  }
+
+  .detail-row {
+    grid-template-columns: 30mm 1fr;
+    gap: 4mm;
+    padding: 3mm 0;
+  }
+
+  .contact-layout { align-items: start; }
+
+  .contact-link {
+    padding: 5mm;
+    border-radius: 2mm;
+  }
+
+  .contact-link-icon { display: inline-flex; }
+
+  .convenios-section,
+  .manaure-section { padding: 14mm 0; }
+
+  .convenios-section {
+    break-before: avoid;
+    page-break-before: avoid;
+  }
+
+  .convenios-section--agua-aventura {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .convenio-feature,
+  .convenio-rural,
+  .convenio-quiet,
+  .convenio-immersive,
+  .convenio-side {
+    grid-template-columns: 1fr 1fr !important;
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .convenio-feature-media,
+  .convenio-side-image,
+  .convenio-rural-media,
+  .convenio-quiet-media,
+  .convenio-editorial-visual {
+    min-height: 78mm;
+    max-height: 105mm;
+    overflow: hidden;
+  }
+
+  .convenio-feature-copy,
+  .convenio-side-copy,
+  .convenio-rural-copy,
+  .convenio-quiet-copy,
+  .convenio-editorial-copy,
+  .convenio-immersive-copy { padding: 9mm; }
+
+  .convenio-feature-media img,
+  .convenio-side-image img,
+  .convenio-rural-media img,
+  .convenio-quiet-media img,
+  .convenio-editorial-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .convenio-brand,
+  .footer-logo {
+    max-width: 55mm;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .convenio-meta-row,
+  .convenio-facts,
+  .convenio-facts--compact { break-inside: avoid; }
+
+  .convenio-meta-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .site-footer {
+    padding: 10mm 0 0;
+    background: var(--forest) !important;
+    color: var(--linen) !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .site-footer .footer-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10mm;
+  }
+
+  .site-footer .social-row {
+    display: flex;
+    gap: 5mm;
+  }
+
+  .footer-tagline,
+  .footer-meta p,
+  .social-row a { color: var(--linen) !important; }
+
+  #contacto {
+    break-before: page;
+    page-break-before: always;
+  }
+}

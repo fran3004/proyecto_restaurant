@@ -1,7 +1,5 @@
 import { useState } from 'react';
 
-export const whatsappUrl = 'https://wa.me/573012706114';
-
 export const categorias = [
   'Pasadías',
   'Parejas',

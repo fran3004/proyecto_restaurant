@@ -1,0 +1,144 @@
+.cover {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  background: var(--forest);
+}
+
+.cover-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--pad);
+  z-index: 2;
+  position: relative;
+}
+
+.cover-mark {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cover-mark-rule {
+  width: 32px;
+  height: 1px;
+  background: var(--amber);
+}
+
+.cover-mark span {
+  font-size: 11px;
+  letter-spacing: .22em;
+  color: rgba(255,255,255,.78);
+  text-transform: uppercase;
+}
+
+.cover-headline {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.cover-headline h1 {
+  font-family: var(--serif);
+  font-size: clamp(52px, 8vw, 100px);
+  font-weight: 700;
+  line-height: .85;
+  color: var(--sand);
+  letter-spacing: -.02em;
+}
+
+.cover-headline h1 em {
+  font-style: italic;
+  color: var(--amber);
+  display: block;
+}
+
+.cover-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cover-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,.8);
+  letter-spacing: .06em;
+}
+
+.cover-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.cover-pill {
+  padding: 6px 16px;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 999px;
+  font-size: 11px;
+  color: rgba(255,255,255,.82);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.cover-right {
+  position: relative;
+  overflow: hidden;
+}
+
+.cover-right::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(22,43,30,.9) 0%, rgba(22,43,30,.75) 32%, rgba(22,43,30,.2) 64%, rgba(22,43,30,.12) 100%);
+  z-index: 1;
+}
+
+.cover-photo {
+  position: absolute;
+  inset: 0;
+  background:
+    url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=90')
+    center/cover no-repeat;
+}
+
+.cover-vertical {
+  position: absolute;
+  right: var(--pad);
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: right center;
+  font-size: 10px;
+  letter-spacing: .3em;
+  color: rgba(255,255,255,.55);
+  text-transform: uppercase;
+  z-index: 3;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .cover {
+    grid-template-columns: 1fr;
+    min-height: 100svh;
+  }
+
+  .cover-right {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .cover-left {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(to right, rgba(22,43,30,.95) 0%, rgba(22,43,30,.6) 100%);
+  }
+
+  .cover-vertical { display: none; }
+}
+
+@media (max-width: 600px) {
+  .cover-left { padding: 28px 20px 32px; }
+}

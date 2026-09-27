@@ -6,6 +6,28 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+.memories-brochure-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin: 28px 0;
+  color: #0070BA;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 15px;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+}
+.memories-brochure-icon {
+  flex-shrink: 0;
+}
+.memories-brochure-link:hover {
+  color: #005a94;
+  text-decoration: underline;
+}
 .memory-item {
   position: relative;
   border-radius: var(--radius-sm);
@@ -32,6 +54,14 @@
   object-position: center;
 }
 .memory-image { width: 100%; height: 100%; display: block; object-fit: cover; }
+.memory-video-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
 .memory-play {
   position: absolute;
   top: 18px;
@@ -55,7 +85,7 @@
 .memory-modal {
   position: fixed;
   inset: 0;
-  z-index: 1050;
+  z-index: 1101;
   display: grid;
   place-items: center;
   padding: 24px;
@@ -66,7 +96,7 @@
 .memory-modal.is-open { opacity: 1; }
 .memory-modal.is-closing { opacity: 0; }
 .memory-image-modal {
-  z-index: 1050;
+  z-index: 1101;
   background: #000;
 }
 .memory-modal-content {

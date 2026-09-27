@@ -1,0 +1,126 @@
+.spread {
+  min-height: 520px;
+}
+
+.spread-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 520px;
+}
+
+.panel {
+  padding: var(--pad);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+
+.panel-dark {
+  background: var(--forest);
+  color: var(--sand);
+}
+
+.panel-light {
+  background: var(--linen);
+  color: var(--forest);
+}
+
+.spread-title {
+  font-family: var(--serif);
+  font-size: clamp(38px, 5vw, 62px);
+  font-weight: 700;
+  line-height: .95;
+  letter-spacing: -.01em;
+  color: var(--sand);
+}
+
+.spread-title em {
+  font-style: italic;
+  color: var(--amber);
+}
+
+.spread-copy {
+  font-size: 15px;
+  color: rgba(255,255,255,.82);
+  line-height: 1.7;
+  max-width: 380px;
+}
+
+.spread-copy--muted {
+  color: rgba(255,255,255,.68);
+  font-size: 13px;
+}
+
+.spread-index-title {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--forest);
+}
+
+.index-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.index-list li {
+  display: grid;
+  grid-template-columns: 36px 1fr auto;
+  align-items: baseline;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(0,0,0,.08);
+}
+
+.index-list li:first-child { border-top: 1px solid rgba(0,0,0,.08); }
+
+.index-list li > span:first-child {
+  font-family: var(--serif);
+  font-size: 11px;
+  font-weight: 400;
+  color: #536656;
+  letter-spacing: .1em;
+}
+
+.index-entry {
+  min-width: 0;
+}
+
+.index-entry a {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2vw, 22px);
+  font-weight: 500;
+  color: var(--forest);
+  line-height: 1.2;
+}
+
+.index-list small {
+  font-size: 11px;
+  color: #5A6D5A;
+  letter-spacing: .05em;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .spread-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .panel {
+    padding: 28px 20px;
+  }
+
+  .index-list li {
+    grid-template-columns: 28px 1fr;
+  }
+
+  .index-list small {
+    grid-column: 2;
+    white-space: normal;
+  }
+}
