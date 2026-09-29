@@ -549,6 +549,25 @@
     align-items: center;
     gap: 4px;
   }
+  .panel-mute-btn {
+    background: rgba(232, 131, 12, 0.12);
+    border: 1px solid rgba(232, 131, 12, 0.35);
+    font-size: 11px;
+    font-weight: 700;
+    color: #B95000;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px 7px;
+    border-radius: 8px;
+    transition: all .2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+  }
+  .panel-mute-btn:hover {
+    background: #E8830C;
+    color: #fff;
+  }
   .panel-close-btn {
     background: none;
     border: none;
@@ -764,7 +783,28 @@
     padding: 9px 16px;
     border-radius: 16px;
     box-shadow: 0 12px 35px rgba(0,0,0,0.65);
-    pointer-events: none;
+    pointer-events: auto !important;
+    cursor: pointer;
+    transition: transform .2s ease, border-color .2s ease;
+  }
+  #status.speaking:hover {
+    border-color: #FFA500;
+    background: rgba(18, 48, 32, 0.98);
+    transform: translateX(-50%) translateY(-2px);
+  }
+  .caption-mute-hint {
+    display: inline-block;
+    margin-left: 8px;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 198, 26, 0.5);
+    padding: 2px 7px;
+    border-radius: 999px;
+    font-size: 9.5px;
+    font-weight: 800;
+    color: #FFD700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    vertical-align: middle;
   }
   .speech-indicator {
     display: inline-flex;
@@ -1045,6 +1085,7 @@
       <h3 class="panel-name" id="panelName"></h3>
     </div>
     <div class="panel-header-btns">
+      <button class="panel-mute-btn" id="btnPanelMute" title="Silenciar narración de voz (Esc)" style="display:none;">🔇 Silenciar</button>
       <button class="panel-close-btn" id="panelClose" title="Cerrar panel">×</button>
     </div>
   </div>
@@ -1793,13 +1834,18 @@ function actualizarEstadoVozUI(hablando) {
   if (btnVoice) {
     if (hablando) {
       btnVoice.classList.add("speaking");
-      btnVoice.innerHTML = `🔇 Silenciar`;
+      btnVoice.innerHTML = `🔇 Silenciar voz`;
       btnVoice.title = "Toca para silenciar la narración del colibrí";
     } else {
       btnVoice.classList.remove("speaking");
       btnVoice.innerHTML = `🔊 Escuchar narración`;
       btnVoice.title = "Escuchar narración del colibrí";
     }
+  }
+
+  const btnMute = document.getElementById("btnPanelMute");
+  if (btnMute) {
+    btnMute.style.display = hablando ? "inline-flex" : "none";
   }
 
   // Habilitar el botón Detener en la barra superior mientras haya voz activa
@@ -1828,7 +1874,7 @@ function hablar(texto){
         <span class="speech-wave"></span>
         <span class="speech-wave"></span>
       </div>
-      <div class="speech-caption-text"><strong>🎙️ Colibrí:</strong> ${texto}</div>
+      <div class="speech-caption-text"><strong>🎙️ Colibrí:</strong> ${texto} <span class="caption-mute-hint">✕ Silenciar</span></div>
     `;
   }
 
@@ -2576,6 +2622,14 @@ if (btnReplayVoice) {
     } else if (currentSelectedStop) {
       hablar(`${currentSelectedStop.name}. ${currentSelectedStop.text}`);
     }
+  };
+}
+
+const btnPanelMute = document.getElementById("btnPanelMute");
+if (btnPanelMute) {
+  btnPanelMute.onclick = (e) => {
+    e.stopPropagation();
+    detenerVoz();
   };
 }
 
