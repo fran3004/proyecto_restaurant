@@ -191,6 +191,10 @@
   background: linear-gradient(180deg, rgba(255,255,255,.24), rgba(234,241,227,.18));
 }
 
+.convenios-section--sabores-paisaje .convenio-rural--arepas .convenio-rural-copy {
+  background: linear-gradient(180deg, rgba(255,255,255,.24), rgba(255,243,224,.22));
+}
+
 .convenio-rural-copy h3 {
   margin: 0;
   font-family: var(--serif);
@@ -238,6 +242,9 @@
 .convenios-section--sabores-paisaje .convenio-rural--mora .convenio-meta > strong,
 .convenios-section--sabores-paisaje .convenio-rural--topiarios .convenio-meta > span,
 .convenios-section--sabores-paisaje .convenio-rural--topiarios .convenio-meta > strong {
+.convenios-section--sabores-paisaje .convenio-rural--topiarios .convenio-meta > strong,
+.convenios-section--sabores-paisaje .convenio-rural--arepas .convenio-meta > span,
+.convenios-section--sabores-paisaje .convenio-rural--arepas .convenio-meta > strong {
   color: #111111 !important;
   text-shadow: none !important;
   opacity: 1 !important;
