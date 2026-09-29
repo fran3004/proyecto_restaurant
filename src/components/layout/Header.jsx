@@ -41,6 +41,7 @@ function Header({ menuOpen, onMenuToggle }) {
         <a href="#sazon" onClick={closeAll}>Nuestra Sazón</a>
         <a href="#recuerdos" onClick={closeAll}>Recuerdos</a>
         <a href="#contacto" onClick={closeAll}>Contacto</a>
+        <a href={`${process.env.PUBLIC_URL}/brochure/`} target="_blank" rel="noopener noreferrer" onClick={closeAll}>Brochure Manaure Vive</a>
         <a className="btn-reserve-master" href="#reserva-mesas" onClick={closeAll}>Reservar</a>
       </nav>
 

@@ -29,6 +29,7 @@ function Footer() {
           <a href="#sazon">Nuestra Sazón</a>
           <a href="#recuerdos">Recuerdos</a>
           <a href="#contacto">Contacto</a>
+          <a href={`${process.env.PUBLIC_URL}/brochure/`} target="_blank" rel="noopener noreferrer">📖 Brochure Manaure Vive</a>
         </div>
 
         <div>
