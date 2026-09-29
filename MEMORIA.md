@@ -4,8 +4,8 @@
 > **Tipo:** Landing page + Galería + Detalle de paquetes ecoturísticos
 > **Stack:** React 19 + react-scripts 5 (Create React App) · Sin react-router · Enrutamiento manual por `window.location.hash`
 > **Despliegue:** `gh-pages` → `https://fran3004.github.io/proyecto_restaurant` (`homepage` en `package.json`)
-> **Fecha memoria:** 2026-09-22
-> **Archivos base analizados:** `src/App.js` (162 líneas), `src/index.js`, `src/components/**`, `src/utils/**`, `src/styles/**` (18 CSS), `public/index.html`, `public/manifest.json`, `EXPERIENCIAS_Y_SOCIOS.md`
+> **Fecha memoria:** 2026-09-26 (rev. 2: 10 paquetes Manaure Vive + convenios N + relacionados)
+> **Archivos base analizados:** `src/App.js` (285 líneas), `src/index.js`, `src/components/**`, `src/utils/**`, `src/styles/**`, `public/index.html`, `public/manifest.json`, `EXPERIENCIAS_Y_SOCIOS.md`
 
 ---
 
@@ -34,7 +34,7 @@
 
 Plataforma web promocional de ecoturismo en **Manaure, Cesar (Colombia)** y Serranía del Perijá. Objetivos:
 
-- Mostrar **5 experiencias/paquetes** (senderismo, avistamiento aves, gastronomía, río/cascadas, tour 3d/2n).
+- Mostrar **10 paquetes** (red Manaure Vive 2026-09-26, antes 5): Adrenalina Serrana · Cumbres de Niebla & Romance · Ruta del Grano a la Fruta · Expedición Metallura · Pasadía Oasis Familiar · Safari Fotográfico · Sabores del Perijá · Travesía Sabana Rubia · Bienestar & Desconexión · Gran Circuito 3D/2N (10 aliados).
 - Mostrar **10 socios aliados** (hospedaje, aventura, gastronomía, foto).
 - Galería fotográfica filtrable de **33 items** + lightbox.
 - Conversión por **WhatsApp** (`https://wa.me/573012706114`): reserva, CTA, botón flotante.
@@ -103,23 +103,20 @@ proyecto_restaurant/
     ├── setupTests.js (jest-dom)
     ├── components/
     │   ├── layout/Header.jsx / Footer.jsx / WhatsAppButton.jsx
-    │   ├── inicio/Hero.jsx / Discover.jsx / Featured.jsx / Gallery.jsx / DetallePaquete.jsx / CTA.jsx / Partners.jsx
+    │   ├── inicio/Hero.jsx / Discover.jsx / Featured.jsx / Gallery.jsx / Contacto.jsx / Partners.jsx / CTA.jsx / PaquetesCompleta.jsx / Descubre.jsx / DetallePaquete.jsx / ReservarExperiencia.jsx
     │   ├── galeria/GaleriaCompleta.jsx (190 líneas, la más compleja)
-    │   ├── contacto/ (VACÍO) / recuerdos/ (VACÍO) / reservas/ (VACÍO)
     ├── utils/
     │   ├── useScrollReveal.js (hook IntersectionObserver)
     │   ├── inicio/Hero.utils.js / Galeria.utils.js / Ecoturismo.utils.js / CTA.utils.js
     │   ├── layout/Footer.utils.js
-    │   ├── recuerdos/ (VACÍO) / reservas/ (VACÍO)
     └── styles/ (18 CSS)
         ├── global/App.css (353) / index.css (1)
         ├── layout/Header.css (285) / Footer.css (200) / WhatsAppButton.css (117)
         ├── inicio/Hero.css (286) / Discover.css (171) / Featured.css (237) / Gallery.css (59) / DetallePaquete.css (40) / CTA.css (152) / Partners.css (123)
         ├── galeria/GaleriaBase.css (121) / GaleriaCompleta.css (5 imports) / GaleriaFiltros.css (36) / GaleriaMosaico.css (130) / GaleriaLightbox.css (178) / GaleriaResponsive.css (97)
-        ├── contacto/ / recuerdos/ / reservas/ (VACÍOS)
 ```
 
-> Diagrama de árbol físico en texto — las carpetas vacías (`contacto`, `recuerdos`, `reservas`) son reserva para futuro, ver §15.
+> Diagrama de árbol físico en texto — las carpetas vacías (`contacto`, `recuerdos`, `reservas`) se eliminaron el 2026-09-26 (ver §15).
 
 ---
 
@@ -130,7 +127,7 @@ Patrón: **Componentes presentacionales + ficheros `*.utils.js` como mini-store 
 ```mermaid
 flowchart LR
   subgraph DATA ["Capa Datos (utils)"]
-    EU["Ecoturismo.utils<br/>categorias[6]<br/>paquetes[5]<br/>socios[10]"]
+    EU["Ecoturismo.utils<br/>categorias[6]<br/>paquetes[10]<br/>socios[10]"]
     GU["Galeria.utils<br/>FOTOS[33]<br/>FILTROS[7]<br/>useGaleria()"]
     HU["Hero.utils<br/>slides[5]"]
     CU["CTA.utils<br/>paisajeUrl"]
@@ -203,7 +200,7 @@ flowchart TD
 ```mermaid
 flowchart TD
   HERO["#inicio HERO"] --> EXP["#experiencias DISCOVER<br/>6 categorías"]
-  EXP --> PAQ["#paquetes FEATURED<br/>5 cards"]
+  EXP --> PAQ["#paquetes FEATURED<br/>8 cards"]
   PAQ -- "Ver detalles → #paquete/N" --> DET["DETALLE PAQUETE<br/>incluye + FAQ + reserva WA"]
   DET -- "← Volver #paquetes" --> PAQ
   PAQ --> PREV["#destinos GALLERY preview<br/>40% fotos (~13/33)"]
@@ -247,7 +244,7 @@ obtenerIndicePaquete() // /^#paquete\/(\d+)$/ → Number | null
 | `` /`#inicio`                                                                                    | false            | null              | Landing (`Hero→CTA`)               | top / ancla     |
 | `#experiencias` `#paquetes` `#destinos` `#socios` `#nosotros` `#reserva` `#contacto` | false            | null              | Landing +`scrollIntoView` al `id` | smooth al ancla |
 | `#galeria`                                                                                       | true             | null              | `GaleriaCompleta + CTA`             | top (auto)      |
-| `#paquete/0` … `#paquete/4`                                                                   | false            | 0…4              | `DetallePaquete`                    | top             |
+| `#paquete/0` … `#paquete/9`                                                                   | false            | 0…9              | `DetallePaquete`                    | top             |
 | hash desconocido                                                                                   | false            | null              | Landing (`seccionActiva=inicio`)    | restaurado      |
 
 ### 6.2 Estados en `App()` (`src/App.js:24-38`)
@@ -350,15 +347,22 @@ erDiagram
 
 **`categoriasEcoturismo[6]`** — Naturaleza, Aventura, Fotografía, Tours, Gastronomía, Eventos. Cada una: `imagen` (Unsplash) + `icono` SVG declarativo (`paths/rects/circles`).
 
-**`paquetesEcoturismo[5]`** (`src/utils/inicio/Ecoturismo.utils.js:63-132`):
+**`paquetesEcoturismo[10]`** (`src/utils/inicio/Ecoturismo.utils.js`, rev. 2026-09-26, todos con `galeria[5]`, `socios[]`, `itinerario[]`, `noIncluye[]`, todos con precio definido):
 
-| # | Título                         | Cat.         | Socio             | Ubicación           | Duración | Precio                  | Incluye                                                                                          |
-| - | ------------------------------- | ------------ | ----------------- | -------------------- | --------- | ----------------------- | ------------------------------------------------------------------------------------------------ |
-| 0 | Ruta de senderismo por Perijá  | Aventura     | Manaure Aventuras | Manaure, Cesar       | 5h        | $80.000                 | Guía local, Transporte salida, Refrigerio, Fotos                                                |
-| 1 | Avistamiento de aves            | Naturaleza   | Manaure Aventuras | Manaure, Cesar       | 4h        | $70.000                 | Binocular, Guía experto, Bebida natural, Paseo guiado                                           |
-| 2 | Experiencia gastronómica local | Gastronomía | Villa Adelaida    | Manaure, Cesar       | 3h        | $60.000                 | Degustación, Plato principal, Bebida, Ambiente natural                                          |
-| 3 | Paseo al río y cascadas        | Tours        | Tours Manaure     | Manaure, Cesar       | 6h        | $120.000                | Guía, Acceso cascadas, Refrigerio, Asistencia                                                   |
-| 4 | Tour Vive Manaure 3d/2n         | Tours        | Manaure Vive      | Valledupar y Manaure | 3d/2n     | `null` → "Consultar" | Transporte 2p, Noche romántica, Hotel, Alimentación, Cuatrimoto, Parapente, Casa Vidrio+fogata |
+| # | Título | Cat. | Socios | Duración | Precio |
+| - | ------ | ---- | ------ | -------- | ------ |
+| 0 | Adrenalina Serrana: Tierra & Cielo | Aventura | Manaure Aventura, Cuatri Tours Manaure, Villa Adelaida, La Casa de las Arepas | 1 día | $340.000 |
+| 1 | Cumbres de Niebla & Romance | Tours | Mashiramo Glamping, Absolom Casita de la Mora, Villa Adelaida | 2 días / 1 noche | $790.000 (ref. pareja) |
+| 2 | Ruta del Grano a la Fruta: Café & Mora | Tours | Coruscans, Absolom Casita de la Mora, La Casa de las Arepas, Los Pinos Manaure | 1 día | $145.000 |
+| 3 | Expedición Metallura: Joyas Aladas | Naturaleza | Metallura, Coruscans, Villa Adelaida (Reserva ProAves citada en texto) | 2 días / 1 noche | $520.000 |
+| 4 | Pasadía Oasis Familiar: Aguas Vivas | Tours | Villa Adelaida, Los Pinos Manaure (Balneario Río citado en texto) | 1 día | $115.000 (ref. adulto) |
+| 5 | Safari Fotográfico: Nidos & Hora Dorada | Fotografía | PHOTours, Los Pinos Manaure, Absolom Casita de la Mora, Villa Adelaida | 1 día | $290.000 |
+| 6 | Sabores del Perijá: Ruta Culinaria | Gastronomía | La Casa de las Arepas, Coruscans, Villa Adelaida, Absolom Casita de la Mora | 1 día | $175.000 |
+| 7 | Travesía Sabana Rubia: Páramo Místico | Aventura | Metallura, Mashiramo Glamping, Villa Adelaida | 1 día | $280.000 |
+| 8 | Bienestar & Desconexión: Montaña Zen | Tours | Coruscans, Los Pinos Manaure, Villa Adelaida | 2 días / 1 noche | $390.000 |
+| 9 | Gran Circuito Manaure Vive 3D/2N | Tours | Los 10 aliados | 3 días / 2 noches | $1.350.000 |
+
+> Antes (2026-09-22): 5 paquetes (senderismo $80.000, aves $70.000, gastronomía $60.000, río $120.000, tour 3d/2n sin precio).
 
 Campo `clase`: `'' | 'green' | 'blue'` → color del tag en `Featured`.
 
@@ -376,12 +380,12 @@ Campo `clase`: `'' | 'green' | 'blue'` → color del tag en `Featured`.
 
 ## 8. Fichas de componentes (props, estados, funciones)
 
-### 8.1 `layout/Header.jsx` (60 líneas)
+### 8.1 `layout/Header.jsx` (rev. 2026-09-26: sin lupa; botón Reservar solo texto abre el modal)
 
-- **Props:** `menuOpen:boolean`, `onMenuToggle:()=>void`, `galeriaActiva:boolean`, `seccionActiva:string='inicio'`.
+- **Props:** `menuOpen:boolean`, `onMenuToggle:()=>void`, `galeriaActiva:boolean`, `seccionActiva:string='inicio'`, `onReservar:()=>void`.
 - **Estado/efectos internos:** ninguno.
 - **Funciones:** `closeAll()` (cierra menú), `isSectionActive(sec)` (compara con `seccionActiva`).
-- **Render:** `header.site-header#top` → `a.brand[href=#inicio]` (`logo-principal.png`) + `button.menu-toggle[aria-expanded]` ☰ + `nav#site-navigation.nav[.open]` (7 links con clase `active`) + `.header-actions` (`button.header-search` decorativo con lupa SVG + `a.reserve-top[href=#reserva]` con icono WhatsApp + "Reservar").
+- **Render:** `header.site-header#top` → `a.brand[href=#inicio]` (`logo-principal.png`) + `button.menu-toggle[aria-expanded]` ☰ + `nav#site-navigation.nav[.open]` (6 links con clase `active`) + `.header-actions` (solo `button.reserve-top` “Reservar” sin icono → abre modal `reserva-modal` en `App.js` con `ReservarExperiencia`). Sin `header-search`.
 
 ### 8.2 `layout/Footer.jsx` (46 líneas)
 
@@ -401,15 +405,16 @@ Campo `clase`: `'' | 'green' | 'blue'` → color del tag en `Featured`.
 - **Efecto:** `setInterval(next, INTERVAL)` + cleanup.
 - **Render:** `section.hero#inicio` → `slides.map div.hero-bg[.active/.exit]` (`backgroundImage`) + `.hero-overlay` + `.hero-content` (eyebrow `MANAURE VIVE`, `h1`, `p`, 2 `a.btn`: `#experiencias` / `#paquetes`) + `.hero-slogan` ("¡Vive lo extraordinario!") + `.hero-dots` + `.hero-progress-bar[animationDuration=INTERVAL]`.
 
-### 8.5 `inicio/Discover.jsx` (37 líneas)
+### 8.5 `inicio/Discover.jsx` (rev. 2026-09-26: tarjetas eliminadas; ahora 6 círculos → filtro preseleccionado)
 
-- **Props/estado:** ninguno. `categoriasEcoturismo[6]`.
-- **Render:** `section.discover#experiencias[data-reveal]` → head (`¿QUÉ QUIERES HACER?` + `h2 Descubre tu experiencia`) + `.categories`: `a.category[href=#paquetes]` → `.cat-img img + i>svg` (rects/circles/paths) + label.
+- **Props/estado:** ninguno. `categoriasEcoturismo[6]` + mapa por orden a intereses `[naturaleza, aventura, fotografia, deportes, gastronomia, cultura]`.
+- **Render:** `section.discover#experiencias[data-reveal]` → head (`¿QUÉ QUIERES HACER?` + `h2 Descubre tu experiencia`) + `.circulos-grid`: `a.circulo-tema[href=#descubre/<tema>]` (círculo verde 84px con icono SVG + etiqueta) + banner `descubrir-banner` (`COMENZAR AHORA → #descubre`). `App.js` parsea `#descubre/<id>` (validado, fallback a `#descubre`) y `Descubre` acepta `interesInicial`.
 
-### 8.6 `inicio/Featured.jsx` (57 líneas)
+### 8.6 `inicio/Featured.jsx` — muestra 8 de 10 (`PAQUETES_VISIBLES = 8`)
 
 - **Props:** `onVerDetalle:(indice:number)=>void`.
-- **Render:** `section.featured#paquetes` → title (eyebrow + `h2` + link `#socios`) + `.featured-cards`: `paquetesEcoturismo.map article.featured-card` (imagen + `span.featured-tag.{clase}` + kicker + precio/`Consultar` + `h3` + `Por socio` + meta `⌖ ◷` + descripción + `button.small-btn onClick=onVerDetalle(i)`).
+- **Lógica N convenios (Solución A, 2026-09-26):** proveedor muestra `socios.slice(0,2)` + `+N más` si hay más de 2 (ej. Gran Circuito: `Manaure Aventura, Villa Adelaida +8 más`).
+- **Render:** `section.featured#paquetes` → title (eyebrow + `h2` + link `#socios`) + `.featured-cards`: `paquetesEcoturismo.slice(0,8).map article.featured-card` (imagen + `span.featured-tag.{clase}` + kicker + precio/`Consultar` + `h3` + `Por socio` + meta `⌖ ◷` + descripción + `button.small-btn onClick=onVerDetalle(i)`).
 
 ### 8.7 `inicio/Gallery.jsx` (36 líneas) — preview
 
@@ -417,11 +422,15 @@ Campo `clase`: `'' | 'green' | 'blue'` → color del tag en `Featured`.
 - **Lógica:** `fotosVistaPrevia = FOTOS_GALERIA.slice(0, ceil(len*0.4))` (~13 de 33).
 - **Render:** `section.gallery#destinos` → head + `.gallery-grid`: `button.gallery-item-button[aria-label][data-reveal]` con `img[loading=lazy]`; `onClick → onAbrirFoto(findIndex)`.
 
-### 8.8 `inicio/DetallePaquete.jsx` (60 líneas)
+### 8.8 `inicio/DetallePaquete.jsx` — galería mockup + convenios N + relacionados (rev. 2026-09-26)
 
-- **Props:** `paquete:{titulo, categoria, socio, ubicacion, duracion, precio, descripcion, imagen, incluye[]}`.
-- **Estado:** `preguntaAbierta:number|null` (acordeón FAQ).
-- **Derivados:** `mensajeReserva`, `reservaUrl=wa.me?text=encodeURIComponent`, `destacados[3]`, `idealPara[2]`, `preguntas[4]`.
+- **Props:** `paquete:{titulo, categoria, socio, socios[], ubicacion, duracion, precio, descripcion, imagen, galeria[5], incluye[], noIncluye[], itinerario[]}`, `onReservar?`.
+- **Estados:** `fecha/adultos/ninos/bebes/nombre/documento/telefono/recogida`, `modalAbierto`, `favorito`, `preguntaAbierta`, `visor`, `mostrarConvenios` (nuevo: colapsado N convenios).
+- **Galería (medidas mockup `paquete_responsive_pc_movil.html`):** `grid 2fr/1fr height:384px radius:24px`, principal `object-cover + hover scale`, lateral `grid 1fr/1fr`, thumb 2 con overlay dinámico `{N} fotos + Ver más` → abre visor en la foto clicada (`setVisor(i+1)`). Móvil: principal 288px, lateral en fila.
+- **Convenios (Solución A):** si `N<=3` pinta normal; si `N>3` pinta 3 compactos (logo 48px) + botón `Ver los N convenios (3 de N)` que expande mini-fila. Cards `Featured` muestran `2 +N más`.
+- **Relacionados:** bloque `También te puede interesar` con 3 cards (misma categoría primero, excluye actual) → `href=#paquete/M` (App.js remonta por `key` + scroll suave + animación `dt-entrada` 0.45s en `.detalle-contenedor`, con `prefers-reduced-motion`).
+- **Loader de detalle (2026-09-26):** `DetallePaquete` muestra 1100ms la misma pantalla de carga del filtro (`db-cargando-full` + spinner + barra + 3 `db-skel`, estilos de `Descubre.css`) antes del contenido; así el cambio entre paquetes relacionados se percibe. Tests con `timeout: 3000`.
+- **FAQ (2026-09-26):** el toggle abierto usa escape unicode U+2212 en string JS (antes entidad HTML en string y se pintaba literal).
 - **Render:** `main.detalle-paquete` → encabezado (`a.detalle-back[href=#paquetes]` + grid copy/imagen + `a.btn detalle-reserve[wa.me]`) + `.detalle-beneficios ✓` + 2 cards (QUÉ INCLUYE / IDEAL PARA) + FAQ acordeón (`aria-expanded`) + CTA WhatsApp.
 
 ### 8.9 `inicio/CTA.jsx` (22 líneas)
@@ -429,10 +438,10 @@ Campo `clase`: `'' | 'green' | 'blue'` → color del tag en `Featured`.
 - **Props/estado:** ninguno. `paisajeUrl`.
 - **Render:** `section.cta#reserva[data-reveal][style=--cta-image:url(...)]` → slogan + `h2 ¿Listo para vivir Manaure?` + `a.btn.whatsapp[wa.me]` con SVG.
 
-### 8.10 `inicio/Partners.jsx` (39 líneas) — marquee infinito
+### 8.10 `inicio/Partners.jsx` — marquee infinito con Instagram (rev. 2026-09-26)
 
-- **Props/estado:** ninguno. `sociosEcoturismo[10]`.
-- **Render:** `section.partners#socios` → head + `.partner-grid > .partner-track`: `[...socios, ...socios]` (duplicado para loop CSS) → `article.partner` (`img.partner-logo[PUBLIC_URL/assets/partners/logo][lazy]` + `h3`).
+- **Props/estado:** ninguno. `conveniosEcoturismo[10]` (cada uno con campo `instagram`).
+- **Render:** `section.partners#socios` → head (sin link “Ver todos los convenios”) + `.partner-grid > .partner-track`: `[...socios, ...socios]` (duplicado para loop CSS; 2ª mitad `aria-hidden` + `tabIndex=-1`) → `a.partner[target=_blank]` (logo + `h3`, toda la tarjeta clicable sin avisos visibles). Solo esta sección muestra los Instagram.
 
 ### 8.11 `galeria/GaleriaCompleta.jsx` (190 líneas) — la más compleja
 
@@ -446,6 +455,11 @@ Campo `clase`: `'' | 'green' | 'blue'` → color del tag en `Featured`.
 
 ### 8.12 Entry points
 
+- **`src/components/inicio/Descubre.jsx` (rev. 2026-09-26):** `PAQUETES_DEMO[6]` remapeados a nuevos índices (0 Adrenalina, 1 Cumbres, 3 Metallura, 6 Sabores, 5 Safari, 2 Grano-Fruta) + `DESTACADOS_DEMO[3]` (Cumbres/Adrenalina/Sabores). Avatares apilados + texto socios (2 por demo, sin cambios de diseño).
+- **Fix filtros Descubre (2026-09-26, bug grave):** intereses fuera del reveal (`data-reveal` quitado + blindaje `opacity:1`) para que la selección nunca pueda quedar invisible (solo verde + sombra, sin badge/check extra); duraciones honestas `[Día completo, Fin de semana]` (se eliminó “Medio día” huérfano que daba 0 resultados); toggle-off en duración/estilo/compañía; estilo y compañía ahora sí filtran (`estilos[]`/`companias[]` por demo); botón “Limpiar filtros” como enlace sutil en cabecera y estado vacío (diseño previo restaurado; botón `db-find` sin flecha `→`); `db-find` sticky móvil con safe-area). Regresión en `src/Descubre.filtros.test.js` (4 tests).
+- **Fix pantalla vacía tras buscar (2026-09-26, causa raíz):** el loader desmontaba hero/filtro/resultados y al remontar los nodos `data-reveal` quedaban sin `is-visible` (el observer de `App` no se re-ejecuta) → `opacity:0` permanente en navegador real. `Descubre` ahora re-sincroniza su reveal con efecto local en `[cargando]` (mismo observer/threshold). Cubierto por test reveal con `IntersectionObserver` simulado.
+- **Fix selección+móvil Descubre (2026-09-26):** la lógica React estaba bien (test temporal lo confirmó, luego eliminado); se reforzó lo visual: badge check naranja en `.db-choice.active`, sombra en activos, `focus-visible`, iconos con `flex:none/display:block`. Móvil ≤620px: minis con wrap (`flex:1 1 70px`, antes se desbordaban 4 en 360px), grupos apilados con divisor inferior, sort a ancho completo, meta/partner con wrap, featured-head con wrap, botón sticky con `safe-area`.
+
 - **`src/index.js`:** `createRoot(#root).render(<StrictMode><App/></StrictMode>)` + `import './styles/global/index.css'` + `reportWebVitals()` sin callback.
 - **`src/reportWebVitals.js`:** si `onPerfEntry` es función, importa `web-vitals` y suscribe `getCLS/FID/FCP/LCP/TTFB`.
 - **`src/setupTests.js`:** `import '@testing-library/jest-dom'`.
@@ -458,7 +472,7 @@ Campo `clase`: `'' | 'green' | 'blue'` → color del tag en `Featured`.
 | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `utils/useScrollReveal.js`         | `default useScrollReveal(deps=[]) → ref`                                                                         | Añade`scroll-reveal-ready` al contenedor, observa `[data-reveal]` con `IntersectionObserver (threshold 0.12, rootMargin -8%)` → `is-visible` + `unobserve`. Fallback sin IO. Usado en `App` con `[vistaGaleria, indicePaquete]` |
 | `utils/inicio/Hero.utils.js`       | `INTERVAL`, `slides[5]`                                                                                         | Slides hero (img + label + description)                                                                                                                                                                                                         |
-| `utils/inicio/Ecoturismo.utils.js` | `categoriasEcoturismo[6]`, `paquetesEcoturismo[5]`, `sociosEcoturismo[10]`, `galeriaEcoturismo[6]` (legado) | Store principal negocio                                                                                                                                                                                                                         |
+| `utils/inicio/Ecoturismo.utils.js` | `categoriasEcoturismo[6]`, `paquetesEcoturismo[10]`, `sociosEcoturismo[10]`, `galeriaEcoturismo[6]` (legado) | Store principal negocio                                                                                                                                                                                                                         |
 | `utils/inicio/Galeria.utils.js`    | `FILTROS_GALERIA[7]`, `COLORES_CATEGORIA`, `FOTOS_GALERIA[33]`, `useGaleria()`                              | Fotos locales + hook filtro (`useState('Todas')`)                                                                                                                                                                                             |
 | `utils/inicio/CTA.utils.js`        | `paisajeUrl`                                                                                                      | Fondo CTA                                                                                                                                                                                                                                       |
 | `utils/layout/Footer.utils.js`     | `socialLinks`                                                                                                     | Facebook/Instagram                                                                                                                                                                                                                              |
@@ -485,7 +499,7 @@ flowchart TD
 }
 ```
 
-Paleta funcional: verde selva `#06452f` (confianza/naturaleza), crema (Discover/Partners), etiquetas por categoría (§7.2), CTA con foto de fondo + overlay.
+Paleta funcional: verde selva `#06452f` (confianza/naturaleza), crema `#f7f4ec` (Discover/Contacto/Featured/Partners), etiquetas por categoría (§7.2), CTA con foto de fondo + overlay. (2026-09-26: se probaron arena/salvia en Featured/Partners y se revirtieron a crema por gusto del dueño.)
 
 Tipografías: `Playfair Display` (títulos serif), `Montserrat` (cuerpo), `Caveat` (slogans manuscritos: "¡Vive lo extraordinario!", "¡Tu próxima aventura!").
 
@@ -500,9 +514,9 @@ Tipografías: `Playfair Display` (títulos serif), `Montserrat` (cuerpo), `Cavea
 | `layout/WhatsAppButton.css`     | 117     | Botón flotante fixed 24px/z-1100, tooltip, pulse                               |
 | `inicio/Hero.css`               | 286     | Slider fullscreen, fade 900ms`.active/.exit`, overlay, dots, progress-bar     |
 | `inicio/Discover.css`           | 171     | Fondo crema, grid cards, icono circular                                         |
-| `inicio/Featured.css`           | 237     | Cards grid,`.featured-tag(.green/.blue)`, precio, `small-btn`               |
+| `inicio/Featured.css`           | 237     | Cards grid,`.featured-tag(.green/.blue)`, `.featured-media` fondo `#06452f` (2026-09-26, antes beige), precio, `small-btn`               |
 | `inicio/Gallery.css`            | 59      | Fondo`#06452f`, grid preview                                                  |
-| `inicio/DetallePaquete.css`     | 40      | Layout encabezado copy+imagen, beneficios, FAQ, CTA (base mínima)              |
+| `inicio/DetallePaquete.css`     | 40+     | Layout encabezado copy+imagen, beneficios, FAQ, CTA + galería mockup (384px/cover/overlay), convenios compactos, relacionados; thumbs fondo `#06452f` (2026-09-26) |
 | `inicio/CTA.css`                | 152     | `--cta-image` fondo, slogan, `btn.whatsapp`                                 |
 | `inicio/Partners.css`           | 123     | Marquee infinito`.partner-track`, logos                                       |
 | `galeria/GaleriaBase.css`       | 121     | Fondo/padding 130px, head/meta                                                  |
@@ -518,7 +532,7 @@ Tipografías: `Playfair Display` (títulos serif), `Montserrat` (cuerpo), `Cavea
 2. **Header:** fijo 86px, logo izq, nav centro (7 links), lupa decorativa + botón Reservar (WhatsApp) der.; móvil hamburguesa.
 3. **Hero `#inicio`:** fullscreen, 5 fondos rotando 5s + fade 900ms, overlay oscuro, eyebrow + H1 + 2 CTAs + slogan + dots + progress-bar.
 4. **Discover `#experiencias`:** fondo crema, 6 cards categoría (imagen + icono circular + label) → `#paquetes`.
-5. **Featured `#paquetes`:** 5 cards (foto + tag color + precio + meta ubicación/duración + botón detalle).
+5. **Featured `#paquetes`:** 8 cards de 10 (foto + tag color + precio + proveedor `2 +N más` + meta ubicación/duración + botón detalle).
 6. **Gallery preview `#destinos`:** fondo verde, ~13 fotos, click → `#galeria`.
 7. **Partners `#socios`:** marquee infinito 10 logos duplicados (20 nodos).
 8. **CTA `#reserva`:** foto `cta_paginapie.jpeg` + "¿Listo para vivir Manaure?" + botón WhatsApp.
@@ -530,7 +544,7 @@ flowchart TD
   L["Loader 1200ms"] --> HD["Header fijo 86px"]
   HD --> HE["Hero fullscreen slider"]
   HE --> DI2["Discover crema 6 cards"]
-  DI2 --> FE2["Featured 5 cards"]
+  DI2 --> FE2["Featured 8 cards"]
   FE2 --> GA2["Gallery preview verde"]
   GA2 --> PA2["Partners marquee"]
   PA2 --> CT["CTA foto fondo"]
@@ -603,14 +617,14 @@ flowchart TD
 
 ## 14. Tests
 
-`src/App.test.js` (RTL + jest-dom, `beforeEach: location.hash=''`):
+`src/App.test.js` (RTL + jest-dom, `beforeEach: location.hash=''` + `src/Descubre.filtros.test.js` con 5 tests de filtros; total 9 tests en verde):
 
 | # | Acción                                        | Aserción                                                                                        |
 | - | ---------------------------------------------- | ------------------------------------------------------------------------------------------------ |
 | 1 | Render inicial                                 | Heading hero`/Naturaleza, cultura, gastronomía y experiencias/` existe                        |
 | 2 | Click preview`alt=/Experiencia de aventura/` | `hash==='#galeria'` + dialog `/Aventura en Manaure/`; click tab `Naturaleza` cierra dialog |
-| 3 | Click`button /ver detalles/`                 | `hash==='#paquete/0'` + heading `/Ruta de senderismo/` + `/Todo lo que viene en tu plan/`  |
-| 4 | Ir a paquete + click`link /^Experiencias$/`  | Heading`/Descubre tu experiencia/`                                                             |
+| 3 | Click`button /ver detalles/`                 | `hash==='#paquete/0'` + heading `/Adrenalina Serrana/` + `/incluye el paquete/` (antes: Ruta de senderismo, actualizado 2026-09-26) |
+| 4 | Ir a paquete + click`link /^Experiencias$/`  | Heading`/Descubre tu experiencia/` (paquete base: Adrenalina Serrana, actualizado 2026-09-26) |
 
 Ejecutar: `npm test` (watch) / `CI=true npm test` (una vez).
 
@@ -623,12 +637,12 @@ Ejecutar: `npm test` (watch) / `CI=true npm test` (una vez).
 | Alta      | 9`.HEIC` huérfanos en gastronomía                                     | Navegadores no renderizan HEIC → convertir a`.jpg/.webp` y referenciar o eliminar                   |
 | Alta      | `galeriaEcoturismo` + Unsplash externos                                 | Legado no usado en`Gallery`; decidir: eliminar o usar como fallback offline                          |
 | Media     | `header-search` sin lógica                                             | Botón lupa decorativo → implementar búsqueda o quitar                                               |
-| Media     | `DetallePaquete.css` mínimo (40 líneas)                               | Ampliar estilos FAQ/beneficios/CTA vs resto secciones                                                  |
+| Media     | `DetallePaquete.css` mínimo (40 líneas)                               | ✅ Resuelto 2026-09-26: galería mockup (384px/cover/overlay), convenios compactos + ver-más, relacionados, responsive móvil |
 | Media     | `theme_color` duplicado                                                 | Unificar`#06452F` vs `#e8a020` en `index.html` + `manifest.json`                               |
 | Media     | Carpetas vacías`contacto/recuerdos/reservas` (components+utils+styles) | Definir roadmap: formulario contacto, sección recuerdos (3 .mp4 listos), motor reservas               |
 | Baja      | `DetallePaquete` sin `data-reveal`                                    | Añadir para coherencia animación                                                                     |
-| Baja      | Precio`null` (tour 3d/2n)                                               | UI muestra "Consultar" — definir precio o flujo cotización                                           |
-| Baja      | Nombres socio inconsistentes                                              | `Manaure Aventura(s)`, `Tours Manaure`, `Manaure Vive` en paquetes vs tabla socios — normalizar |
+| Baja      | Precio`null` (tour 3d/2n)                                               | ✅ Resuelto 2026-09-26: los 10 paquetes tienen precio (02 ref. pareja y 04 ref. adulto aclarados en descripción) |
+| Baja      | Nombres socio inconsistentes                                              | ✅ Resuelto 2026-09-26: normalizados a `conveniosEcoturismo` (Cuatri Tours Manaure, Absolom Casita de la Mora, Coruscans; ProAves/Balneario solo citados en texto) |
 | Baja      | `reportWebVitals()` sin callback                                        | Conectar a analítica o eliminar llamada                                                               |
 
 Roadmap sugerido: 1) normalizar assets (HEIC→webp), 2) implementar `recuerdos` con videos existentes, 3) formulario `contacto` + `reserva` con mismo WA, 4) migrar a `react-router` si crecen vistas, 5) tests e2e (Cypress/Playwright) del flujo hash.

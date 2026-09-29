@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 
 const REVEAL_FALLBACK_DELAY = 1500;
 
-function useScrollReveal() {
+function useScrollReveal(deps = []) {
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -41,37 +41,46 @@ function useScrollReveal() {
       nodes.forEach(element => {
         if (element.classList.contains('is-visible')) return;
         element.classList.add('reveal-pending');
-        if (supportsIntersectionObserver) {
+        if (supportsIntersectionObserver && observer) {
           observer.observe(element);
           fallbackTimers.set(element, window.setTimeout(() => reveal(element), REVEAL_FALLBACK_DELAY));
-        } else reveal(element);
+        } else {
+          reveal(element);
+        }
       });
     };
 
     observeRevealElements(elements);
 
-    const mutationObserver = new MutationObserver(mutations => {
-      mutations.forEach(mutation => {
-        mutation.addedNodes.forEach(node => {
-          if (node.nodeType !== 1) return;
+    const supportsMutationObserver = 'MutationObserver' in window;
+    let mutationObserver = null;
+    if (supportsMutationObserver) {
+      mutationObserver = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+          mutation.addedNodes.forEach(node => {
+            if (node.nodeType !== 1) return;
 
-          const revealElements = [];
-          if (node.matches('[data-reveal]')) revealElements.push(node);
-          revealElements.push(...node.querySelectorAll('[data-reveal]'));
-          observeRevealElements(revealElements);
+            const revealElements = [];
+            if (node.matches && node.matches('[data-reveal]')) revealElements.push(node);
+            if (node.querySelectorAll) revealElements.push(...node.querySelectorAll('[data-reveal]'));
+            if (revealElements.length > 0) {
+              observeRevealElements(revealElements);
+            }
+          });
         });
       });
-    });
 
-    mutationObserver.observe(container, { childList: true, subtree: true });
+      mutationObserver.observe(container, { childList: true, subtree: true });
+    }
 
     return () => {
       if (observer) observer.disconnect();
-      mutationObserver.disconnect();
+      if (mutationObserver) mutationObserver.disconnect();
       fallbackTimers.forEach(timer => window.clearTimeout(timer));
       fallbackTimers.clear();
     };
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
 
   return containerRef;
 }
